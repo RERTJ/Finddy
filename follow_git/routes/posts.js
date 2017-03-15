@@ -5,12 +5,12 @@ var checkLogin = require('../middlewares/check').checkLogin;
 
 
 router.get('/', function(req, res, next) {
-  res.send(req.flash());
+  res.send();
 });
 
 //Post an activity
 router.post('/', checkLogin, function(req, res, next) {
-  res.send(req.flash());
+  res.send();
 });
 router.get('/create', checkLogin, function(req, res, next) {
   res.send(req.flash());

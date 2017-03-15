@@ -6,16 +6,16 @@ var flash = require('connect-flash');
 var config = require('config-lite');
 var routes = require('./routes');
 var pkg = require('./package');
-
 var app = express();
 
-// 设置模板目录
+// path set
 app.set('views', path.join(__dirname, 'views'));
-// 设置模板引擎为 ejs
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+
+//egine set
 app.set('view engine', 'ejs');
 
-// 设置静态文件目录
-app.use(express.static(path.join(__dirname, 'public')));
 // session 中间件
 app.use(session({
   name: config.session.key,// 设置 cookie 中保存 session id 的字段名称
@@ -29,11 +29,8 @@ app.use(session({
   //   url: config.mongodb// mongodb 地址
   // })
 }));
-// flash 中间件，用来显示通知
-app.use(flash());
-
 // 设置模板全局常量
-app.locals.blog = {
+app.locals.finddy = {
   title: pkg.name,
   description: pkg.description
 };
