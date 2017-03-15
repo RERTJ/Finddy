@@ -1,4 +1,8 @@
 {
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/RERTJ/Finddy"
+  },
   "name": "follow_git",
   "version": "1.0.0",
   "description": "try la",
