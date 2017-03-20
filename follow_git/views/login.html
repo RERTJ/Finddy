@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html dir="rtl" lang="en"> <!--<![endif]-->  
+<head>
+    <title>Login | Finddy</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/css-rtl/style-rtl.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="../assets/plugins/animate.css">
+    <link rel="stylesheet" href="../assets/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css">
+
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="../assets/css/pages/page_log_reg_v2.css">    
+
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="../assets/css/plugins/style-switcher.css">
+
+    <!-- CSS Theme -->    
+    <link rel="stylesheet" href="../assets/css/css-rtl/theme-colors/default.css" id="style_color">
+    <link rel="stylesheet" href="../assets/css/css-rtl/theme-skins/dark.css">
+
+    <!-- RTL Customization -->
+    <link rel="stylesheet" href="../assets/css/css-rtl/rtl.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="../assets/css/css-rtl/custom-rtl.css">
+</head> 
+
+<body>   
+<!--=== Content Part ===-->    
+<div class="container">
+    <!--Reg Block-->
+    <div class="reg-block">
+        <div class="reg-block-header">
+            <h2>Sign In</h2>
+            <ul class="social-icons text-center">
+                <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+            </ul>
+            <p>Don't Have Account? <a class="color-green" href="register.html">Sign Up</a></p>            
+        </div>
+
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="Email">
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="text" class="form-control" placeholder="Password">
+        </div>
+        <hr>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 
+                <p>Always stay signed in</p>
+            </label>            
+        </div>
+                                
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <a href = "profile.html">
+                    <input type = "button" value = "Log In" class="btn-u btn-block">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--End Reg Block-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+
+<!-- JS Global Compulsory -->          
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
+<script src="../assets/plugins/jquery/jquery-migrate.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+<!-- JS Implementing Plugins -->           
+<script src="../assets/plugins/back-to-top.js"></script>
+<script src="../assets/plugins/backstretch/jquery.backstretch.min.js"></script>
+<!-- JS Customization -->
+<script src="../assets/js/custom.js"></script>
+<!-- JS Page Level -->           
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/plugins/style-switcher-rtl.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        StyleSwitcher.initStyleSwitcher();      
+    });
+</script>
+<script>
+    $.backstretch([
+      "https://upload.wikimedia.org/wikipedia/commons/4/46/A_Game_Of_Thrones_board_game_detail.jpg",
+      "https://static.wixstatic.com/media/9f0f6e_33e61b13f9214a5dbc73094721ed27a5.jpg_srz_892_502_85_22_0.50_1.20_0.00_jpg_srz",
+      ], {
+        fade: 1000,
+        duration: 7000
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="../assets/plugins/respond.js"></script>
+    <script src="../assets/plugins/html5shiv.js"></script>
+    <script src="../assets/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+
+</body>
+</html> 
