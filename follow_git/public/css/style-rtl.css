@@ -65,7 +65,7 @@ a:hover {
   box-shadow: 0 0 5px #ccc;
   margin-left: auto !important;
   margin-right: auto !important;
-  background: url(../../img/patterns/15.png) repeat;
+  background: url(../../img/15.png) repeat;
 }
 
 /*Main Styles
@@ -74,7 +74,7 @@ a:hover {
 .purchase {
 	padding: 25px 0 30px;
 	border-bottom: solid 1px #eee;
-	background: url(../../img/patterns/breadcrumbs.png) repeat;
+	background: url(../../img/breadcrumbs.png) repeat;
 }
 .purchase p {
 	margin-bottom: 0;
@@ -1606,7 +1606,7 @@ img.img-mouse {
 ------------------------------------*/
 .testimonials-bs {
   padding: 50px 0;
-  background: url(../../img/bg/16.jpg) 50% 0 repeat fixed;  
+  background: url(../../img/16.jpg) 50% 0 repeat fixed;  
 }
 
 .testimonials-bs .headline-center-v2 span.author {
