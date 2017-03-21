@@ -63,7 +63,7 @@
 
 /*Background Opacity*/
 .ie8 .service-block-v2 .service-block-in {
-	background: url(../../img/transparent/white.png) repeat;
+	background: url(../../img/white.png) repeat;
 }
 
 .ie8 .job-img .job-banner, 
@@ -73,5 +73,5 @@
 .ie8 .search-block:before,
 .ie8 .parallax-counter .counters,
 .ie8 .carousel-v1 .carousel-caption {
-	background: url(../../img/transparent/black.png) repeat;	
+	background: url(../../img/black.png) repeat;	
 }
