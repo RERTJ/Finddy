@@ -13,7 +13,7 @@
   overflow: hidden;
   padding: 10px 0 6px;
   border-bottom: solid 1px #eee;
-  background: url(../../img/patterns/breadcrumbs.png) repeat;
+  background: url(../img/breadcrumbs.png) repeat;
 }
 
 .breadcrumbs h1 {
@@ -1464,7 +1464,7 @@
 .call-action-v2 {
   padding: 50px 0;
   text-align: center;
-  background: url(../../img/patterns/16.png);
+  background: url(../img/16.png);
 }
 
 .call-action-v2 h2 {
@@ -1894,7 +1894,7 @@
   height: 100%; 
   content: " ";
   position: absolute;
-  background: url(../../img/patterns/gridtile.png) repeat;
+  background: url(../img/patterns/gridtile.png) repeat;
 }
 
 /*Parallax Quote Inner*/
