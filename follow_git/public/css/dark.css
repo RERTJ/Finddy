@@ -692,7 +692,7 @@ body.dark .header-v7 .navbar-toggle .icon-bar {
 ------------------------------------*/
 body.dark.boxed-layout {
   box-shadow: 0 0 5px #191919;
-  background: url(../../../img/patterns/4.png) repeat;
+  background: url(../img/4.png) repeat;
 }
 
 /*Breadcrumbs
@@ -2918,7 +2918,7 @@ body.dark .tags-v1 li a:hover {
 /*Counters
 ------------------------------------*/
 body.dark .parallax-counter-v2 {
-	background: #222 url(../../img/patterns/5.png) repeat fixed;
+	background: #222 url(../img/5.png) repeat fixed;
 }
 
 body.dark .parallax-counter-v2:after {
@@ -3024,7 +3024,7 @@ body.dark .bg-image-v2 p {
 /*Flat Background Block v1
 ------------------------------------*/
 body.dark .flat-bg-block-v1 {
-	background: #202020 url(../../img/patterns/5.png) repeat;
+	background: #202020 url(../img/5.png) repeat;
 }
 
 /*Content Boxes v5
@@ -3060,7 +3060,7 @@ body.dark li a.btn-u {
 /*Service Info
 ------------------------------------*/
 body.dark .service-info {
-	background: #202020 url(../../img/patterns/5.png) repeat;
+	background: #202020 url(../img/5.png) repeat;
 }
 
 /*Portfolio Box v2
