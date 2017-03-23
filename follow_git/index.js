@@ -46,20 +46,6 @@ app.use(function (req, res, next) {
 // 路由
 routes(app);
 
-var con = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "CSCI3100-Finddy"
-});
-
-con.connect(function(err){
-	if (err) {
-		console.log('Error connecting to Db');
-		return;
-	}
-	console.log('Connection established');
-});
 // 监听端口，启动程序
 app.listen(config.port, function () {
   console.log(`${pkg.name} listening on port ${config.port}`);

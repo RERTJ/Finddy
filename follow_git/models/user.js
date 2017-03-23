@@ -1,3 +1,5 @@
+var DBconnect = require('../modules/DBconnect.js');
+
 module.exports = User;
 
 function User(id, username, email, password, contact, introduction)
@@ -29,7 +31,19 @@ function User(id, username, email, password, contact, introduction)
     this.whitelist=whitelist;
     this.updates=[];
     this.activities=[];
-};
+
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
+  };
+  
   this.changePassword = function(oldPassword, newPassword)
   {
     if oldPassword=this.password{
