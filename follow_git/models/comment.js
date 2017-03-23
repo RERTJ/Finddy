@@ -9,9 +9,10 @@ function Comment(Id, posterId, content, postTime, notificationStatus){
     this.commentDeleted = false;
     this.deleteComment = function(){
         this.commentDeleted = true;
+        // delete this comment in db
     }
     this.postComment = function(){
-
+        //show the comment
     }
 }
 

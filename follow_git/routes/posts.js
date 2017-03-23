@@ -28,7 +28,7 @@ router.post('/:postId/edit', checkLogin, function(req, res, next) {
   res.send(req.flash());
 });
 
-// POST /posts/:postId/comment 创建一条留言
+// POST /posts/:postId/comment 
 router.post('/:postId/comment', checkLogin, function(req, res, next) {
   res.send(req.flash());
 });
