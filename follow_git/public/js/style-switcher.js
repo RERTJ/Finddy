@@ -22,7 +22,7 @@ var StyleSwitcher = function () {
             });
 
             var setColor = function (color) {
-                jQuery('#style_color').attr("href", "assets/css/theme-colors/" + color + ".css");
+                jQuery('#style_color').attr("href", "../public/css/theme-colors/" + color + ".css");
             }
 
         }
