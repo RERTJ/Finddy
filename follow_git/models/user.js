@@ -32,39 +32,40 @@ function User(id, username, email, password, contact, introduction)
 };
   this.changePassword = function(oldPassword, newPassword)
   {
-    if oldPassword=this.password{
-      this.password=newPassword
-      console.log("password renewed!")
-    }
-    else {
-      console.log("wrong password!")
-    }
+    // if oldPassword==this.password
+    // {
+    //   this.password=newPassword
+    //   console.log("password renewed!")
+    // }
+    // else {
+    //   console.log("wrong password!")
+    // }
   };
-  this.getInforFromOthers(id){
+  this.getInforFromOthers = function(id){
 
   };
-  this.getActivities(this.id){
+  this.getActivities = function(id){
 
   };
-  this.getBlacklist(this.id){
+  this.getBlacklist = function(id){
 
   };
-  this.addBlacklist(this.id,id){
+  this.addBlacklist = function(id1,id2){
 
   };
-  this.deleteBlacklist(this.id,id){
+  this.deleteBlacklist = function(id,id){
 
   };
-  this.getWhitelist(this.id){
+  this.getWhitelist = function(id){
 
   };
-  this.addwhitelist(this.id,id){
+  this.addwhitelist = function(id1,id2){
 
   };
-  this.deleteWhitelist(this.id,id){
+  this.deleteWhitelist = function(id1,id2){
 
   };
-  this.getUpdates(this.id){
+  this.getUpdates =function(id){
     //Call database
   };
 }
