@@ -23,7 +23,7 @@ var StyleSwitcher = function () {
             });
 
             var setColor = function (color, data_header) {
-                // jQuery('#style_color').attr("href", "../assets/css/css-rtl/theme-colors/" + color + ".css");
+                // jQuery('#style_color').attr("href", "../css/css/css-rtl/theme-colors/" + color + ".css");
                 // if(data_header == 'light'){
                 //     jQuery('.logo img').attr("src", "../assets/img/themes/logo1-" + color + ".png");
                 //     jQuery('#logo-footer').attr("src", "../assets/img/themes/logo2-" + color + ".png");
@@ -35,14 +35,14 @@ var StyleSwitcher = function () {
                 //     jQuery('#logo-footer').attr("src", "../assets/img/themes/logo2-" + color + ".png");
                 // }
                 // Fixed in v1.9
-                jQuery('#style_color').attr("href", "../assets/css/css-rtl/theme-colors/" + color + ".css");
+                jQuery('#style_color').attr("href", "../css/" + color + ".css");
                 if(data_header == 'light'){
-                    jQuery('.logo img').attr("src", "../assets/img/themes/logo1-" + color + ".png");
-                    jQuery('#logo-footer').attr("src", "../assets/img/themes/logo2-" + color + ".png");
-                    jQuery('.navbar-brand img').attr("src", "../assets/img/themes/logo1-" + color + ".png");
+                    jQuery('.logo img').attr("src", "../img/finddy_logo.JPG");
+                    jQuery('#logo-footer').attr("src", "../img/finddy_logo.JPG");
+                    jQuery('.navbar-brand img').attr("src", "../img/finddy_logo.JPG");
                 } else if(data_header == 'dark'){
-                    jQuery('.logo img').attr("src", "../assets/img/themes/logo1-" + color + ".png");
-                    jQuery('#logo-footer').attr("src", "../assets/img/themes/logo2-" + color + ".png");
+                    jQuery('.logo img').attr("src", "../img/finddy_logo.JPG");
+                    jQuery('#logo-footer').attr("src", "../img/finddy_logo.JPG");
                 }
             }
 
