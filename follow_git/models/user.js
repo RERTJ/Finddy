@@ -1,4 +1,4 @@
-var DBconnect = require('../modules/DBconnect.js');
+var DBconnect = require('../models/DBconnect.js');
 
 module.exports = User;
 
@@ -44,9 +44,8 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.changePassword = function(oldPassword, newPassword)
-  {
-    if oldPassword=this.password{
+  this.changePassword = function(oldPassword, newPassword){
+    if (oldPassword=this.password){
       this.password=newPassword
       console.log("password renewed!")
     }
@@ -66,7 +65,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.getInforFromOthers(id){
+  this.getInforFromOthers = function(id){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -79,7 +78,8 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.getActivities(this.id){
+
+  this.getActivities = function(id1){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -92,7 +92,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.getBlacklist(this.id){
+  this.getBlacklist= function(id1){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -105,7 +105,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.addBlacklist(this.id,id){
+  this.addBlacklist= function(id1,id2){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -118,7 +118,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.deleteBlacklist(this.id,id){
+  this.deleteBlacklist= function(id1,id2){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -131,7 +131,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.getWhitelist(this.id){
+  this.getWhitelist= function(id1){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -144,7 +144,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.addwhitelist(this.id,id){
+  this.addwhitelist= function(id1,id2){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -157,7 +157,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.deleteWhitelist(this.id,id){
+  this.deleteWhitelist= function(id1,id2){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {
@@ -170,7 +170,7 @@ function User(id, username, email, password, contact, introduction)
     });
   };
 
-  this.getUpdates(this.id){
+  this.getUpdates= function(id1){
     var sql = ''
     DBconnect.getConnection(function(err, connection) {
       if (err) {

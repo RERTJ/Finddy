@@ -4,12 +4,12 @@ var checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 // GET /signin
 router.get('/', checkNotLogin, function(req, res, next) {
-  res.send(req.flash());
+  res.render('login');
 });
 
 // POST /signin
-router.post('/', checkNotLogin, function(req, res, next) {
-  res.send(req.flash());
-});
+// router.post('/', checkNotLogin, function(req, res, next) {
+//   res.render('search');
+// });
 
 module.exports = router;

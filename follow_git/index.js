@@ -1,12 +1,13 @@
 var path = require('path');
 var express = require('express');
 var session = require('express-session');
-// var MongoStore = require('connect-mongo')(session);
+var mysql = require("mysql");
 var flash = require('connect-flash');
 var config = require('config-lite');
 var routes = require('./routes');
 var pkg = require('./package');
 var app = express();
+var formidable = require('express-formidable');
 
 // path set
 app.set('views', path.join(__dirname, 'views'));
@@ -14,7 +15,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 //egine set
-app.set('view engine', 'ejs');
+var cons = require('consolidate');
+app.engine('html', cons.swig)
+app.set('view engine', 'html');
 
 // session 中间件
 app.use(session({
@@ -34,6 +37,7 @@ app.locals.finddy = {
   title: pkg.name,
   description: pkg.description
 };
+app.use(formidable());
 
 // 添加模板必需的三个变量
 app.use(function (req, res, next) {
@@ -43,6 +47,7 @@ app.use(function (req, res, next) {
   next();
 });
 // 路由
+
 routes(app);
 
 // 监听端口，启动程序

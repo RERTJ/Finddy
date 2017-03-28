@@ -3,9 +3,10 @@ var router = express.Router();
 
 var checkLogin = require('../middlewares/check').checkLogin;
 
-// GET /signout 
+// GET /signout
 router.get('/', checkLogin, function(req, res, next) {
-  res.send(req.flash());
-});
+  req.session.user = null;
+  req.flash('successfully signed out!', '登出成功');
+  res.redirect('/signin');});
 
 module.exports = router;
