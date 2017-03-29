@@ -5,7 +5,7 @@ var checkLogin = require('../middlewares/check').checkLogin;
 
 
 router.get('/', function(req, res, next) {
-  res.send();
+  res.render('createNew');
 });
 
 //Post an activity
