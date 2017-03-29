@@ -14,14 +14,8 @@ function User(id, username, email, password, contact, introduction)
   this.whitelist=[];
   this.updates=[];
 
-  this.getAll = function()
+  this.creatUser = function(username, email, password)
   {
-    console.log('get_all activity~');
-  };
-
-  this.updateinformation = function(username, email, password, contact, introduction, blacklist, whitelist, updates)
-  {
-    this.id=id;
     this.username=username;
     this.email=email;
     this.password=password;
@@ -32,7 +26,36 @@ function User(id, username, email, password, contact, introduction)
     this.updates=[];
     this.activities=[];
 
-    var sql = ''
+    var sql = 'INSERT INTO USERS (USERNAME, EMAIL, PASSWORD) VALUES ('+username+','+ email+','+ passward+')'
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, result) {
+        if (err)
+          {
+            console.log('Error about query');
+          }else{
+            console.log('Created successfully!');
+              }
+      });
+    });
+  };
+
+  this.updateinformation = function(username, email, password, contact, introduction, blacklist, whitelist, updates)
+  {
+    this.username=username;
+    this.email=email;
+    this.password=password;
+    this.contact=contact;
+    this.introduction=introduction;
+    this.blacklist=blacklist;
+    this.whitelist=whitelist;
+    this.updates=[];
+    this.activities=[];
+
+    var sql = 'INSERT INTO USERS (USERNAME, EMAIL, PASSWORD) VALUES (username, email, passward, ?, ?)'
     DBconnect.getConnection(function(err, connection) {
       if (err) {
         console.log('Error connecting to Db');
