@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<title>Full Width Search | Unify - Responsive Website Template</title>
+	<title>SearchResult | Finddy</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -41,7 +41,7 @@
 	<link rel="stylesheet" href="css/custom.css">
 </head>
 
-<body>
+<body ng-app='search'>
 	<div class="wrapper">
 		<!--=== Header ===-->
 		<div class="header">
@@ -59,7 +59,7 @@
 
 
 						<li class="topbar-devider"></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="login.html">Login/Sign Up</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -141,9 +141,25 @@
 			</div>
 		</div><!--/container-->
 		<!--=== End Search Block Version 2 ===-->
-
+		<h1>{{ fiveDay.city_name }}</h1>
+		            <h2>5-day forecast</h2>
+		            <div class="forecast" ng-repeat="day in fiveDay.days">
+		              <div class="day row">
+		                <div class="weekday col-md-4">
+		                  <p>{{ day.datetime | date }}</p>
+		                </div>
+		                <div class="weather col-md-3">
+		                  <img ng-src="{{ day.icon }}">
+		                </div>
+		                <div class="weather col-md-1">
+		                </div>
+		                <div class="high col-md-2">
+		                  <p>{{ day.high }}&deg;</p>
+		                </div>
+		                <div class="low col-md-1">
+		                  <p>{{ day.low }}&deg;</p>
 		<!--=== Search Results ===-->
-		<div class="container s-results margin-bottom-50">
+		<div class="container s-results margin-bottom-50" ng-controller='js/searchMain'>
 			<span class="results-number">About 384,907 results</span>
 			<!-- Begin Inner Results -->
 			<div class="inner-results">
@@ -368,7 +384,8 @@
 	</div><!--/End Wrapepr-->
 
 	<!--=== End Style Switcher ===-->
-
+	<script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
+	<script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js'></script>
 	<!-- JS Global Compulsory -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-migrate.min.js"></script>

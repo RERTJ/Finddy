@@ -10,6 +10,7 @@ var App = function () {
 	  return this.attr(name) !== undefined;
 	};
 
+	angular.module('search', []);
 	// Fixed Header
 	function handleHeader() {
 		if (jQuery(window).scrollTop() > 100) {

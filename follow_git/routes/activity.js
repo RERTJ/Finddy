@@ -17,9 +17,10 @@ router.post('/', function(req, res, next) {
   var eyear =req.fields.eyear;
   var emonth =req.fields.emonth;
   var edate =req.fields.edate;
-  var starttimestamp=year+'-'+month+'-'+date+' '+hour+':00:00';
-  
-  res.render('search');
+  var starttimestamp="'"+year+'-'+month+'-'+date+' '+hour+':00:00';
+  var estarttimestamp="'"+eyear+'-'+emonth+'-'+edate+' '+ehour+':00:00';
+
+  res.render('searchresult');
 });
 router.get('/contact', function(req, res, next) {
   res.render('activityDetail');

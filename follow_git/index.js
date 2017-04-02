@@ -9,6 +9,7 @@ var pkg = require('./package');
 var app = express();
 var formidable = require('express-formidable');
 var sha1 = require('sha1');//Password security
+// var angular = require('angular');
 
 // path set
 app.set('views', path.join(__dirname, 'views'));

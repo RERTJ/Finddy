@@ -8,5 +8,8 @@ module.exports = function (app) {
   app.use('/signout', require('./signout'));
   app.use('/posts', require('./posts'));
   app.use('/activity', require('./activity'));
+  app.use('/search', require('./search'));
+
+  app.use('/searchResult', require('./searchResult'));
 
 };
