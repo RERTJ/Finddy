@@ -156,6 +156,7 @@
 	width: 100px;
 	display: table-cell;
 	vertical-align: middle;
+	float: right;
 }
 
 .header .logo img {
