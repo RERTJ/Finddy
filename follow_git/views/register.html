@@ -54,7 +54,7 @@
             <ul class="social-icons text-center">
                 <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
             </ul>
-            <p>Already Signed Up?<a class="color-green" href="login.html">Sign In</a></p>
+            <p>Already Signed Up? <a class="color-green" href="login.html">Sign In</a></p>
         </div>
 
         <div class="input-group margin-bottom-20">
@@ -67,26 +67,17 @@
         </div>
         <div class="input-group margin-bottom-20">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="text" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" placeholder="Password" id="password">
         </div>
         <div class="input-group margin-bottom-30">
             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-            <input type="text" class="form-control" placeholder="Confirm Password">
+            <input type="password" class="form-control" placeholder="Confirm Password" id="repassword">
         </div>
         <hr>
-
-        <div class="checkbox">            
-            <label>
-                <input type="checkbox"> 
-                I read <a target="_blank" href="page_terms.html">Terms and Conditions</a>
-            </label>
-        </div>
-                                
+                        
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <a href = "login.html">
-                    <input type = "button" value = "Register" class="btn-u btn-block">
-                </a>                
+                <input type = "button" value = "Register" class="btn-u btn-block" id="register">
             </div>
         </div>
     </div>
@@ -109,7 +100,7 @@
 <script>
     jQuery(document).ready(function() {
         App.init();
-        StyleSwitcher.initStyleSwitcher();      
+        StyleSwitcher.initStyleSwitcher();     
     });
 </script>
 <script>
