@@ -33,6 +33,7 @@
 
 .header .topbar ul.loginbar {
 	margin: 0;
+	padding-left: 0px;
 }
 
 .header .topbar ul.loginbar > li {
@@ -513,7 +514,7 @@
     left: 9px;
     font-size: 11px;
     content: "\f105";
-    position: absolute;
+    float: right;
     font-weight: normal;
     display: inline-block;
     font-family: FontAwesome;

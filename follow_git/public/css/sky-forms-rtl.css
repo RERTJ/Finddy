@@ -265,9 +265,7 @@
 .sky-form .checkbox input:checked + i:after {
 	opacity: 1;
 }
-.sky-form .inline-group {
-	margin: 0 0 -4px -30px;
-}
+
 .sky-form .inline-group:after {
 	content: '';
 	display: table;

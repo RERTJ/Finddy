@@ -44,7 +44,9 @@
 
 .footer-v1 .copyright p {
 	color: #eee;
-	margin-top: 14px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	direction: rtl;
 }
 
 .footer-v1 .copyright a {

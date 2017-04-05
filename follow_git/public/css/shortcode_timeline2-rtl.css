@@ -9,6 +9,7 @@
 /* The line */
 .timeline-v2 > li{
 	position: relative;
+	direction: rtl;
 }
 
 .timeline-v2:before {

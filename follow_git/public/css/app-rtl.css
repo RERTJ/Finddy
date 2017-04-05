@@ -869,7 +869,7 @@ h3.heading-xs {
 
 .sidebar-nav-v1 li a {
   display: block;
-  padding: 8px 10px 8px 30px;
+  padding: 8px 10px 8px 10px;
 }
 
 .sidebar-nav-v1 li a:hover {
