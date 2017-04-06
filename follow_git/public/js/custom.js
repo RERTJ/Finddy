@@ -14,16 +14,50 @@ jQuery(document).ready(function() {
             else
             	window.location.href = "login.html";
 
-        });   
-    });
+        });  
+});
 
 /*confirm phone number in manageProfile page*/
 jQuery(document).ready(function(){
 	$('.save').click(function(){
 		var mobile = $('#mobile').val();
-		if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
+		if (mobile == "")
+      return;
+    if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
 			alert('Please enter a valid mobile phone number according to example!');
 	});	
+});
+
+/*confirm passwords in manageProfile page*/
+jQuery(document).ready(function(){
+  $('.save').click(function(){
+      var pass = $('#password').val();
+      var pass2 = $('#repassword').val();
+      if (pass == '')
+        return;
+      else {
+        if (pass2 == '')
+          alert('Please re-enter the password');
+        else if (pass != pass2)
+          alert('The passwords do not match!');
+        else
+          return;
+      }
+  });
+});
+
+/*clear all input in blanks once cancel button is pressed in manageProfile page*/
+jQuery(document).ready(function(){
+  $('#cancelAccountInfo').click(function(){
+    $('#username').val('');
+    $('#password').val('');
+    $('#repassword').val('');
+    $('#mobile').val('');
+  });
+
+  $('#cancelSelfIntro').click(function(){
+    $('#selfIntro').val('');
+  });
 });
 
 /*function for google map API*/

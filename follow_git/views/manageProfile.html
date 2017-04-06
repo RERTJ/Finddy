@@ -140,42 +140,42 @@
                 <!--Notification-->
                 <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
-                    <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                    <i class="fa fa-cog pull-right"></i>
                 </div>
                 <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark">
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 1</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 1</strong></a> has been updated</span>
                             <small>Two minutes ago</small>
                         </div>    
                     </li>
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 2</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 2</strong></a> has been updated</span>
                             <small>Today 18:25 pm</small>
                         </div>    
                     </li>
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 3</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 3</strong></a> has been updated</span>
                             <small>Yesterday 1:07 pm</small>
                         </div>    
                     </li>
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 4</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 4</strong></a> has been updated</span>
                             <small>23/12 11:01 am</small>
                         </div>    
                     </li>
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 5</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 5</strong></a> has been updated</span>
                             <small>Yesterday 1:07 pm</small>
                         </div>    
                     </li>
                     <li class="notification">
                         <div class="overflow-h">
-                            <span><strong>Activity Title 6</strong> has been updated</span>
+                            <span><a href="activityDetail.html"><strong>Activity Title 6</strong></a> has been updated</span>
                             <small>23/12 15:15 pm</small>
                         </div>    
                     </li>
@@ -212,7 +212,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-user"></i>
-                                                    <input type="text" placeholder="New Username" name="username">
+                                                    <input type="text" placeholder="New Username" id="username">
                                                     <b class="tooltip tooltip-bottom-right">Please enter your new username</b>
                                                 </label>
                                             </section>
@@ -232,7 +232,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" id="password" name="password" placeholder="New Password">
+                                                    <input type="password" id="password" id="password" placeholder="New Password">
                                                     <b class="tooltip tooltip-bottom-right">Please enter your new password</b>
                                                 </label>
                                             </section>
@@ -242,14 +242,14 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+                                                    <input type="password" id="repassword" placeholder="Confirm Password">
                                                     <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                 </label>
                                             </section>
                                         </dd>    
                                     </dl>
                                     <br>
-                                    <button type="button" class="btn-u btn-u-default">Cancel</button>
+                                    <button type="button" class="btn-u btn-u-default" id="cancelAccountInfo">Cancel</button>
                                     <button class="btn-u save" type="submit">Save Changes</button>
                                 </form>    
                             </div>
@@ -260,11 +260,11 @@
                                     <!--Checkout-Form-->
                                     <section>
                                         <label class="input">
-                                            <input type="text" name="name" placeholder="New Self-introduction
-                                            ">
+                                            <input type="text" placeholder="New Self-introduction
+                                            " id="selfIntro">
                                         </label>
                                     </section>
-                                    <button type="button" class="btn-u btn-u-default">Cancel</button>
+                                    <button type="button" class="btn-u btn-u-default" id="cancelSelfIntro">Cancel</button>
                                     <button class="btn-u save" type="submit">Save Changes</button>
                                     <!--End Checkout-Form-->
                                 </form>    
