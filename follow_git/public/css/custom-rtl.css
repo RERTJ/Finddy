@@ -58,3 +58,7 @@ fieldset {
     margin: 20px 0px;
     border: 1px solid #eee;
 }
+
+.input-group {
+    border-left: solid 1px #eee;
+}
