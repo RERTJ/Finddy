@@ -481,7 +481,7 @@
 /* grid */
 /**/
 .sky-form .row {
-	margin: 0 -15px;
+	margin: 0 0px;
 }
 .sky-form .row:after {
 	content: '';
