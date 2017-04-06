@@ -52,3 +52,9 @@
 dd {
 	margin-left: 0px;
 }
+
+fieldset {
+    padding: .35em .625em .75em;
+    margin: 20px 0px;
+    border: 1px solid #eee;
+}
