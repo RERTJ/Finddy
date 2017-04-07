@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
+<<<<<<< HEAD
 var DBconnect = require('../models/DBconnect.js');
+=======
+>>>>>>> 1982542c0fb2433b0c95a43673e6e0404d09b080
 
 router.get('/', checkNotLogin, function(req, res, next) {
   res.render('register');

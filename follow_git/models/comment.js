@@ -9,9 +9,15 @@ function Comment(Id, posterId, content, postTime, notificationStatus){
     this.commentDeleted = false;
     this.deleteComment = function(){
         this.commentDeleted = true;
+        // delete this comment in db
     }
+<<<<<<< HEAD
     this.postComment = function(activity){
         activity.comments[activity.comments.length] = this.Id;
+=======
+    this.postComment = function(){
+        //show the comment
+>>>>>>> 1982542c0fb2433b0c95a43673e6e0404d09b080
     }
 }
 
