@@ -1,20 +1,29 @@
 /* Write here your custom javascript codes */
 
-/*confirm password in registration page*/
+/*confirm entries in registration page*/
 jQuery(document).ready(function() {
-        $('#register').click(function(){
-            var pass = $('#password').val();
-            var pass2 = $('#repassword').val();
-            if (pass == '')
-                alert('Please enter a password');
-            else if (pass2 == '')
-                alert('Please re-enter the password');
-            else if (pass != pass2)
-                alert('The passwords do not match!');
-            else
-            	window.location.href = "login.html";
+  $('#register').click(function(){
+    var pass = $('#password').val();
+    var pass2 = $('#repassword').val();
+    var username = $('#username').val();
+    var email = $('#email').val();
+    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    if (username == "")
+      alert('Please enter a username');
+    else if (email == "")
+      alert('Please enter an email address');
+    else if (!re.test(email))
+      alert('Please enter a valid email');
+    else if (pass == '')
+      alert('Please enter a password');
+    else if (pass2 == '')
+      alert('Please re-enter the password');
+    else if (pass != pass2)
+      alert('The passwords do not match!');
+    else
+      	window.location.href = "login.html";
 
-        });  
+  });  
 });
 
 /*confirm phone number in manageProfile page*/
