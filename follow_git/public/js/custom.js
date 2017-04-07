@@ -103,9 +103,7 @@ function initMap() {
     });
     marker.setVisible(true);
 
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-        'Place ID: ' + place.place_id + '<br>' +
-        place.formatted_address);
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address);
     infowindow.open(map, marker);
   });
 }
