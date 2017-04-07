@@ -16,46 +16,46 @@
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="../../follow_git/public/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/style-rtl.css">
+    <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="../css/style-rtl.css">
 
     <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="../../follow_git/public/css/header-default-rtl.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/footer-v1-rtl.css">
+    <link rel="stylesheet" href="../css/header-default-rtl.css">
+    <link rel="stylesheet" href="../css/footer-v1-rtl.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="../../follow_git/public/css/animate.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/line-icons.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/sky-forms-rtl.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/custom-sky-forms-rtl.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/line-icons.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../css/sky-forms-rtl.css">
+    <link rel="stylesheet" href="../css/custom-sky-forms-rtl.css">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
+    <link rel="stylesheet" href="../css/profile-rtl.css">
 
     <!-- Style Switcher -->
-    <link rel="stylesheet" href="../../follow_git/public/css/style-switcher.css">
+    <link rel="stylesheet" href="../css/style-switcher.css">
 
     <!-- CSS Theme -->
-    <link rel="stylesheet" href="../../follow_git/public/css/default.css" id="style_color">
-    <link rel="stylesheet" href="../../follow_git/public/css/dark.css">
+    <link rel="stylesheet" href="../css/default.css" id="style_color">
+    <link rel="stylesheet" href="../css/dark.css">
 
     <!-- RTL Customization -->
-    <link rel="stylesheet" href="../../follow_git/public/css/rtl.css">
+    <link rel="stylesheet" href="../css/rtl.css">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="../../follow_git/public/css/custom-rtl.css">
+    <link rel="stylesheet" href="../css/custom-rtl.css">
 </head>	
 
-<body>
+<body ng-app="Finddyapp">
 <div class="wrapper">
     <!--=== Header ===-->    
     <div class="header">
         <div class="container">
             <!-- Logo -->
             <a class="logo" href="profile.html">
-                <img src="../../follow_git/public/img/finddy_logo.JPG" alt="Logo">
+                <img src="../img/finddy_logo.JPG" alt="Logo">
             </a>
             <!-- End Logo -->
             
@@ -64,7 +64,7 @@
                 <ul class="loginbar pull-right">
                     
                     <li class="topbar-devider"></li>   
-                    <li><a href="login.html">Login</a></li>   
+                    <li><a href="../login">Login</a></li>   
                 </ul>
             </div>
             <!-- End Topbar -->
@@ -90,7 +90,7 @@
 
                     <!-- Misc Pages -->
                     <li class="dropdown active">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='../users';">
                             Return to Profile
                         </a>
         
@@ -122,21 +122,21 @@
     	<div class="row">
             <!--Left Sidebar-->
             <div class="col-md-3 md-margin-bottom-40">
-                <img class="img-responsive profile-img margin-bottom-20" src="../../follow_git/public/img/img1-md.jpg" alt="">
+                <img class="img-responsive profile-img margin-bottom-20" src="../img/img1-md.jpg" alt="">
 
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     
                     <li class="list-group-item">
-                        <a href="manageProfile.html"><i class="fa fa-cog"></i> Manage Account</a>
+                        <a href="manageProfile"><i class="fa fa-cog"></i> Manage Account</a>
                     </li>
                     <li class="list-group-item active">
-                        <a href="profile.html"><i class="fa fa-history"></i> Upcoming Activities</a>
+                        <a href="../users"><i class="fa fa-history"></i> Upcoming Activities</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="activityPosted.html"><i class="fa fa-bar-chart-o"></i> Posted Activities</a>
+                        <a href="activityPosted"><i class="fa fa-bar-chart-o"></i> Posted Activities</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="contactList.html"><i class="fa fa-group"></i> Contacts</a>
+                        <a href="contactList"><i class="fa fa-group"></i> Contacts</a>
                     </li>   
                 </ul>   
 
@@ -146,42 +146,7 @@
                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
                 </div>
                 <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark">
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 1</strong> has been updated</span>
-                            <small>Two minutes ago</small>
-                        </div>    
-                    </li>
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 2</strong> has been updated</span>
-                            <small>Today 18:25 pm</small>
-                        </div>    
-                    </li>
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 3</strong> has been updated</span>
-                            <small>Yesterday 1:07 pm</small>
-                        </div>    
-                    </li>
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 4</strong> has been updated</span>
-                            <small>23/12 11:01 am</small>
-                        </div>    
-                    </li>
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 5</strong> has been updated</span>
-                            <small>Yesterday 1:07 pm</small>
-                        </div>    
-                    </li>
-                    <li class="notification">
-                        <div class="overflow-h">
-                            <span><strong>Activity Title 6</strong> has been updated</span>
-                            <small>23/12 15:15 pm</small>
-                        </div>    
-                    </li>
+                    <!--add the activities user will join later-->
                 </ul>    
                 <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
                 <!--End Notification-->
@@ -200,205 +165,15 @@
 
             <!-- Profile Content -->            
             <div class="col-md-9">
-                <div class="profile-body">
+                <div class="profile-body" ng-repeat="posted_activity in posted_activities">
                     <!--Projects-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="easy-block-v1">
-                                <img class="img-responsive" src="../../follow_git/public/img/img12.jpg" alt="">
-                                
-                            </div>    
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">6:15 center campus dinner</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                                </ul>
-                                <p>Description: 4 people, after dinner, shall study in UL </p>
-                                <br>
-            
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                    
-                                    <li><i class="fa fa-comments"></i> <a href="#">32</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                    <li><i class="color-green fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
+                            
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="service-or easy-block-v2 no-margin-bottom">
-                                <img class="img-responsive" src="../../follow_git/public/img/img16.jpg" alt="">
-                                
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Afternoon Tea MedCan</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 07, 2013</li>
-                                </ul>
-                                <p>Description: 4 people, Tue 15:30</p>
-                                <br>
-                               
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                    
-                                    <li><i class="fa fa-comments"></i> <a href="#">90</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><!--/end row-->
-                    <!--End Projects-->
-
-                    <hr>
-
-                    <!--Projects-->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="easy-block-v1">
-                                <img class="img-responsive" src="../../follow_git/public/img/img17.jpg" alt="">
-                                
-                            </div>    
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Coffecor 615 dinner</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                                </ul>
-                                <p>Description: 3 people</p>
-                                <br>
-                               
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                    
-                                    <li><i class="fa fa-comments"></i> <a href="#">32</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                    <li><i class="color-green fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="service-or easy-block-v2 no-margin-bottom">
-                                <img class="img-responsive" src="../../follow_git/public/img/img18.jpg" alt="">
-                                
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Shaw, board game</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 07, 2013</li>
-                                </ul>
-                                <p>10 people</p>
-                                <br>
-                                
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                   
-                                    <li><i class="fa fa-comments"></i> <a href="#">90</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><!--/end row-->
-                    <!--End Projects-->
-
-                    <hr>
-
-                    <!--Projects-->
-                    <div class="row margin-bottom-30">
-                        <div class="col-sm-6">
-                            <div class="easy-block-v1">
-                                <img class="img-responsive" src="../../follow_git/public/img/img19.jpg" alt="">
-                                
-                            </div>    
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">Eat Mcdonald in ShaTin</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
-                                </ul>
-                                <p>Description: 5 people, tomorrow evening, gather at 6:30pm, MTR station</p>
-                                <br>
-                                
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                    
-                                    <li><i class="fa fa-comments"></i> <a href="#">32</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                    <li><i class="color-green fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="service-or easy-block-v2 no-margin-bottom">
-                                <img class="img-responsive" src="../../follow_git/public/img/img20.jpg" alt="">
-                               
-                            </div>
-                            <div class="projects">
-                                <h2><a class="color-dark" href="#">center campus, lunch, 12:15 today</a></h2>
-                                <ul class="list-unstyled list-inline blog-info-v2">
-                                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
-                                    <li><i class="fa fa-clock-o"></i> Jan 07, 2013</li>
-                                </ul>
-                                <p>Description: 4 people</p>
-                                <br>
-                                
-                            </div>    
-                            <div class="project-share">
-                                <ul class="list-inline comment-list-v2 pull-left">
-                                    
-                                    <li><i class="fa fa-comments"></i> <a href="#">90</a></li>
-                                    
-                                </ul>    
-                                <ul class="list-inline star-vote pull-right">
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star"></i></li>
-                                    <li><i class="color-green fa fa-star-half-o"></i></li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div><!--/end row-->
                     <!--End Projects-->
@@ -441,22 +216,25 @@
 </div><!--/end wrapper-->				
 
 <!-- JS Global Compulsory -->          
-<script src="../../follow_git/public/js/jquery.min.js"></script>
-<script src="../../follow_git/public/js/jquery-migrate.min.js"></script>
-<script src="../../follow_git/public/js/bootstrap.min.js"></script> 
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-migrate.min.js"></script>
+<script src="../js/bootstrap.min.js"></script> 
 <!-- JS Implementing Plugins -->
-<script src="../../follow_git/public/js/back-to-top.js"></script>
-<script src="../../follow_git/public/js/smoothScroll.js"></script>
-<script src="../../follow_git/public/js/waypoints.min.js"></script>
-<script src="../../follow_git/public/js/jquery.counterup.min.js"></script> 
-<script src="../../follow_git/public/js/jquery-ui.min.js"></script>
-<script src="../../follow_git/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/back-to-top.js"></script>
+<script src="../js/smoothScroll.js"></script>
+<script src="../js/waypoints.min.js"></script>
+<script src="../js/jquery.counterup.min.js"></script> 
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- JS Customization -->
-<script src="../../follow_git/public/js/custom.js"></script>
+<script src="../js/custom.js"></script>
 <!-- JS Page Level -->           
-<script src="../../follow_git/public/js/app.js"></script>
-<script src="../../follow_git/public/js/datepicker.js"></script>
-<script src="../../follow_git/public/js/style-switcher-rtl.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/datepicker.js"></script>
+<script src="../js/style-switcher-rtl.js"></script>
+
+<script src="../js/Controllers/posted_activity"></script>
+
 <script>
     jQuery(document).ready(function() {
         App.init();

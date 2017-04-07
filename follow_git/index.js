@@ -1,12 +1,16 @@
 var path = require('path');
 var express = require('express');
 var session = require('express-session');
-// var MongoStore = require('connect-mongo')(session);
+var mysql = require('mysql');
 var flash = require('connect-flash');
 var config = require('config-lite');
 var routes = require('./routes');
 var pkg = require('./package');
 var app = express();
+var bodyParser = require('body-parser');
+var formidable = require('express-formidable');
+var cookieParser = require('cookie-parser');
+var fs = require('fs');
 
 // path set
 app.set('views', path.join(__dirname, 'views'));
@@ -14,7 +18,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
 //egine set
-app.set('view engine', 'ejs');
+var cons = require('consolidate');
+app.engine('html', cons.swig);
+app.set('view engine', 'html');
+
 
 // session 中间件
 app.use(session({
@@ -42,6 +49,14 @@ app.use(function (req, res, next) {
   res.locals.error = req.flash('error').toString();
   next();
 });
+
+//app.use(cookieParser);
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+app.use(fs());
+app.use(formidable());
+
+
 // 路由
 routes(app);
 

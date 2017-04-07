@@ -1,19 +1,19 @@
 module.exports = Activity;
 
-function Activity(Id, type, description, location, startTime, creator, postTime, expireTime, quota, activityStatus)
+function Activity(Id, type, description, location, startTime, creatorId, postTime, expireTime, quota, activityStatus)
 {
     this.Id = Id;
     this.type = type;
     this.description = description;
     this.location = location;
     this.startTime = startTime;
-    this.rating = 0.0;
-    this.creator = creator;
+    this.rating = 0;
+    this.creatorId = creatorId;
     this.postTime = postTime;
     this.expireTime = expireTime;
     this.quota = quota;
     this.joiners =[];
-    this.joiners[0] = creator;
+    this.joiners[0] = creatorId;
     this.activityStatus = activityStatus;
     this.comments = [];
 
@@ -23,27 +23,40 @@ function Activity(Id, type, description, location, startTime, creator, postTime,
     this.viewActivity = function(){
 
     }
-    this.updateActivity = function(){
-
+    this.updateActivity = function(type, description, location, startTime, postTime, expireTime, quota){
+        this.type = type;
+        this.description = description;
+        this.location = location;
+        this.startTime = startTime;
+        this.expireTime = expireTime;
+        this.quota = quota;
     }
     this.deleteActivity = function(){
-
+        
     }
-    this.joinActivity = function(){
-
+    this.joinActivity = function(joinerId){
+        this.joiners[this.joiners.length] = joinerId;
     }
-    this.quitActivity = function(){
-
+    this.quitActivity = function(quitId){
+        for(var i = 0; i < this.joiners.length; i++)
+        {
+            if (this.joiners[i] === quitId)
+            {
+                this.joiners[i] === this.joiners[this.joiners.length - 1];
+                this.joiners[this.joiners.length - 1] === 0;
+                console.log("User" + quitId + " quit the activity " + this.Id + " successfully!");
+            }
+        }
     }
     this.getComments = function(){
-        
+        for(var i = 0; i < this.comments.length; i++)
+        {
+            //use commentId to get comments from database and print the corresponding content
+        }
     }
 }
 
 Activity.prototype.getAll = function(){
-    console.log("create Activity!");
-    console.log("The activity Id is " + this.Id + " This activity will " + this.description + " It will start at " + this.startTime + " at " + this.location + " and the quota is " + this.quota);
-    //alert("I am an activity!");
-    // 0315: write classes activity, comment and update. Functions need implementation.
+    
 }
 

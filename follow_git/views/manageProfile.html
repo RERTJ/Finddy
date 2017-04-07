@@ -18,36 +18,36 @@
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="../../follow_git/public/css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/style-rtl.css">
+    <link rel="stylesheet" href="../css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="../css/style-rtl.css">
 
     <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="../../follow_git/public/css/header-default-rtl.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/footer-v1-rtl.css">
+    <link rel="stylesheet" href="../css/header-default-rtl.css">
+    <link rel="stylesheet" href="../css/footer-v1-rtl.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="../../follow_git/public/css/animate.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/line-icons.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/sky-forms-rtl.css">
-    <link rel="stylesheet" href="../../follow_git/public/css/custom-sky-forms-rtl.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="../css/line-icons.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="../css/sky-forms-rtl.css">
+    <link rel="stylesheet" href="../css/custom-sky-forms-rtl.css">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
+    <link rel="stylesheet" href="../css/profile-rtl.css">
 
     <!-- Style Switcher -->
-    <link rel="stylesheet" href="../../follow_git/public/css/style-switcher.css">
+    <link rel="stylesheet" href="../css/style-switcher.css">
 
     <!-- CSS Theme -->    
-    <link rel="stylesheet" href="../../follow_git/public/css/default.css" id="style_color">
-    <link rel="stylesheet" href="../../follow_git/public/css/dark.css">
+    <link rel="stylesheet" href="../css/default.css" id="style_color">
+    <link rel="stylesheet" href="../css/dark.css">
 
     <!-- RTL Customization -->
-    <link rel="stylesheet" href="../../follow_git/public/css/rtl.css">
+    <link rel="stylesheet" href="../css/rtl.css">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="../../follow_git/public/css/custom-rtl.css">
+    <link rel="stylesheet" href="../css/custom-rtl.css">
 </head> 
 
 <body>
@@ -57,14 +57,14 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="logo" href="profile.html">
-                    <img src="../public/img/finddy_logo.JPG">
+                    <img src="../img/finddy_logo.JPG">
                 </a>
                 <!-- End Logo -->
 
                 <!-- Topbar -->
                 <div class="topbar">
                     <ul class="loginbar pull-right">
-                        <li><a href="login.html">Login/Sign Up</a></li>
+                        <li><a href="../signin">Login/Sign Up</a></li>
                     </ul>
                 </div>
                 <!-- End Topbar -->
@@ -92,7 +92,7 @@
 
                     <!-- Misc Pages -->
                     <li class="dropdown active">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='../users';">
                             Return to Profile
                         </a>
         
@@ -126,16 +126,16 @@
 
                 <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
                     <li class="list-group-item active">
-                        <a href="manageProfile.html"><i class="fa fa-cog"></i> Manage Account</a>
+                        <a href="manageProfile"><i class="fa fa-cog"></i> Manage Account</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="profile.html"><i class="fa fa-history"></i> Upcoming Activities</a>
+                        <a href="../users"><i class="fa fa-history"></i> Upcoming Activities</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="activityPosted.html"><i class="fa fa-bar-chart-o"></i> Posted Activities</a>
+                        <a href="activityPosted"><i class="fa fa-bar-chart-o"></i> Posted Activities</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="contactList.html"><i class="fa fa-group"></i> Contacts</a>
+                        <a href="contactList"><i class="fa fa-group"></i> Contacts</a>
                     </li>                                          
                 </ul>   
 
@@ -211,7 +211,7 @@
                             <div id="passwordTab" class="profile-edit tab-pane fade">
                                 <h2 class="heading-md">Edit Your Profile Information</h2>
                                 <br>
-                                <form class="sky-form" id="sky-form4" action="#">
+                                <form class="sky-form" id="sky-form4" action="#" method="post" enctype="multipart/form-data">
                                     <dl class="dl-horizontal">
                                         <dt>Username</dt>
                                         <dd>
@@ -228,7 +228,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-envelope"></i>
-                                                    <input type="email" placeholder="New Phone Number" name="email">
+                                                    <input type="text" placeholder="New Phone Number" name="phone_number">
                                                     <b class="tooltip tooltip-bottom-right">Please enter your new phone number</b>
                                                 </label>
                                             </section>
@@ -238,7 +238,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" id="password" name="password" placeholder="New Password">
+                                                    <input type="password" id="password" name="pwd" placeholder="New Password">
                                                     <b class="tooltip tooltip-bottom-right">Please enter your new password</b>
                                                 </label>
                                             </section>
@@ -248,7 +248,7 @@
                                             <section>
                                                 <label class="input">
                                                     <i class="icon-append fa fa-lock"></i>
-                                                    <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+                                                    <input type="password" name="pwd_confirm" placeholder="Confirm Password">
                                                     <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
                                                 </label>
                                             </section>
@@ -262,11 +262,11 @@
 
                             <div id="payment" class="profile-edit tab-pane fade">
                                 <h2 class="heading-md">Edit your self Introduction</h2>
-                                <form class="sky-form" id="sky-form" action="#">
+                                <form class="sky-form" id="sky-form" method="post" enctype="multipart/form-data">
                                     <!--Checkout-Form-->
                                     <section>
                                         <label class="input">
-                                            <input type="text" name="name" placeholder="New Self-introduction
+                                            <input type="text" name="self_intro" placeholder="New Self-introduction
                                             ">
                                         </label>
                                     </section>
@@ -301,24 +301,24 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->          
-<script src="../../follow_git/public/js/jquery.min.js"></script>
-<script src="../../follow_git/public/js/jquery-migrate.min.js"></script>
-<script src="../../follow_git/public/js/bootstrap.min.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery-migrate.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <!-- JS Implementing Plugins -->
-<script src="../../follow_git/public/js/back-to-top.js"></script>
-<script src="../../follow_git/public/js/smoothScroll.js"></script>
-<script src="../../follow_git/public/js/jquery-ui.min.js"></script>
-<script src="../../follow_git/public/js/jquery.validate.min.js"></script>
-<script src="../../follow_git/public/js/jquery.maskedinput.min.js"></script>
-<script src="../../follow_git/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/back-to-top.js"></script>
+<script src="../js/smoothScroll.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/jquery.maskedinput.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- JS Customization -->
-<script src="../../follow_git/public/js/custom.js"></script>
+<script src="../js/custom.js"></script>
 <!-- JS Page Level -->           
-<script src="../../follow_git/public/js/app.js"></script>
-<script src="../../follow_git/public/js/reg.js"></script>
-<script src="../../follow_git/public/js/checkout.js"></script>
-<script src="../../follow_git/public/js/datepicker.js"></script>
-<script src="../../follow_git/public/js/style-switcher-rtl.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/reg.js"></script>
+<script src="../js/checkout.js"></script>
+<script src="../js/datepicker.js"></script>
+<script src="../js/style-switcher-rtl.js"></script>
 <script>
     jQuery(document).ready(function() {
         App.init();

@@ -1,3 +1,5 @@
+var DBconnect = require('../models/DBconnect.js');
+
 module.exports = User;
 
 function User(id, username, email, password, contact, introduction)
@@ -29,42 +31,156 @@ function User(id, username, email, password, contact, introduction)
     this.whitelist=whitelist;
     this.updates=[];
     this.activities=[];
-};
-  this.changePassword = function(oldPassword, newPassword)
-  {
-    if oldPassword=this.password{
+
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
+  };
+
+  this.changePassword = function(oldPassword, newPassword){
+    if (oldPassword=this.password){
       this.password=newPassword
       console.log("password renewed!")
     }
     else {
       console.log("wrong password!")
     }
-  };
-  this.getInforFromOthers(id){
 
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.getActivities(this.id){
 
+  this.getInforFromOthers = function(id){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.getBlacklist(this.id){
 
-  };
-  this.addBlacklist(this.id,id){
 
+  this.getActivities = function(id1){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.deleteBlacklist(this.id,id){
 
+  this.getBlacklist= function(id1){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.getWhitelist(this.id){
 
+  this.addBlacklist= function(id1,id2){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.addwhitelist(this.id,id){
 
+  this.deleteBlacklist= function(id1,id2){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.deleteWhitelist(this.id,id){
 
+  this.getWhitelist= function(id1){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
-  this.getUpdates(this.id){
-    //Call database
+
+  this.addwhitelist= function(id1,id2){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
   };
+
+  this.deleteWhitelist= function(id1,id2){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
+  };
+
+  this.getUpdates= function(id1){
+    var sql = ''
+    DBconnect.getConnection(function(err, connection) {
+      if (err) {
+        console.log('Error connecting to Db');
+        return;
+      }
+      connection.query(sql, function(err, results) {
+        if (err) throw err;
+      });
+    });
+  };
+
 }

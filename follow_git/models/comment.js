@@ -10,8 +10,8 @@ function Comment(Id, posterId, content, postTime, notificationStatus){
     this.deleteComment = function(){
         this.commentDeleted = true;
     }
-    this.postComment = function(){
-
+    this.postComment = function(activity){
+        activity.comments[activity.comments.length] = this.Id;
     }
 }
 

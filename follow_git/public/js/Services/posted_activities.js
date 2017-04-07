@@ -1,0 +1,1 @@
+app.factory('posted_activities',[]);
