@@ -1,9 +1,7 @@
-app.factory('search', ['$http', function($http) {
-  return $http.get()
-            .success(function(data) {
-              return data;
-            })
-            .error(function(err) {
-              return err;
+app.factory('search', ['$http', function($http)
+ {  return $http.get('data/searchResult.json')
+            .then(function (response) {
+              return response;
             });
+
 }]);

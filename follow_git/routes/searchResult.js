@@ -6,7 +6,8 @@ var checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 
 router.get('/', checkNotLogin, function(req, res, next) {
-  res.render('searchResult');//Decide which view to load in
+  res.render('searchResult_pure');//Decide which view to load in
+
 });
 
 

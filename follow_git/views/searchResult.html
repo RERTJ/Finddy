@@ -40,14 +40,14 @@
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="css/custom.css">
 </head>
-
-<body ng-app='search'>
+<!-- ng-app='search' -->
+<body >
 	<div class="wrapper">
 		<!--=== Header ===-->
 		<div class="header">
 			<div class="container">
 				<!-- Logo -->
-				<a class="logo" href="profile.html">
+				<a class="logo" href="profile">
 					<img src="img/finddy_logo.JPG" alt="Logo">
 				</a>
 				<!-- End Logo -->
@@ -59,7 +59,7 @@
 
 
 						<li class="topbar-devider"></li>
-						<li><a href="login.html">Login/Sign Up</a></li>
+						<li><a href="signin">Login/Sign Up</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -133,7 +133,7 @@
 		<div class="search-block-v2">
 			<div class="container">
 				<div class="col-md-6 col-md-offset-3">
-					<a href="search.html">
+					<a href="search">
 						<h2>search again</h2>
 					</a>
 
@@ -141,7 +141,7 @@
 			</div>
 		</div><!--/container-->
 		<!--=== End Search Block Version 2 ===-->
-		<h1>{{ fiveDay.city_name }}</h1>
+		<!-- <h1>{{ fiveDay.city_name }}</h1>
 		            <h2>5-day forecast</h2>
 		            <div class="forecast" ng-repeat="day in fiveDay.days">
 		              <div class="day row">
@@ -157,10 +157,11 @@
 		                  <p>{{ day.high }}&deg;</p>
 		                </div>
 		                <div class="low col-md-1">
-		                  <p>{{ day.low }}&deg;</p>
+		                  <p>{{ day.low }}&deg;</p> -->
 		<!--=== Search Results ===-->
-		<div class="container s-results margin-bottom-50" ng-controller='js/searchMain'>
-			<span class="results-number">About 384,907 results</span>
+		<!-- ng-controller='js/searchMain' -->
+		<div class="container s-results margin-bottom-50" >
+			<span class="results-number">{{search.length}}</span>
 			<!-- Begin Inner Results -->
 			<div class="inner-results">
 				<h3><a href="#">Web design</a></h3>
@@ -384,9 +385,9 @@
 	</div><!--/End Wrapepr-->
 
 	<!--=== End Style Switcher ===-->
-	<script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
+	<!-- <script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
 	<script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js'></script>
-	<!-- JS Global Compulsory -->
+	<!-- JS Global Compulsory --> -->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery-migrate.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>

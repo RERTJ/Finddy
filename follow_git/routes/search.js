@@ -1,4 +1,6 @@
 var express = require('express');
+var fs = require('fs');
+
 var router = express.Router();
 // var User = require('../models/User')
 var DBconnect = require('../models/DBconnect.js');
@@ -39,7 +41,13 @@ router.post('/', checkNotLogin, function(req, res, next) {
         console.log('Error about query when search');
       }
       else{
-        console.log(result[0].AID);
+        var myjson=JSON.stringify(result);
+        console.log(myjson);
+        fs.writeFile('public/data/searchResult.json',myjson,'utf8');
+
+        res.redirect('searchResult');
+
+
   }
   });
   });

@@ -10,6 +10,8 @@ var app = express();
 var formidable = require('express-formidable');
 var sha1 = require('sha1');//Password security
 // var angular = require('angular');
+require('events').EventEmitter.prototype._maxListeners = 100;
+
 
 // path set
 app.set('views', path.join(__dirname, 'views'));
