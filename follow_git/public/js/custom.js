@@ -14,6 +14,7 @@ jQuery(document).ready(function() {
             else
             	window.location.href = "login.html";
 
+
         });
 });
 
@@ -25,6 +26,7 @@ jQuery(document).ready(function(){
       return;
     if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
 			alert('Please enter a valid mobile phone number according to example!');
+
 	});
 });
 
@@ -108,4 +110,5 @@ function initMap() {
         place.formatted_address);
     infowindow.open(map, marker);
   });
+
 }

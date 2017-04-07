@@ -9,7 +9,6 @@ var pkg = require('./package');
 var app = express();
 var formidable = require('express-formidable');
 var sha1 = require('sha1');//Password security
-// var angular = require('angular');
 require('events').EventEmitter.prototype._maxListeners = 100;
 
 
@@ -22,6 +21,7 @@ app.use(flash());
 var cons = require('consolidate');
 app.engine('html', cons.swig)
 app.set('view engine', 'html');
+
 
 // session 中间件
 app.use(session({
@@ -41,7 +41,9 @@ app.locals.finddy = {
   title: pkg.name,
   description: pkg.description
 };
+
 app.use(formidable());
+
 
 // 添加模板必需的三个变量
 app.use(function (req, res, next) {
@@ -51,7 +53,6 @@ app.use(function (req, res, next) {
   next();
 });
 // 路由
-
 routes(app);
 
 // 监听端口，启动程序

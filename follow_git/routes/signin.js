@@ -6,6 +6,7 @@ var DBconnect = require('../models/DBconnect.js');
 // GET /signin
 router.get('/', checkNotLogin, function(req, res, next) {
   res.render('login');
+
 });
 
 // POST /signin
