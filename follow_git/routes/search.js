@@ -44,7 +44,6 @@ router.post('/', checkNotLogin, function(req, res, next) {
         var myjson=JSON.stringify(result);
         console.log(myjson);
         fs.writeFile('public/data/searchResult.json',myjson,'utf8');
-
         res.redirect('searchResult');
 
 
