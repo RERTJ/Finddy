@@ -16,8 +16,9 @@ router.get('/', checkNotLogin, function(req, res, next) {
 router.post('/', checkNotLogin, function(req, res, next) {
     var email = req.fields.email;
     var password = req.fields.password;
+    var uid;
     console.log(email + ": " + password);
-    var sql = 'SELECT PASSWORD FROM USERS WHERE EMAIL = ?';
+    var sql = 'SELECT * FROM USERS WHERE EMAIL = ?';
     console.log(sql);
     DBconnect.getConnection(function(err,connection){
       if(err){
@@ -39,9 +40,8 @@ router.post('/', checkNotLogin, function(req, res, next) {
           }
           else
           {
-            //cookie!
             console.log('sign in success!');
-            req.session.user=email;
+            req.session.uid=result[0].UID;
             console.log(result[0]);
             res.redirect('/users');
           

@@ -17,22 +17,22 @@ router.get('/manageProfile', checkLogin, function(req,res,next){
 });
 
 router.post('/manageProfile', checkLogin, function(req,res,next){
-  var email = req.session.user;
+  var uid = req.session.uid;
   var new_username = req.fields.username;
   var new_phone_number = req.fields.phone_number;
   var new_pwd = req.fields.pwd;
   var new_pwd_confirm = req.fields.pwd_confirm;
   var new_self_intro = req.fields.self_intro;
-  var sql_select_user = "SELECT * FROM USERS WHERE EMAIL = ?";
-  var sql_update = "UPDATE USERS SET USERNAME = ?, PHONE_NO = ?, PASSWORD =? WHERE EMAIL = ?";
-  var sql_change_desc = "UPDATE USERS SET DESCRIPTION = ? WHERE EMAIL = ?";
+  var sql_select_user = "SELECT * FROM USERS WHERE UID = ?";
+  var sql_update = "UPDATE USERS SET USERNAME = ?, PHONE_NO = ?, PASSWORD =? WHERE UID = ?";
+  var sql_change_desc = "UPDATE USERS SET DESCRIPTION = ? WHERE UID = ?";
   var username,phone_number,self_intro;
   DBconnect.getConnection(function(err,connection){
       if(err){
         console.log('Error happens when connect to db');
         return;
       }
-      connection.query(sql_select_user,[email],function(err,result){
+      connection.query(sql_select_user,[uid],function(err,result){
         if(err)
         {
           console.log('ERROR-',err.message);
@@ -51,7 +51,7 @@ router.post('/manageProfile', checkLogin, function(req,res,next){
         console.log("DB ERROR!");
         return;
       }
-      connection.query(sql_update,[new_username,new_phone_number,new_pwd,email],function(err,result){
+      connection.query(sql_update,[new_username,new_phone_number,new_pwd,uid],function(err,result){
         if(err){
           console.log("ERROR WHEN UPDATE BASIC MESSAGE!");
           return;
@@ -71,7 +71,7 @@ router.post('/manageProfile', checkLogin, function(req,res,next){
         console.log('Error happens when connect to db');
         return;
       }
-      connection.query(sql_change_desc,[new_self_intro,email],function(err,result){
+      connection.query(sql_change_desc,[new_self_intro,uid],function(err,result){
         if(err)
         {
           console.log('ERROR-',err.message);
@@ -93,9 +93,9 @@ router.get('/contactlist', checkLogin, function(req,res,next){
 
 router.get('/activityPosted',checkLogin, function(req,res,next)
 {
-  var email = req.session.user;
+  var uid = req.session.uid;
   var uid;
-  var sql_select_user = "SELECT * FROM USERS WHERE EMAIL = ?";
+  var sql_select_user = "SELECT * FROM USERS WHERE UID = ?";
   DBconnect.getConnection(function(err,connection){
       if(err){
         console.log('Error happens when connect to db' + err);
@@ -138,7 +138,7 @@ router.get('/activityPosted',checkLogin, function(req,res,next)
         if(result.length)
         {
           result = JSON.stringify(result);
-          fs.writefile
+          fs.writeFile('public/activities_json/activities.json',result,'utf8');
         }
         else{
           console.log("You have not create activities!");

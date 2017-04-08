@@ -1,6 +1,8 @@
-app.controller('posted_activities',['$scope','activities',function($scope,activities){
-    activities.success(function(data)
+app.controller('posted_activities_controller',['$scope',function($scope,$http){
+    return $http.get("activities_json/activities.json")
+    .then(function (response)
     {
-        $scope.description = data[];
-    })
+        $scope.activities = response.data;
+        console.log($scope.activities);
+    });
 }])

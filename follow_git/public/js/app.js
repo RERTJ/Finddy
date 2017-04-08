@@ -321,17 +321,4 @@ var App = function () {
 	};
 }();
 
-var app = angular.module("Finddyapp",['ngRoute']);
 
-app.config(function ($routeProvider)
-{
-	$routeProvider
-	.when('/users/activityPosted',{
-		controller:"posted_activity",
-		templateUrl:"activityPosted.html"
-	})
-	.when('/users',{
-		controller:"upcoming_activity",
-		templateUrl:"users.html"
-	});
-});
