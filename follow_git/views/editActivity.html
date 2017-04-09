@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<title>Activity | Unify - Responsive Website Template</title>
+	<title>EditActivity | Finddy</title>
 
 	 <!-- Meta -->
     <meta charset="utf-8">
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../follow_git/public/css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="../../follow_git/public/css/sky-forms-rtl.css">
     <link rel="stylesheet" href="../../follow_git/public/css/custom-sky-forms-rtl.css">
+	
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
@@ -65,7 +66,7 @@
 						
 						
 						<li class="topbar-devider"></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="login.html">Login/Sign Up</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -101,15 +102,8 @@
 
 						<!-- Search Block -->
 						<li>
-							<i class="search fa fa-search search-btn"></i>
-							<div class="search-open">
-								<div class="input-group animated fadeInDown">
-									<input type="text" class="form-control" placeholder="Search">
-									<span class="input-group-btn">
-										<button class="btn-u" type="button">Go</button>
-									</span>
-								</div>
-							</div>
+							<i class="search fa fa-search search-btn" onclick="window.location.href='search.html';"></i>
+							
 						</li>
 						<!-- End Search Block -->
 					</ul>
@@ -127,67 +121,9 @@
 		<!--=== Profile ===-->
 		<div class="container content profile">
 			<div class="row">
-				<!--Left Sidebar-->
-				<div class="col-md-3 md-margin-bottom-40">
-					<img class="img-responsive profile-img margin-bottom-20" src="../../follow_git/public/img/img32-md.jpg" alt="">
-
-					
-
-					<ul class="list-inline down-ul">
-					<!-- Small modal -->
-						<li>	<button class="icon-custom icon-sm icon-color-u fa fa-pencil" data-toggle="modal" data-target=".bs-example-modal-sm"></button>
-
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-sm">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-											<h4 id="myLargeModalLabel3" class="modal-title">Description</h4>
-										</div>
-										<div class="modal-body">
-											 <!-- Order Form -->
-                <form action="../assets/php/demo-order.php" method="post" enctype="multipart/form-data" id="sky-form1" class="sky-form">
-                  
-                    <fieldset>
-                        
-                        
-                    
-                        
-                        <section>
-                            <label class="textarea">
-                                <i class="icon-append fa fa-comment"></i>
-                                <textarea rows="5" name="comment" placeholder="Tell us about your activity"></textarea>
-                            </label>
-                        </section>                  
-                    </fieldset>
-                    
-                </form>         
-                <!-- End Order Form -->
-										</div>
-                                        <div class="modal-footer">
-											<button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
-											<button class="btn-u" type="button" onclick = "window.location.href='activityDetail.html';">Save changes</button>
-										</div>
-									</div>
-								</div>
-							</div></li>
-							<!-- End Small Modal -->
-<li>Description:
-							5 people, Medcan, 3-22nd 17:30
-						</li>
-					<li>
-						<ul class="list-inline star-vote">
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star-half-o"></i></li>
-						</ul>
-					</li>
-					<li>- By Joiners</li>
-				</ul>
+			
 					<hr>
-
+             <div class="col-md-3 md-margin-bottom-40">
 					 <!--Notification-->
                 <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
@@ -233,7 +169,12 @@
                 </ul>    
                 <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
                 <!--End Notification-->
-
+                   <div class="margin-bottom-50"></div>
+				  <!--Datepicker-->
+                <form action="#" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form> 
+                <!--End Datepicker-->
 					<div class="margin-bottom-50"></div>
 
 					<!--Datepicker-->
@@ -245,12 +186,39 @@
 				<!-- Profile Content -->
 				<div class="col-md-9">
 					<div class="profile-body">
+						<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+								<h2 class="panel-title heading-sm pull-left">Description</h2>
+								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							</div>
+		<img class="img-responsive profile-img margin-bottom-20">
+  <div class="panel-body">
+				<button class="btn-u" onclick="myFunction()" >Edit Description</button>
+                      
+						<li>
+							<ul>
+								<p id="demo"></p>
+							
+							</ul>
+                      
+						</li>
+					<button class="btn-u" onclick="myFunction()" >Rating</button>
+                      
+						<li>
+							<ul>
+								<p id="demo3"></p>
+							
+							</ul>
+                      
+						</li>
+				
+				</ul></div></div>
                         
 <form>
 					<table class="table"><head>Joiners</head>
 								<thead>
 									<tr>
-										<th>#</th>
+										<th></th>
 										<th>First Name</th>
 										<th class="hidden-sm">Last Name</th>
 										<th>Username</th>
@@ -263,7 +231,7 @@
 										<td>Mark</td> 
 										<td class="hidden-sm">Otto</td>
 										<td>@mdo</td>
-                                        <td><label class="toggle state-success"><input type="checkbox" name="checkbox-toggle"><i class="rounded-4x"></i></label>
+                                        <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
                                     </td>
 									</tr>
 									<tr>
@@ -304,13 +272,10 @@
 									<div class="media-body">
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark
-											<small>12 hours ago</small>
+											
 										</h4>
-										<p>Pellentesque scelerisque vitae mi quis sollicitudin. Sed pellentesque nulla eleifend hendrerit rhoncus. Aenean rhoncus imperdiet pretium. Nunc vitae egestas eros, vel fringilla arcu. Duis vel libero sit amet metus faucibus venenatis in sit amet nisl. Fusce imperdiet enim risus. Cras orci velit, tempor dignissim ante eget, rhoncus hendrerit nisi. </p>
-										<ul class="list-inline img-uploaded">
-											<li><img class="img-responsive" src="../../follow_git/public/img/img12.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img3.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img16.jpg" alt=""></li>
+										<ul>
+										<p> Intersting</p>
 										</ul>
 										<ul class="list-inline results-list pull-left">
 											<li><a href="#">7 Likes</a></li>
@@ -331,9 +296,11 @@
 											<div class="media-body">
 												<h4 class="media-heading">
 													<strong><a href="#">Edward Rooster</a></strong> @EdwardRooster
-													<small>7 hours ago</small>
+													
 												</h4>
-												<p>How was trip?</p>
+                                             <ul>
+												<p id="demo2"></p>
+                                             </ul>
 												<ul class="list-inline results-list pull-left">
 													<li><a href="#">0 Likes</a></li>
 													<li><a href="#">0 Share</a></li>
@@ -353,9 +320,9 @@
 													<div class="media-body">
 														<h4 class="media-heading">
 															<strong><a href="#">Lee Parker</a></strong> @LeePark
-															<small>9 hours ago</small>
+															
 														</h4>
-														<p>Amazing!</p>
+														<p></p>
 														<ul class="list-inline results-list pull-left">
 															<li><a href="#">0 Likes</a></li>
 															<li><a href="#">0 Share</a></li>
@@ -372,67 +339,10 @@
 									</div>
 								</div><!--/end media media v2-->
                                 <!-- Large modal -->
-							<button class="btn-u btn-u-default btn-block" data-toggle="modal" data-target=".bs-example-modal-lg">Comment and Rate</button>
+							<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
 
-							<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-lg">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-											<h4 id="myLargeModalLabel2" class="modal-title">Comment and Rate</h4>
-										</div>
-										<div class="modal-body">
-											<form action="../assets/php/demo-order.php" method="post" enctype="multipart/form-data" id="sky-form2" class="sky-form">
-                  
-                    <fieldset>
-                        
-                        
-                    
-                        <section>
-                            <label class="input">
-                                <i class="icon-append fa fa-user"></i>
-                                <input type="text" name="name" id="name" placeholder="Your name">
-                            </label>
-                        </section>
-                        
-                        <section>
-                            <label class="input">
-                                <i class="icon-append fa fa-envelope"></i>
-                                <input type="email" name="email" id="email" placeholder="Your e-mail">
-                            </label>
-                        </section>
-                        <section>
-                            <label class="textarea">
-                                <i class="icon-append fa fa-comment"></i>
-                                <textarea rows="5" name="comment" placeholder="write your comment here"></textarea>
-                            </label>
-                        </section>       
-                                  <section>
-                            
-                            <div class="rating">
-                                <input type="radio" name="overall" id="overall-5">
-                                <label for="overall-5"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-4">
-                                <label for="overall-4"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-3">
-                                <label for="overall-3"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-2">
-                                <label for="overall-2"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-1">
-                                <label for="overall-1"><i class="fa fa-star"></i></label>
-                                Overall rating
-                            </div>
-                        </section> 
-                         <footer>
-                        <input type="button" value = "Submit Comment" class="btn-u" onclick="window.location.href='editActivity.html';">
-                    </footer>
-                    </fieldset>
-                    
-                </form>         
-										</div>
-									</div>
-								</div>
-							</div>
+							
+							
 							<!-- Large modal -->
 								
 							</div>
@@ -474,13 +384,14 @@
 	<script type="text/javascript" src="../../follow_git/public/js/circles.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	
 	<!-- JS Customization -->
 	<script type="text/javascript" src="../../follow_git/public/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="../../follow_git/public/js/app.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/datepicker.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/circles-master.js"></script>
-	<script type="text/javascript" src="../../follow_git/public/js/style-switcher.js"></script>
+	<script type="text/javascript" src="../../follow_git/public/js/style-switcher-rtl.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
@@ -488,6 +399,30 @@
 			Datepicker.initDatepicker();
 			StyleSwitcher.initStyleSwitcher();
 		});
+	</script>
+	<script>
+		
+function myFunction(){
+	var x;
+	var description=prompt("Description:","Write your discription");
+	if (description!=null){
+	    x="Description: " + description 
+	    document.getElementById("demo").innerHTML=x;
+	}
+}
+</script>
+<script>
+	function commentrate(){
+		var y;
+        var comment=prompt("Write your comment here")
+		if(comment!=null){
+		y=comment
+		document.getElementById("demo2").innerHTML=y;
+	}
+	}
+</script>
+<script>
+	
 	</script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
