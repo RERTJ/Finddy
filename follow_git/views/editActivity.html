@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<title>EditActivity | Finddy</title>
+	<title>Edit Activity | Finddy</title>
 
 	 <!-- Meta -->
     <meta charset="utf-8">
@@ -63,10 +63,7 @@
 				<!-- Topbar -->
 				<div class="topbar">
 					<ul class="loginbar pull-right">
-						
-						
-						<li class="topbar-devider"></li>
-						<li><a href="login.html">Login/Sign Up</a></li>
+						<li><a href="login.html">Log out</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -93,7 +90,7 @@
                     <!-- End Shortcodes -->
 
                     <!-- Misc Pages -->
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
                             Return to Profile
                         </a>
@@ -102,29 +99,31 @@
 
 						<!-- Search Block -->
 						<li>
-							<i class="search fa fa-search search-btn" onclick="window.location.href='search.html';"></i>
-							
-						</li>
+                            <a href="search.html">
+                                <i class="search fa fa-search search-btn"></i>
+                            </a>
+                        </li>
 						<!-- End Search Block -->
 					</ul>
 				</div><!--/end container-->
 			</div><!--/navbar-collapse-->
 		</div>
 		<!--=== End Header ===-->
-<!--=== Breadcrumbs ===-->
+		
+		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs breadcrumbs-dark">
 			<div class="container">
 				<h1 class="pull-left">MedCan 17:30 Today</h1>
 			</div>
 		</div>
 		<!--=== End Breadcrumbs ===-->
+		
 		<!--=== Profile ===-->
 		<div class="container content profile">
-			<div class="row">
+            <!--Start Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
 			
-					<hr>
-             <div class="col-md-3 md-margin-bottom-40">
-					 <!--Notification-->
+				<!--Start Notification-->
                 <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
                     <a href="#"><i class="fa fa-cog pull-right"></i></a>
@@ -167,209 +166,155 @@
                         </div>    
                     </li>
                 </ul>    
+                
                 <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
                 <!--End Notification-->
-                   <div class="margin-bottom-50"></div>
-				  <!--Datepicker-->
-                <form action="#" id="sky-form2" class="sky-form">
+                <div class="margin-bottom-50"></div>
+				<!--Datepicker-->
+                	<form action="#" id="sky-form2" class="sky-form">
                     <div id="inline-start"></div>
-                </form> 
+                	</form> 
                 <!--End Datepicker-->
-					<div class="margin-bottom-50"></div>
+				<div class="margin-bottom-50"></div>
+			</div>
+			<!--End Left Sidebar-->
 
-					<!--Datepicker-->
-					
-					<!--End Datepicker-->
-				</div>
-				<!--End Left Sidebar-->
-
-				<!-- Profile Content -->
-				<div class="col-md-9">
-					<div class="profile-body">
-						<div class="panel panel-profile">
+			<!-- Profile Content -->
+			<div class="col-md-9">
+				<div class="profile-body">
+					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
-								<h2 class="panel-title heading-sm pull-left">Description</h2>
-								<a href="#"><i class="fa fa-cog pull-right"></i></a>
-							</div>
-		<img class="img-responsive profile-img margin-bottom-20">
-  <div class="panel-body">
-				<button class="btn-u" onclick="myFunction()" >Edit Description</button>
+							<h2 class="panel-title heading-sm pull-left">Description</h2>								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+						</div>
+						<div class="panel-body">
+							<button class="btn-u" onclick="myFunction()" >Edit Description</button>
+              	
+                   			<p id="demo">Original Activity Description</p>
+
+							<button class="btn-u" onclick="myFunction()" >Rating</button>
                       
-						<li>
-							<ul>
-								<p id="demo"></p>
-							
-							</ul>
-                      
-						</li>
-					<button class="btn-u" onclick="myFunction()" >Rating</button>
-                      
-						<li>
-							<ul>
-								<p id="demo3"></p>
-							
-							</ul>
-                      
-						</li>
-				
-				</ul></div></div>
+							<p id="demo3">Original Rating Score</p>				
+						</div>
+				 	</div>
                         
-<form>
-					<table class="table"><head>Joiners</head>
-								<thead>
-									<tr>
-										<th></th>
-										<th>First Name</th>
-										<th class="hidden-sm">Last Name</th>
-										<th>Username</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Mark</td> 
-										<td class="hidden-sm">Otto</td>
-										<td>@mdo</td>
-                                        <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Description</h2>								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+						</div>
+					<form>
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>First Name</th>
+									<th class="hidden-sm">Last Name</th>
+									<th>Username</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Mark</td> 
+									<td class="hidden-sm">Otto</td>
+									<td>@mdo</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
                                     </td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Jacob</td>
-										<td class="hidden-sm">Thornton</td>
-										<td>@fat</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Larry</td>
-										<td class="hidden-sm">the Bird</td>
-										<td>@twitter</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>htmlstream</td>
-										<td class="hidden-sm">Web Design</td>
-										<td>@htmlstream</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-								</tbody>
-							</table>
-                            <foot><button class="btn-u" type="button" onclick = "window.location.href='editActivity.html';">Drop the activity</button></foot>
-</form>
-						<div class="panel panel-profile">
-							<div class="panel-heading overflow-h">
-								<h2 class="panel-title heading-sm pull-left"><i class="fa fa-comments"></i>Activity Comments and Ratings</h2>
-								<a href="#"><i class="fa fa-cog pull-right"></i></a>
-							</div>
-							<div class="panel-body">
-								<div class="media media-v2 margin-bottom-20">
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Jacob</td>
+									<td class="hidden-sm">Thornton</td>
+									<td>@fat</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Larry</td>
+									<td class="hidden-sm">the Bird</td>
+									<td>@twitter</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>htmlstream</td>
+									<td class="hidden-sm">Web Design</td>
+									<td>@htmlstream</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+								</tr>
+							</tbody>
+						</table>
+                        <foot><button class="btn-u" type="button" onclick = "window.location.href='editActivity.html';">Drop the activity</button></foot>
+					</form>
+					</div>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
+							<a href="#"><i class="fa fa-cog pull-right"></i></a>
+						</div>
+						<div class="panel-body">								<div class="media media-v2 margin-bottom-20">
+								<div class="media media-v2">
 									<a class="pull-left" href="#">
-										<img class="media-object rounded-x" src="../../follow_git/public/img/img6.jpg" alt="">
+										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
 									</a>
 									<div class="media-body">
 										<h4 class="media-heading">
-											<strong><a href="#">Lee Parker</a></strong> @LeePark
-											
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
-										<ul>
-										<p> Intersting</p>
-										</ul>
-										<ul class="list-inline results-list pull-left">
-											<li><a href="#">7 Likes</a></li>
-											<li><a href="#">2 Share</a></li>
-										</ul>
-										<ul class="list-inline pull-right">
-											<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-											<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-											<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-										</ul>
-
-										<div class="clearfix"></div>
-
-										<div class="media media-v2">
-											<a class="pull-left" href="#">
-												<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
-											</a>
-											<div class="media-body">
-												<h4 class="media-heading">
-													<strong><a href="#">Edward Rooster</a></strong> @EdwardRooster
-													
-												</h4>
-                                             <ul>
-												<p id="demo2"></p>
-                                             </ul>
-												<ul class="list-inline results-list pull-left">
-													<li><a href="#">0 Likes</a></li>
-													<li><a href="#">0 Share</a></li>
-												</ul>
-												<ul class="list-inline pull-right">
-													<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-													<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-													<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-												</ul>
-
-												<div class="clearfix"></div>
-
-												<div class="media media-v2">
-													<a class="pull-left" href="#">
-														<img class="media-object rounded-x" src="../../follow_git/public/img/img6.jpg" alt="">
-													</a>
-													<div class="media-body">
-														<h4 class="media-heading">
-															<strong><a href="#">Lee Parker</a></strong> @LeePark
-															
-														</h4>
-														<p></p>
-														<ul class="list-inline results-list pull-left">
-															<li><a href="#">0 Likes</a></li>
-															<li><a href="#">0 Share</a></li>
-														</ul>
-														<ul class="list-inline pull-right">
-															<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-															<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-															<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
+										<p>Interesting</p>
 									</div>
-								</div><!--/end media media v2-->
-                                <!-- Large modal -->
-							<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
-
-							
-							
-							<!-- Large modal -->
-								
+								</div>
+								<div class="media media-v2">
+									<a class="pull-left" href="#">
+										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
+									</a>
+									<div class="media-body">
+										<h4 class="media-heading">
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
+										</h4>
+										<p>Interesting</p>
+									</div>
+								</div>
+								<div class="media media-v2">
+									<a class="pull-left" href="#">
+										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
+									</a>
+									<div class="media-body">
+										<h4 class="media-heading">
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
+										</h4>
+										<p>Interesting</p>
+									</div>
+								</div>	
 							</div>
+							<!--/end media media v2-->      
 						</div>
-					</div>
-				</div>
+						<!--End panel body-->
+						<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
 				<!-- End Profile Content -->
-			</div>
+			    	</div>
+				</div>
+			<!-- End Profile-body-->
+			</div> 
+			<!-- End Profile content--> 
 		</div>
-		<!--=== End Profile ===-->
-  
-		<!--=== Footer Version 1 ===-->
+		<!-- ===End Profile===-->
+	<!--=== Footer Version 1 ===-->
     <div class="footer-v1">
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">                     
-                        <p>
-                            Finddy 2015 &copy; All Rights Reserved
-                        </p >
-                    </div>
-                </div>
-            </div> 
+       	<div class="copyright">
+           	<div class="container">
+               	<div class="row">
+                   	<div class="col-md-6">                     
+                       	<p>
+                           	Finddy 2015 &copy; All Rights Reserved
+                       	</p>
+                   	</div>
+	            </div>
+    	    </div> 
         </div><!--/copyright-->
     </div>     
-    <!--=== End Footer Version 1 ===-->
-	</div><!--/wrapper-->
+    <!--=== End Footer Version 1 ===--> 
+</div><!--/wrapper-->
 
 	
 	<!--=== End Style Switcher ===-->
@@ -402,27 +347,14 @@
 	</script>
 	<script>
 		
-function myFunction(){
-	var x;
-	var description=prompt("Description:","Write your discription");
-	if (description!=null){
-	    x="Description: " + description 
-	    document.getElementById("demo").innerHTML=x;
+		function myFunction(){
+			var x;
+			var description=prompt("Description:","Write your discription");
+			if (description!=null){
+	    		x="Description: " + description 
+	    		document.getElementById("demo").innerHTML=x;
+		}
 	}
-}
-</script>
-<script>
-	function commentrate(){
-		var y;
-        var comment=prompt("Write your comment here")
-		if(comment!=null){
-		y=comment
-		document.getElementById("demo2").innerHTML=y;
-	}
-	}
-</script>
-<script>
-	
 	</script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
