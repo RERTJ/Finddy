@@ -23,7 +23,6 @@
 /*Panel Title Box*/
 .profile .panel-profile {
 	border: none;
-	margin-bottom: 0;
 	box-shadow: none;
 }
 .profile .panel-profile.no-bg {
@@ -330,7 +329,7 @@
 /*Media*/
 .profile .media.media-v2 {
 	margin-top: 0;
-	padding: 25px 0 20px;
+	padding: 0px;
 	border-top: 1px solid #eee;
 }
 
@@ -339,7 +338,7 @@
 }
 
 .profile .media.media-v2 .media.media-v2 {
-	margin-top: 20px;
+	margin-top: 0px;
 	padding-bottom: 0;
 }
 
