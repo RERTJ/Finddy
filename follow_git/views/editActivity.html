@@ -188,7 +188,7 @@
 						</div>
 						<div class="panel-body">
 
-							<p id="demo">Original Activity Description</p>
+							<h4 id="demo">Original Activity Description</h4>
 
 							<button class="btn-u btn-u-default btn-block" type="utton" onclick = "myFunction()"data-toggle="modal">Edit Description</button>
                       
@@ -206,9 +206,8 @@
 							<thead>
 								<tr>
 									<th></th>
-									<th>First Name</th>
-									<th class="hidden-sm">Last Name</th>
 									<th>Username</th>
+									<th>Contact</th>
 									<th>Status</th>
 								</tr>
 							</thead>
@@ -216,31 +215,27 @@
 								<tr>
 									<td>1</td>
 									<td>Mark</td> 
-									<td class="hidden-sm">Otto</td>
-									<td>@mdo</td>
-                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+									<td>1234-5678</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
                                     </td>
 								</tr>
 								<tr>
 									<td>2</td>
 									<td>Jacob</td>
-									<td class="hidden-sm">Thornton</td>
-									<td>@fat</td>
-									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+									<td>9876-5432</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
 								</tr>
 								<tr>
 									<td>3</td>
 									<td>Larry</td>
-									<td class="hidden-sm">the Bird</td>
-									<td>@twitter</td>
-									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+									<td>1357-2468</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
 								</tr>
 								<tr>
 									<td>4</td>
 									<td>htmlstream</td>
-									<td class="hidden-sm">Web Design</td>
-									<td>@htmlstream</td>
-									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+									<td>2468-1357</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -250,7 +245,7 @@
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
 							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
-							<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							<a href="#"><i class="fa fa-comments pull-right"></i></a>
 						</div>
 						<div class="panel-body">								<div id="commentbox" class="media media-v2 margin-bottom-20">
 								<div class="media media-v2">
@@ -342,7 +337,7 @@
 			var x;
 			var description=prompt("Description:","Write your discription");
 			if (description!=null){
-	    		x="Description: " + description 
+	    		x=description; 
 	    		document.getElementById("demo").innerHTML=x;
 		}
 	}
