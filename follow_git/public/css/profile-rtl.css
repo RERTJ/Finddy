@@ -727,6 +727,7 @@
 
 .profile .blog-info-v2 li:first-child {
 	padding-right: 0;
+	padding-left: 0;
 	border-right: none;
 }
 
