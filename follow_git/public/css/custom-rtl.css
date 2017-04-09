@@ -66,3 +66,7 @@ fieldset {
 #search {
     margin-top: 20px;
 }
+
+.list-inline {
+    padding-left: 0px;
+}
