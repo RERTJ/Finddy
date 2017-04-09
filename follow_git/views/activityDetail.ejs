@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <!--<![endif]-->
+<head>
+    <title>Create Activity | Finddy</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+</head>
+
+<body ng-app="myapp">
+<div class="container" ng-controller="myCtrl">
+  Type: {{detail.TYPE}}  <br>
+  Description: {{detail.DESCRIPTION}}<br>
+  LOCATION: {{detail.LOCATION}}<br>
+  START_TIME: {{detail.START_TIME}}<br>
+  QUOTA: {{detail.QUOTA}}<br>
+	No of Joiners: {{detail.NO_OF_JOINERS}} <br>
+	rating: {{detail.RATING}} <br>
+  EXPIRE_TIME: {{detail.EXPIRE_TIME}}<br>
+	creator: {{detail.USERNAME}} <br>
+	Joiners:
+	<div ng-repeat="Joiner in detail.JOINERS">
+	{{Joiner.USERNAME}}
+	</div> <br>
+	<div ng-if="actionButton=='creator'">
+		<button ng-click="deleteActivity()">Delete</button>
+		<button ng-click="editActivity()">Edit</button>
+	</div>
+	<div ng-if="actionButton=='joined'">
+		<button ng-click="quitActivity()">Quit</button>
+	</div>
+	<div ng-if="actionButton=='available'">
+		<button ng-click="joinActivity()">Join</button>
+	</div>
+<div class="comment">
+<div ng-repeat="comment in postedComments">
+Poster: {{comment.USERNAME}} <br>
+Content: {{comment.CONTENT}} <br>
+Rating: {{comment.RATING}} <br>
+</div>
+
+	<form ng-submit="submitComment()">
+		<input type="text" name="activity_id" ng-model="detail.AID" hidden>
+		content<input type="text" name="content" ng-model="comment.content"><br>
+		rating<input type="text" name="rating" ng-model="comment.rating"><br>
+		<input type="submit">
+	</form>
+</div></div>
+<script>
+var app = angular.module('myapp', []);
+app.controller('myCtrl', function($scope, $http, $window) {
+	 $scope.detail = <%- detail %>;
+	 $scope.actionButton = '<%- actionButton %>';
+
+	 $http({
+			url: '/activity/api/getComments',
+			params: { activity_id: $scope.detail.AID },
+			type: 'GET'
+		}).then(function(result) {
+			$scope.postedComments = result.data;
+		});
+
+	 $scope.editActivity = function() {
+		 $window.location.href = '/activity/' + $scope.detail.AID + '/edit';
+	 }
+
+	 $scope.joinActivity = function() {
+		 $http({
+  	 		url: '/activity/api/join',
+  			params: { activity_id: $scope.detail.AID },
+  			type: 'GET'
+			}).then(function(result) {
+    		if (result.data == true) {
+					alert('join success.');
+					$window.location.reload();
+				}
+			});
+	 };
+
+	 $scope.quitActivity = function() {
+		 $http({
+  	 		url: '/activity/api/quit',
+  			params: { activity_id: $scope.detail.AID },
+  			type: 'GET'
+			}).then(function(result) {
+    		if (result.data == true) {
+					alert('quit success.');
+					$window.location.reload();
+				}
+			});
+	 }
+
+	$scope.submitComment = function () {
+		$http({
+			 url: '/activity/api/createComment',
+			 params: { activity_id: $scope.detail.AID, content: $scope.comment.content, rating: $scope.comment.rating },
+			 type: 'GET'
+		 }).then(function(result) {
+			 if (result.data == true) {
+				 alert('comment post success.');
+				 $window.location.reload();
+			 }
+		 });
+	}
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

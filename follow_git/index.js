@@ -9,7 +9,7 @@ var pkg = require('./package');
 var app = express();
 var formidable = require('express-formidable');
 var sha1 = require('sha1');//Password security
-require('events').EventEmitter.prototype._maxListeners = 100;
+require('events').EventEmitter.prototype._maxListeners = 900;
 
 
 // path set
@@ -19,8 +19,9 @@ app.use(flash());
 
 //egine set
 var cons = require('consolidate');
-app.engine('html', cons.swig)
-app.set('view engine', 'html');
+
+// app.engine('html', cons.swig)
+app.set('view engine', 'ejs');
 
 
 // session 中间件
