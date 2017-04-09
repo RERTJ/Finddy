@@ -70,3 +70,16 @@ fieldset {
 .list-inline {
     padding-left: 0px;
 }
+
+#demo, #demo3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+th {
+    text-align: center;
+}
+
+tbody {
+    text-align: center;
+}

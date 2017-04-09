@@ -187,13 +187,12 @@
 							<h2 class="panel-title heading-sm pull-left">Description</h2>								<a href="#"><i class="fa fa-cog pull-right"></i></a>
 						</div>
 						<div class="panel-body">
-							<button class="btn-u" onclick="myFunction()" >Edit Description</button>
-              	
-                   			<p id="demo">Original Activity Description</p>
 
-							<button class="btn-u" onclick="myFunction()" >Rating</button>
+							<p id="demo">Original Activity Description</p>
+
+							<button class="btn-u btn-u-default btn-block" type="utton" onclick = "myFunction()"data-toggle="modal">Edit Description</button>
                       
-							<p id="demo3">Original Rating Score</p>				
+	
 						</div>
 				 	</div>
                         
@@ -253,11 +252,8 @@
 							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
 							<a href="#"><i class="fa fa-cog pull-right"></i></a>
 						</div>
-						<div class="panel-body">								<div class="media media-v2 margin-bottom-20">
+						<div class="panel-body">								<div id="commentbox" class="media media-v2 margin-bottom-20">
 								<div class="media media-v2">
-									<a class="pull-left" href="#">
-										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
-									</a>
 									<div class="media-body">
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
@@ -266,9 +262,6 @@
 									</div>
 								</div>
 								<div class="media media-v2">
-									<a class="pull-left" href="#">
-										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
-									</a>
 									<div class="media-body">
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
@@ -277,9 +270,6 @@
 									</div>
 								</div>
 								<div class="media media-v2">
-									<a class="pull-left" href="#">
-										<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
-									</a>
 									<div class="media-body">
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
@@ -359,11 +349,9 @@
 	</script>
 	<script>
 		function commentrate(){
-			var y;
-        	var comment=prompt("Write your comment here")
-			if(comment!=null){
-				y=comment
-				document.getElementById("demo2").innerHTML=y;
+        	var comment=prompt("Write your comment here");
+			if(comment != null){
+				window.loaction.href = "editActivity.html";
 			}
 		}
 	</script>
