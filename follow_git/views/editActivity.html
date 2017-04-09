@@ -199,7 +199,8 @@
                         
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
-							<h2 class="panel-title heading-sm pull-left">Description</h2>								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							<h2 class="panel-title heading-sm pull-left">Joiners</h2>								
+							<i class="fa fa-group pull-right"></i>
 						</div>
 					<form>
 						<table class="table">
@@ -244,7 +245,7 @@
 								</tr>
 							</tbody>
 						</table>
-                        <foot><button class="btn-u" type="button" onclick = "window.location.href='editActivity.html';">Drop the activity</button></foot>
+                        <button class="btn-u btn-u-default btn-block" type="utton" onclick = "window.location.href='editActivity.html' data-toggle="modal">Drop the activity</button>
 					</form>
 					</div>
 					<div class="panel panel-profile">
@@ -355,6 +356,16 @@
 	    		document.getElementById("demo").innerHTML=x;
 		}
 	}
+	</script>
+	<script>
+		function commentrate(){
+			var y;
+        	var comment=prompt("Write your comment here")
+			if(comment!=null){
+				y=comment
+				document.getElementById("demo2").innerHTML=y;
+			}
+		}
 	</script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
