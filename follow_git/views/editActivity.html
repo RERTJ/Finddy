@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../follow_git/public/css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="../../follow_git/public/css/sky-forms-rtl.css">
     <link rel="stylesheet" href="../../follow_git/public/css/custom-sky-forms-rtl.css">
+	
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
@@ -199,18 +200,18 @@
 								<p id="demo"></p>
 							
 							</ul>
-
+                      
 						</li>
-					<li>
-						<ul class="list-inline star-vote">
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-						
-					</li>
-					<li>- By Joiners</li>
+					<button class="btn-u" onclick="myFunction()" >Rating</button>
+                      
+						<li>
+							<ul>
+								<p id="demo3"></p>
+							
+							</ul>
+                      
+						</li>
+				
 				</ul></div></div>
                         
 <form>
@@ -273,11 +274,8 @@
 											<strong><a href="#">Lee Parker</a></strong> @LeePark
 											
 										</h4>
-										<p> </p>
-										<ul class="list-inline img-uploaded">
-											<li><img class="img-responsive" src="../../follow_git/public/img/img12.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img3.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img16.jpg" alt=""></li>
+										<ul>
+										<p> Intersting</p>
 										</ul>
 										<ul class="list-inline results-list pull-left">
 											<li><a href="#">7 Likes</a></li>
@@ -341,55 +339,10 @@
 									</div>
 								</div><!--/end media media v2-->
                                 <!-- Large modal -->
-							<button class="btn-u btn-u-default btn-block" onclick="commentRate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment and Rate</button>
+							<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
 
-							<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-lg">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-											<h4 id="myLargeModalLabel2" class="modal-title">Comment and Rate</h4>
-										</div>
-										<div class="modal-body">
-											<form action="../assets/php/demo-order.php" method="post" enctype="multipart/form-data" id="sky-form2" class="sky-form">
-                  
-                    <fieldset>
-                        
-                        
-                    
-                       
-                        <section>
-                            <label class="textarea">
-                                <i class="icon-append fa fa-comment"></i>
-                                <textarea rows="5" name="comment" placeholder="write your comment here"></textarea>
-                            </label>
-                        </section>       
-                                  <section>
-                            
-                            <div class="rating">
-                                <input type="radio" name="overall" id="overall-5" href="javascript:;">
-                                <label for="overall-5"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-4" href="javascript:;">
-                                <label for="overall-4"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-3" href="javascript:;">
-                                <label for="overall-3"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-2" href="javascript:;">
-                                <label for="overall-2"><i class="fa fa-star"></i></label>
-                                <input type="radio" name="overall" id="overall-1" href="javascript:;">
-                                <label for="overall-1"><i class="fa fa-star"></i></label>
-                                Overall rating
-                            </div>
-                        </section> 
-                         <footer>
-                        <input type="button" value = "Submit Comment" class="btn-u" onclick="window.location.href='editActivity.html';">
-                    </footer>
-                    </fieldset>
-                    
-                </form>         
-										</div>
-									</div>
-								</div>
-							</div>
+							
+							
 							<!-- Large modal -->
 								
 							</div>
@@ -431,13 +384,14 @@
 	<script type="text/javascript" src="../../follow_git/public/js/circles.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	
 	<!-- JS Customization -->
 	<script type="text/javascript" src="../../follow_git/public/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="../../follow_git/public/js/app.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/datepicker.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/circles-master.js"></script>
-	<script type="text/javascript" src="../../follow_git/public/js/style-switcher.js"></script>
+	<script type="text/javascript" src="../../follow_git/public/js/style-switcher-rtl.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
@@ -457,23 +411,19 @@ function myFunction(){
 	}
 }
 </script>
-
-<script  type="text/javascript">
-	function commentRate(){
+<script>
+	function commentrate(){
 		var y;
-		var score = new Score({
-   callback: function(cfg) {
-   console.log(cfg.starAmount);
- }
- });
-		var comment=prompt("Comment and Rate", "write your comment here")
-		if (comment!=null){
-			y="Comment: " + comment
-			 document.getElementById("demo2").innerHTML=y;
-		}
-		
-}
+        var comment=prompt("Write your comment here")
+		if(comment!=null){
+		y=comment
+		document.getElementById("demo2").innerHTML=y;
+	}
+	}
 </script>
+<script>
+	
+	</script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>
