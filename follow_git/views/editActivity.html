@@ -34,6 +34,36 @@
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
+	<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* starbox */
+.starbox{width:480px;margin:20px auto;height:30px;}
+.fl{float:left;display:inline;}
+.s_name{float:left;display:block;width:60px;text-align:right;}
+.star_ul{background:url(../../follow_git/public/IMG/star.png) no-repeat 0 -150px;width:132px;z-index:10;position:relative;height:25px;}
+.star_ul li{float:left;margin-right:1px;width:25px;height:25px;}
+.star_ul li a{display:block;height:25px;position:absolute;left:0;top:0;text-indent:-999em;}
+.star_ul li .active-star{background:url(../../follow_git/public/IMG/star.png) no-repeat;}
+.star_ul li .one-star{width:25px;background-position:0 -120px;z-index:50;}
+.star_ul li .two-star{width:51px;background-position:0 -90px;z-index:40;}
+.star_ul li .three-star{width:79px;background-position:0 -60px;z-index:30;}
+.star_ul li .four-star{width:105px;background-position:0 -30px;z-index:20;}
+.star_ul li .five-star{width:129px;margin-right:0;background-position:0 0;z-index:10;}
+.s_result{padding:6px 0 0 5px;}
+
+.square_ul{background:url(../../follow_git/public/IMG/star.png) no-repeat 0 -222px;width:146px;z-index:10;position:relative;height:20px;}
+.square_ul li{float:left;margin-right:1px;width:29px;height:20px;}
+.square_ul li a{display:block;height:20px;position:absolute;left:0;top:0;text-indent:-999em;}
+.square_ul li .active-square{background:url(../../follow_git/public/IMG/star.png) no-repeat;}
+.square_ul li .square-1{width:29px;background-position:0 -243px;z-index:50;}
+.square_ul li .square-2{width:58px;background-position:0 -264px;z-index:40;}
+.square_ul li .square-3{width:87px;background-position:0 -285px;z-index:30;}
+.square_ul li .square-4{width:116px;background-position:0 -306px;z-index:20;}
+.square_ul li .square-5{width:145px;margin-right:0;background-position:0 -327px;z-index:10;}
+.s_result_square{padding:4px 0 0 9px;}
+</style>
 
     <!-- Style Switcher -->
     <link rel="stylesheet" href="../../follow_git/public/css/style-switcher.css">
@@ -202,8 +232,18 @@
 							</ul>
                       
 						</li>
-					<button class="btn-u" onclick="myFunction()" >Rating</button>
-                      
+					<button class="btn-u"  >Rating</button>
+                          <div class="starbox">
+	<span class="s_name">overall rating：</span>
+	<ul class="star_ul fl">
+		<li><a class="one-star" title="1" href="#"></a></li>
+		<li><a class="two-star" title="2" href="#"></a></li>
+		<li><a class="three-star" title="3" href="#"></a></li>
+		<li><a class="four-star" title="4" href="#"></a></li>
+		<li><a class="five-star" title="5" href="#"></a></li>
+	</ul>
+	<span class="s_result fl">Your Rate on This Activity</span>
+</div>
 						<li>
 							<ul>
 								<p id="demo3"></p>
@@ -421,9 +461,47 @@ function myFunction(){
 	}
 	}
 </script>
-<script>
+<script type="text/javascript" src="http://www.js-css.cn/jscode/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var flag = 1;
 	
-	</script>
+	$('.star_ul a').hover(function(){
+		flag = 1;
+		$('.star_ul a').removeClass('active-star');
+		$(this).addClass('active-star');
+		$('.s_result').css('color','#c00').html($(this).attr('title'))
+	},function(){
+		if( flag == 1){
+		$(this).removeClass('active-star');
+		$('.s_result').css('color','#333').html('请打分')
+		}
+	});
+	
+	$('.star_ul a').click(function(){
+		 flag = 2;
+		$(this).addClass('active-star');
+		$('.s_result').css('color','#c00').html($(this).attr('title'))
+		});
+	
+	$('.square_ul a').hover(function(){
+		flag = 3;
+		$('.square_ul a').removeClass('active-square');
+		$(this).addClass('active-square');
+		$(this).parents('.starbox').find('.s_result_square').css('color','#c00').html($(this).attr('title'))
+	},function(){
+		if(flag == 3){
+		$(this).removeClass('active-square');
+		$(this).parents('.starbox').find('.s_result_square').css('color','#333').html('请打分')
+	}
+	});
+	
+	$('.square_ul a').click(function(){
+		flag = 4;
+		$(this).addClass('active-square');
+		$(this).parents('.starbox').find('.s_result_square').css('color','#c00').html($(this).attr('title'))	});
+})
+</script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>
