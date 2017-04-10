@@ -6,8 +6,8 @@
 
 /*format google map in createNew*/
 #map {
-	height: 657px;
-	width: 707px;
+	height: 300px;
+	width: 100%;
 }
 
 .controls {
