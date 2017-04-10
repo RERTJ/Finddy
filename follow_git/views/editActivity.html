@@ -187,15 +187,11 @@
 							<h2 class="panel-title heading-sm pull-left">Description</h2>								<a href="#"><i class="fa fa-cog pull-right"></i></a>
 						</div>
 						<div class="panel-body">
-
 							<h4 id="demo">Original Activity Description</h4>
-
-							<button class="btn-u" type="nutton" onclick = "myFunction()">Edit Description</button>
-                      
-	
 						</div>
+					<button class="btn-u btn-u-default btn-block" type="nutton" onclick = "myFunction()">Edit Description</button>
 				 	</div>
-                        
+                     
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
 							<h2 class="panel-title heading-sm pull-left">Joiners</h2>								
@@ -250,9 +246,11 @@
 						<div class="panel-body">								<div id="commentbox" class="media media-v2 margin-bottom-20">
 								<div class="media media-v2">
 									<div class="media-body">
+										
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
+										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
 										<p>Interesting</p>
 									</div>
 								</div>
@@ -339,8 +337,16 @@
 			if (description!=null){
 	    		x=description; 
 	    		document.getElementById("demo").innerHTML=x;
+			}
 		}
-	}
+
+		function reply(){
+			var reply=prompt("Write your reply here");
+			if (reply != null){
+				window.location.href = "editActivity.html";
+			}
+
+		}
 	</script>
 	<script>
 		function commentrate(){

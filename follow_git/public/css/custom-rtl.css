@@ -83,3 +83,11 @@ th {
 tbody {
     text-align: center;
 }
+
+.media-heading {
+    display: inline-block;
+}
+
+.reply{
+    float: right;
+}
