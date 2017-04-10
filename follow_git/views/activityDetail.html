@@ -115,6 +115,7 @@
             <button class="btn-u" type="button" onclick = "window.location.href='editActivity.html';">Edit</button>
 		</div>
 		<!--=== End Breadcrumbs ===-->
+		
 		<!--=== Profile ===-->
 		<div class="container content profile">
 			<!--Left Sidebar-->
@@ -123,7 +124,7 @@
 				<!--Notification-->
                 <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
-                    <a href="#"><i class="fa fa-cog pull-left"></i></a>
+                    <i class="fa fa-cog pull-right"></i>
                 </div>
                 <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark">
                     <li class="notification">
@@ -180,15 +181,14 @@
 				<div class="profile-body">
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
-								<h2 class="panel-title heading-sm pull-left">Description</h2>
+								<h2 class="panel-title heading-sm pull-left">Details</h2>
 								<i class="fa fa-cog pull-right"></i>
-							</div>
+						</div>
 						<img class="img-responsive profile-img margin-bottom-20" >
-  					<div class="panel-body">
-						<h3>Activity Poster: Someone</h3>
-						<h3>Activity Description</h3>
-						<h3>Activity Time</h3>						
-						<li>
+  						<div class="panel-body">
+							<h4>Activity Poster: <a href="profile.html">Someone</a></h4>
+							<h4>Description</h4>
+							<h4>Activity Time</h4>						
 							<ul class="list-inline star-vote">
 								<li><i class="color-green fa fa-star"></i></li>
 								<li><i class="color-green fa fa-star"></i></li>
@@ -196,11 +196,13 @@
 								<li><i class="color-green fa fa-star"></i></li>
 								<li><i class="color-green fa fa-star-half-o"></i></li>			
 							</ul>
+						</div>
+					
+					<fieldset>
+						<div id="map"></div>
+					</fieldset>
 					</div>
-				<fieldset>
-					<div id="map"></div>
-				</fieldset>
-				  </div>
+				  
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
 							<h2 class="panel-title heading-sm pull-left">Joiners</h2>								
@@ -244,7 +246,7 @@
 								</tr>
 							</tbody>
 						</table>
-                        <button class="btn-u btn-u-default btn-block" type="utton" onclick = "window.location.href='editActivity.html' data-toggle="modal">Drop the activity</button>
+                        <button class="btn-u btn-u-default btn-block" type="button" id="addDrop" onclick="addDropActivity()">Join</button>
 					</form>
 					</div>
 					<div class="panel panel-profile">
@@ -268,6 +270,7 @@
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
+										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
 										<p>Interesting</p>
 									</div>
 								</div>
@@ -276,6 +279,7 @@
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
+										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
 										<p>Interesting</p>
 									</div>
 								</div>	
@@ -284,13 +288,15 @@
 						</div>
 						<!--End panel body-->
 						<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
-				<!-- End Profile Content -->
+					<!-- End Profile Content -->
 			    	</div>
+			    	<!-- End Panel -->
 				</div>
-				<!-- End Profile Content -->
+				<!-- End Profile Body -->
 			</div>
+			<!-- End col-md 9 -->
 		</div>
-		<!--=== End Profile ===-->
+		<!--=== End Profile Container ===-->
 	<!--=== Footer Version 1 ===-->
     <div class="footer-v1">
         <div class="copyright">
@@ -336,6 +342,20 @@
 			Datepicker.initDatepicker();
 			StyleSwitcher.initStyleSwitcher();
 		});
+	</script>
+	<script>
+		function addDropActivity(){
+			var currentSt = $('#addDrop').html();
+			if (currentSt == "Join"){
+				alert("You've joined the activity");
+				$('#addDrop').html('Drop');
+			}
+			else {
+				alert("You've droped the activity")
+				$('#addDrop').html('Join');	
+			}
+		};
+			
 	</script>	
 	<script>
 		function reply(){
@@ -343,7 +363,6 @@
 			if (reply != null){
 				window.location.href = "editActivity.html";
 			}
-
 		}
 		function commentrate(){
         	var comment=prompt("Write your comment here");
