@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-	<title>Activity | Unify - Responsive Website Template</title>
+	<title>Activity Detail | Finddy</title>
 
 	 <!-- Meta -->
     <meta charset="utf-8">
@@ -11,8 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <!-- Web Fonts -->
+    <link rel="shortcut icon" href="../public/img/Finddy.bmp">
+	<!-- Web Fonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
@@ -40,10 +40,9 @@
     <!-- CSS Theme -->
     <link rel="stylesheet" href="../../follow_git/public/css/default.css" id="style_color">
     <link rel="stylesheet" href="../../follow_git/public/css/dark.css">
-
-    <!-- RTL Customization -->
+   <!-- RTL Customization -->
     <link rel="stylesheet" href="../../follow_git/public/css/rtl.css">
-
+    
     <!-- CSS Customization -->
     <link rel="stylesheet" href="../../follow_git/public/css/custom-rtl.css">
 
@@ -61,10 +60,7 @@
 				<!-- Topbar -->
 				<div class="topbar">
 					<ul class="loginbar pull-right">
-						
-						
-						<li class="topbar-devider"></li>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="login.html">Log out</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -83,16 +79,16 @@
 					<ul class="nav navbar-nav">
 					
 
-						<li class="dropdown mega-menu-fullwidth">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='createNew.html';">
+						<li class="mega-menu-fullwidth">
+                        <a href="javascript:void(0);" onclick="window.location.href='createNew.html';">
                             Post New Activity
                         </a>
                     </li>
                     <!-- End Shortcodes -->
 
                     <!-- Misc Pages -->
-                    <li class="dropdown active">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                    <li>
+                        <a href="javascript:void(0);" onclick="window.location.href='profile.html';">
                             Return to Profile
                         </a>
         
@@ -100,23 +96,18 @@
 
 						<!-- Search Block -->
 						<li>
-							<i class="search fa fa-search search-btn"></i>
-							<div class="search-open">
-								<div class="input-group animated fadeInDown">
-									<input type="text" class="form-control" placeholder="Search">
-									<span class="input-group-btn">
-										<button class="btn-u" type="button">Go</button>
-									</span>
-								</div>
-							</div>
-						</li>
+                            <a href="search.html">
+                                <i class="search fa fa-search search-btn"></i>
+                            </a>
+                        </li>
 						<!-- End Search Block -->
 					</ul>
 				</div><!--/end container-->
 			</div><!--/navbar-collapse-->
 		</div>
 		<!--=== End Header ===-->
-<!--=== Breadcrumbs ===-->
+		
+		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs breadcrumbs-dark">
 			<div class="container">
 				<h1 class="pull-left">MedCan 17:30 Today</h1>
@@ -126,37 +117,10 @@
 		<!--=== End Breadcrumbs ===-->
 		<!--=== Profile ===-->
 		<div class="container content profile">
-			<div class="row">
-				<!--Left Sidebar-->
-				<div class="col-md-3 md-margin-bottom-40">
-					<img class="img-responsive profile-img margin-bottom-20" src="../../follow_git/public/img/img32-md.jpg" alt="">
-
-					
-
-					<ul class="list-inline down-ul">
-                       
-
-
-						<li>Description:
-							5 people, Medcan, 3-22nd 17:30
-						</li>
-					<li>
-						<ul class="list-inline star-vote">
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star"></i></li>
-							<li><i class="color-green fa fa-star-half-o"></i></li>
-						</ul>
-					</li>
-					<li>- By Joiners</li>
-				</ul>
-<!--Left Sidebar-->
-           
-
-				  <hr>	
-
-					 <!--Notification-->
+			<!--Left Sidebar-->
+			<div class="col-md-3 md-margin-bottom-40">           
+				
+				<!--Notification-->
                 <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
                     <a href="#"><i class="fa fa-cog pull-left"></i></a>
@@ -201,146 +165,138 @@
                 </ul>    
                 <button type="button" class="btn-u btn-u-default btn-u-sm btn-block">Load More</button>
                 <!--End Notification-->
-					<div class="margin-bottom-50"></div>
-				</div>
+				<div class="margin-bottom-50"></div>
+				 <!--Datepicker-->
+                	<form action="#" id="sky-form2" class="sky-form">
+                    	<div id="inline-start"></div>
+                	</form> 
+                <!--End Datepicker-->
+				<div class="margin-bottom-50"></div>
+			</div>
 				<!--End Left Sidebar-->
 
 				<!-- Profile Content -->
 				<div class="col-md-9">
 					<div class="profile-body">
-					<table class="table"><head>Joiners</head>
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>First Name</th>
-										<th class="hidden-sm">Last Name</th>
-										<th>Username</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Mark</td> 
-										<td class="hidden-sm">Otto</td>
-										<td>@mdo</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Jacob</td>
-										<td class="hidden-sm">Thornton</td>
-										<td>@fat</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Larry</td>
-										<td class="hidden-sm">the Bird</td>
-										<td>@twitter</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>htmlstream</td>
-										<td class="hidden-sm">Web Design</td>
-										<td>@htmlstream</td>
-										<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-									</tr>
-								</tbody></table>
-                                
-							
-
 						<div class="panel panel-profile">
-							<div class="panel-heading overflow-h">
-								<h2 class="panel-title heading-sm pull-left"><i class="fa fa-comments"></i>Activity Comments and Ratings</h2>
+						<div class="panel-heading overflow-h">
+								<h2 class="panel-title heading-sm pull-left">Description</h2>
 								<a href="#"><i class="fa fa-cog pull-right"></i></a>
 							</div>
-							<div class="panel-body">
-								<div class="media media-v2 margin-bottom-20">
-									<a class="pull-left" href="#">
-										<img class="media-object rounded-x" src="../../follow_git/public/img/img6.jpg" alt="">
-									</a>
+		<img class="img-responsive profile-img margin-bottom-20" >
+  <div class="panel-body">
+					
+                      
+						<li>Description:
+							5 people, Medcan, 3-22nd 17:30
+
+						</li>
+					<li>
+						<ul class="list-inline star-vote">
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star-half-o"></i></li>
+						
+					</li>
+					<li>- By Joiners</li>
+				</ul></div>
+				<fieldset>
+					<div id="map"></div>
+				</fieldset>
+				  </div>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Joiners</h2>								
+							<i class="fa fa-group pull-right"></i>
+						</div>
+					<form>
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Username</th>
+									<th>Contact</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Mark</td> 
+									<td>1234-5678</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
+                                    </td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Jacob</td>
+									<td>9876-5432</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Larry</td>
+									<td>1357-2468</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>htmlstream</td>
+									<td>2468-1357</td>
+									<td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Enrolled</button></td>
+								</tr>
+							</tbody>
+						</table>
+                        <button class="btn-u btn-u-default btn-block" type="utton" onclick = "window.location.href='editActivity.html' data-toggle="modal">Drop the activity</button>
+					</form>
+					</div>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
+							<a href="#"><i class="fa fa-comments pull-right"></i></a>
+						</div>
+						<div class="panel-body">								<div id="commentbox" class="media media-v2 margin-bottom-20">
+								<div class="media media-v2">
+									<div class="media-body">
+										
+										<h4 class="media-heading">
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
+										</h4>
+										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
+										<p>Interesting</p>
+									</div>
+								</div>
+								<div class="media media-v2">
 									<div class="media-body">
 										<h4 class="media-heading">
-											<strong><a href="#">Lee Parker</a></strong> @LeePark
-											<small>12 hours ago</small>
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
-										<p>Pellentesque scelerisque vitae mi quis sollicitudin. Sed pellentesque nulla eleifend hendrerit rhoncus. Aenean rhoncus imperdiet pretium. Nunc vitae egestas eros, vel fringilla arcu. Duis vel libero sit amet metus faucibus venenatis in sit amet nisl. Fusce imperdiet enim risus. Cras orci velit, tempor dignissim ante eget, rhoncus hendrerit nisi. </p>
-										<ul class="list-inline img-uploaded">
-											<li><img class="img-responsive" src="../../follow_git/public/img/img12.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img3.jpg" alt=""></li>
-											<li><img class="img-responsive" src="../../follow_git/public/img/img16.jpg" alt=""></li>
-										</ul>
-										<ul class="list-inline results-list pull-left">
-											<li><a href="#">7 Likes</a></li>
-											<li><a href="#">2 Share</a></li>
-										</ul>
-										<ul class="list-inline pull-right">
-											<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-											<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-											<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-										</ul>
-
-										<div class="clearfix"></div>
-
-										<div class="media media-v2">
-											<a class="pull-left" href="#">
-												<img class="media-object rounded-x" src="../../follow_git/public/img/img7.jpg" alt="">
-											</a>
-											<div class="media-body">
-												<h4 class="media-heading">
-													<strong><a href="#">Edward Rooster</a></strong> @EdwardRooster
-													<small>7 hours ago</small>
-												</h4>
-												<p>How was trip?</p>
-												<ul class="list-inline results-list pull-left">
-													<li><a href="#">0 Likes</a></li>
-													<li><a href="#">0 Share</a></li>
-												</ul>
-												<ul class="list-inline pull-right">
-													<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-													<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-													<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-												</ul>
-
-												<div class="clearfix"></div>
-
-												<div class="media media-v2">
-													<a class="pull-left" href="#">
-														<img class="media-object rounded-x" src="../../follow_git/public/img/img6.jpg" alt="">
-													</a>
-													<div class="media-body">
-														<h4 class="media-heading">
-															<strong><a href="#">Lee Parker</a></strong> @LeePark
-															<small>9 hours ago</small>
-														</h4>
-														<p>Amazing!</p>
-														<ul class="list-inline results-list pull-left">
-															<li><a href="#">0 Likes</a></li>
-															<li><a href="#">0 Share</a></li>
-														</ul>
-														<ul class="list-inline pull-right">
-															<li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
-															<li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
-															<li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
+										<p>Interesting</p>
 									</div>
-								</div><!--/end media media v2-->
-								<input type="button" value = "Comment and Rate" onclick ="window.location.href='activityDetail.html';" class="btn-u btn-u-default btn-block">
+								</div>
+								<div class="media media-v2">
+									<div class="media-body">
+										<h4 class="media-heading">
+											<strong><a href="#">Lee Parker</a></strong> @LeePark		
+										</h4>
+										<p>Interesting</p>
+									</div>
+								</div>	
 							</div>
+							<!--/end media media v2-->      
 						</div>
-					</div>
+						<!--End panel body-->
+						<button class="btn-u btn-u-default btn-block" onclick="commentrate()" data-toggle="modal" data-target=".bs-example-modal-lg">Comment</button>
+				<!-- End Profile Content -->
+			    	</div>
 				</div>
 				<!-- End Profile Content -->
 			</div>
 		</div>
 		<!--=== End Profile ===-->
-<!--=== Footer Version 1 ===-->
+	<!--=== Footer Version 1 ===-->
     <div class="footer-v1">
         <div class="copyright">
             <div class="container">
@@ -352,11 +308,11 @@
                     </div>
                 </div>
             </div> 
-        </div><!--/copyright-->
+        </div>
     </div>     
     <!--=== End Footer Version 1 ===-->
 		
-	</div><!--/wrapper-->
+</div><!--/wrapper-->
 
 	
 	<!--=== End Style Switcher ===-->
@@ -385,7 +341,33 @@
 			Datepicker.initDatepicker();
 			StyleSwitcher.initStyleSwitcher();
 		});
+	</script>	
+	<script>
+		function reply(){
+			var reply=prompt("Write your reply here");
+			if (reply != null){
+				window.location.href = "editActivity.html";
+			}
+
+		}
+		function commentrate(){
+        	var comment=prompt("Write your comment here");
+			if(comment != null){
+				window.loaction.href = "editActivity.html";
+			}
+		}
 	</script>
+	<script>
+		var map;
+		function initMap() {
+  			map = new google.maps.Map(document.getElementById('map'), {
+    			center: {lat: 22.093275, lng: 114.301758},
+    			zoom: 8
+  			});
+		}    
+	</script>
+	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7Opq0rd8dz3eXKv-vkCcSwEj7l0NV6E&callback=initMap"
+        async defer></script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>
