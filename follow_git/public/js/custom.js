@@ -1,5 +1,16 @@
 /* Write here your custom javascript codes */
 
+/*validate entries in search.html*/
+jQuery(document).ready(function(){
+  $('#search').click(function(){
+      var fin = $('#finish').val();
+      var stt = $('#start').val();
+      if (fin==''||stt=='')
+        alert('Please fill in all blanks!');
+  });
+});
+
+
 /*confirm entries in registration page*/
 jQuery(document).ready(function() {
   $('#register').click(function(){
