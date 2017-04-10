@@ -201,10 +201,12 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
                 <!--End Notification-->
                    <div class="margin-bottom-50"></div>
 				  <!--Datepicker-->
+             
                 <form action="#" id="sky-form2" class="sky-form">
                     <div id="inline-start"></div>
                 </form> 
                 <!--End Datepicker-->
+               
 					<div class="margin-bottom-50"></div>
 
 					<!--Datepicker-->
@@ -232,18 +234,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 							</ul>
                       
 						</li>
-					<button class="btn-u"  >Rating</button>
-                          <div class="starbox">
-	<span class="s_name">overall rating：</span>
-	<ul class="star_ul fl">
-		<li><a class="one-star" title="1" href="#"></a></li>
-		<li><a class="two-star" title="2" href="#"></a></li>
-		<li><a class="three-star" title="3" href="#"></a></li>
-		<li><a class="four-star" title="4" href="#"></a></li>
-		<li><a class="five-star" title="5" href="#"></a></li>
-	</ul>
-	<span class="s_result fl">Your Rate on This Activity</span>
-</div>
+					
 						<li>
 							<ul>
 								<p id="demo3"></p>
@@ -254,8 +245,13 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 				
 				</ul></div></div>
                         
-<form>
-					<table class="table"><head>Joiners</head>
+<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+								<h2 class="panel-title heading-sm pull-left">Joiners</h2>
+								<a href="#"><i class="fa fa-cog pull-right"></i></a>
+							</div>
+	
+					<table class="table">
 								<thead>
 									<tr>
 										<th></th>
@@ -298,7 +294,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 								</tbody>
 							</table>
                             <foot><button class="btn-u" type="button" onclick = "window.location.href='editActivity.html';">Drop the activity</button></foot>
-</form>
+</div>
 						<div class="panel panel-profile">
 							<div class="panel-heading overflow-h">
 								<h2 class="panel-title heading-sm pull-left"><i class="fa fa-comments"></i>Activity Comments and Ratings</h2>
@@ -385,13 +381,26 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 							
 							<!-- Large modal -->
 								
-							</div>
+							
+				<!-- End Profile Content -->
+				<button class="btn-u"  >Rating</button>
+                          
+				<div class="starbox">
+	<span class="s_name">Rating：</span>
+	<ul class="star_ul fl">
+		<li><a class="one-star" title="1" href="#"></a></li>
+		<li><a class="two-star" title="2" href="#"></a></li>
+		<li><a class="three-star" title="3" href="#"></a></li>
+		<li><a class="four-star" title="4" href="#"></a></li>
+		<li><a class="five-star" title="5" href="#"></a></li>
+	</ul>
+	<span class="s_result fl">please select</span>
+</div>
+			</div>
+		</div></div>
 						</div>
 					</div>
 				</div>
-				<!-- End Profile Content -->
-			</div>
-		</div>
 		<!--=== End Profile ===-->
   
 		<!--=== Footer Version 1 ===-->
@@ -474,7 +483,7 @@ $(function(){
 	},function(){
 		if( flag == 1){
 		$(this).removeClass('active-star');
-		$('.s_result').css('color','#333').html('请打分')
+		$('.s_result').css('color','#333').html('please select')
 		}
 	});
 	
