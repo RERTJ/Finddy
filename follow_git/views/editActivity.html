@@ -30,11 +30,10 @@
     <link rel="stylesheet" href="../../follow_git/public/css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="../../follow_git/public/css/sky-forms-rtl.css">
     <link rel="stylesheet" href="../../follow_git/public/css/custom-sky-forms-rtl.css">
-	
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
-	    <!-- CSS Page Style -->
+	 <!-- CSS Page Style -->
     <link rel="stylesheet" href="../../follow_git/public/css/profile-rtl.css">
 	<style type="text/css">
 *{margin:0;padding:0;list-style-type:none;}
@@ -67,22 +66,21 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 .s_result_square{padding:4px 0 0 9px;}
 </style>
 
+
     <!-- Style Switcher -->
     <link rel="stylesheet" href="../../follow_git/public/css/style-switcher.css">
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="../../follow_git/public/css/default.css" id="style_color">
     <link rel="stylesheet" href="../../follow_git/public/css/dark.css">
-
-    <!-- RTL Customization -->
+   	<!-- RTL Customization -->
     <link rel="stylesheet" href="../../follow_git/public/css/rtl.css">
-
+    
     <!-- CSS Customization -->
     <link rel="stylesheet" href="../../follow_git/public/css/custom-rtl.css">
-</head>
 
 <body>
-	<div class="wrapper">
+<div class="wrapper">
 		<!--=== Header ===-->
 		<div class="header">
 			<div class="container">
@@ -145,8 +143,9 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs breadcrumbs-dark">
 			<div class="container">
-				<h1 class="pull-left">MedCan 17:30 Today</h1>
+				<h1 class="pull-left">Edit Activity</h1>
 			</div>
+           
 		</div>
 		<!--=== End Breadcrumbs ===-->
 		
@@ -157,15 +156,45 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 				<div class="profile-body">
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
-							<h2 class="panel-title heading-sm pull-left">Description</h2>								
-							<i class="fa fa-cog pull-right"></i>
+								<h2 class="panel-title heading-sm pull-left">Details</h2>
+								<i class="fa fa-cog pull-right"></i>
 						</div>
-						<div class="panel-body">
-							<h4 id="demo">Original Activity Description</h4>
+						<img class="img-responsive profile-img margin-bottom-20" >
+  						<div class="panel-body">
+							<table class="table">
+								<tr>
+									<th>Activity Poster</th>
+									<th><a href="profile.html">Someone</a></th>
+								</tr>
+								<tr>
+									<th>Description</th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>Activity Time</th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>Expire Time</th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>Location</th>
+									<th></th>
+								</tr>
+								<tr>
+									<th>Overall Rating</th>
+									<th></th>
+								</tr>
+							</table>
+						
 						</div>
-					<button class="btn-u btn-u-default btn-block" type="nutton" onclick = "myFunction()">Edit Description</button>
-				 	</div>
-                     
+					
+					<fieldset>
+						<div id="map"></div>
+					</fieldset>
+					</div>
+				  
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
 							<h2 class="panel-title heading-sm pull-left">Joiners</h2>								
@@ -177,7 +206,6 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 								<tr>
 									<th></th>
 									<th>Username</th>
-									<th>Contact</th>
 									<th>Status</th>
 								</tr>
 							</thead>
@@ -185,37 +213,36 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 								<tr>
 									<td>1</td>
 									<td>Mark</td> 
-									<td>1234-5678</td>
-                                    <td><i class="fa fa-check"></i> Enrolled</td>
+									<td><i class="fa fa-check"></i> Enrolled</td>
                                     </td>
 								</tr>
 								<tr>
 									<td>2</td>
 									<td>Jacob</td>
-									<td>9876-5432</td>
 									<td><i class="fa fa-check"></i> Enrolled</td>
 								</tr>
 								<tr>
 									<td>3</td>
 									<td>Larry</td>
-									<td>1357-2468</td>
 									<td><i class="fa fa-check"></i> Enrolled</td>
 								</tr>
 								<tr>
 									<td>4</td>
 									<td>htmlstream</td>
-									<td>2468-1357</td>
 									<td><i class="fa fa-check"></i> Enrolled</td>
 								</tr>
 							</tbody>
 						</table>
-                        
+                        <button class="btn-u btn-u-default btn-block" type="button" id="addDrop" onclick="#">Join</button>
+						<button class="btn-u btn-u-default btn-block" type="button" id="addDrop" onclick="#">Quit</button>
+						<button class="btn-u btn-u-default btn-block" type="button" id="addDrop" onclick="#">Delete</button>
+						<button class="btn-u btn-u-default btn-block" type="button" id="addDrop" onclick="#">Cancel</button>
 					</form>
 					</div>
 					<div class="panel panel-profile">
 						<div class="panel-heading overflow-h">
 							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
-							<a href="#"><i class="fa fa-comments pull-right"></i></a>
+							<i class="fa fa-comments pull-right"></i>
 						</div>
 						<div class="panel-body">								<div id="commentbox" class="media media-v2 margin-bottom-20">
 								<div class="media media-v2">
@@ -224,10 +251,8 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
-										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
-										<p>Interesting</p>
 										
-                         
+										<p>Interesting</p>
 									</div>
 								</div>
 								<div class="media media-v2">
@@ -235,7 +260,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 										<h4 class="media-heading">
 											<strong><a href="#">Lee Parker</a></strong> @LeePark		
 										</h4>
-										<button class="btn-xs reply" type="button" onclick = "reply()">Reply</button>
+										
 										<p>Interesting</p>
 									</div>
 								</div>
@@ -248,7 +273,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 										<textarea rows="10" cols="60">
                                            
                                        </textarea>
-									   <button class="btn-xs reply" type="button" onclick ="#">Submit</button>
+									   
 									    <div class="starbox">
 	<span class="s_name">overall rating：</span>
 	<ul class="star_ul fl">
@@ -259,37 +284,39 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 		<li><a class="five-star" title="5" href="#"></a></li>
 	</ul>
 	<span class="s_result fl">Your Rate on This Activity</span>
-</div>
+</div><button class="btn-xs reply" type="button" onclick ="#">Submit</button>
 									</div>
 								</div>	
 							</div>
-							<!--/end commentbox-->      
+							<!--/end media media v2-->      
 						</div>
 						<!--End panel body-->
 						
 					<!-- End Profile Content -->
 			    	</div>
+			    	<!-- End Panel -->
 				</div>
-				<!-- End Profile-body-->
-			</div> 
-			<!-- End Profile content--> 
+				<!-- End Profile Body -->
+			</div>
+			<!-- End col-md 9 -->
 		</div>
-		<!-- ===End Profile===-->
+		<!--=== End Profile Container ===-->
 	<!--=== Footer Version 1 ===-->
     <div class="footer-v1">
-       	<div class="copyright">
-           	<div class="container">
-               	<div class="row">
-                   	<div class="col-md-6">                     
-                       	<p>
-                           	Finddy 2015 &copy; All Rights Reserved
-                       	</p>
-                   	</div>
-	            </div>
-    	    </div> 
-        </div><!--/copyright-->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">                     
+                        <p>
+                            Finddy 2015 &copy; All Rights Reserved
+                        </p >
+                    </div>
+                </div>
+            </div> 
+        </div>
     </div>     
-    <!--=== End Footer Version 1 ===--> 
+    <!--=== End Footer Version 1 ===-->
+		
 </div><!--/wrapper-->
 
 	
@@ -305,14 +332,13 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 	<script type="text/javascript" src="../../follow_git/public/js/circles.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	
 	<!-- JS Customization -->
 	<script type="text/javascript" src="../../follow_git/public/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="../../follow_git/public/js/app.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/datepicker.js"></script>
 	<script type="text/javascript" src="../../follow_git/public/js/circles-master.js"></script>
-	<script type="text/javascript" src="../../follow_git/public/js/style-switcher-rtl.js"></script>
+	<script type="text/javascript" src="../../follow_git/public/js/style-switcher.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
@@ -321,24 +347,14 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 			StyleSwitcher.initStyleSwitcher();
 		});
 	</script>
-	<script>
 		
-		function myFunction(){
-			var x;
-			var description=prompt("Description:","Write your discription");
-			if (description!=null){
-	    		x=description; 
-	    		document.getElementById("demo").innerHTML=x;
-			}
-		}
+	<script>
 		function reply(){
 			var reply=prompt("Write your reply here");
 			if (reply != null){
 				window.location.href = "editActivity.html";
 			}
 		}
-	</script>
-	<script>
 		function commentrate(){
         	var comment=prompt("Write your comment here");
 			if(comment != null){
@@ -346,7 +362,17 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 			}
 		}
 	</script>
-
+	<script>
+		var map;
+		function initMap() {
+  			map = new google.maps.Map(document.getElementById('map'), {
+    			center: {lat: 22.093275, lng: 114.301758},
+    			zoom: 8
+  			});
+		}    
+	</script>
+	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7Opq0rd8dz3eXKv-vkCcSwEj7l0NV6E&callback=initMap"
+        async defer></script>
 	<script type="text/javascript" src="http://www.js-css.cn/jscode/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -388,6 +414,7 @@ $(function(){
 		$(this).parents('.starbox').find('.s_result_square').css('color','#c00').html($(this).attr('title'))	});
 })
 </script>
+
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>
 	<script src="assets/plugins/html5shiv.js"></script>
