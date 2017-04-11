@@ -113,14 +113,34 @@
     <!--=== Profile ===-->
     <div class="container content profile">   
         <div class="row">
+            <!--Left Sidebar-->
+            <div class="col-md-3 md-margin-bottom-40">
+                <img class="img-responsive profile-img margin-bottom-20" src="../public/img/profile.png" alt="">
+
+                <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                    <li class="list-group-item active">
+                        <a data-toggle="tab" href="#info"><i class="fa fa-cog"></i> Personal Information</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a data-toggle="tab" href="#pastActivity"><i class="fa fa-bar-chart-o"></i> Past Activities</a>
+                    </li>                                          
+                </ul>   
+
+                <hr>
+
+                <div class="margin-bottom-50"></div>
+
+                <!--Datepicker-->
+                <form action="#" id="sky-form2" class="sky-form">
+                    <div id="inline-start"></div>
+                </form> 
+                <!--End Datepicker-->
+            </div>
+            <!--End Left Sidebar-->
             <!-- Profile Content -->            
             <div class="col-md-9">
                 <div class="profile-body margin-bottom-20">
-                    <div class="tab-v1">
-                        <ul class="nav nav-justified nav-tabs">
-                            <li><a data-toggle="tab" href="#pastActivity">Past Activity</a></li>
-                            <li><a data-toggle="tab" href="#info"> Personal Information</a></li>
-                        </ul>          
+                    <div class="tab-v1">          
                         <div class="tab-content">
                             <div id="pastActivity" class="profile-edit tab-pane fade in active">
                             <div class="profile-body">
