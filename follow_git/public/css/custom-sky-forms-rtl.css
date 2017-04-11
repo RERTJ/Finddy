@@ -55,6 +55,7 @@
 
 .sky-form fieldset {
   background: #fff;
+  padding-top: 5px;
 }
 
 .sky-form footer {
@@ -71,7 +72,7 @@
 }
 
 .sky-form .input input {
-  height: 34px;
+  height: 33px;
   padding: 6px 12px;
 }
 
@@ -360,4 +361,9 @@
 .ui-datepicker-calendar span {
   width: 26px;
   /*color: #bfbfbf;*/
+}
+
+#expl {
+  float: left;
+  text-align: left;
 }
