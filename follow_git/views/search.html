@@ -90,7 +90,7 @@
                         <!-- Misc Pages -->
                         <li>
                             <a href="javascript:void(0);" onclick="window.location.href='profile.html';">
-                            Return to Profile
+                            Profile
                             </a>
                         </li>               
 
@@ -117,6 +117,9 @@
                 <!-- Checkout-Form -->
                 <form action="#" id="sky-form" class="sky-form">
                     <fieldset>
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">I want to join</label>
+                        </div>
                         <div class="inline-group">
                             <form>
                                 <section class="col col-4"><input type="radio" name="radio-inline" value="boardGame" checked>  Board Game</section>  
@@ -125,30 +128,16 @@
                             </form>
                         </div>                 
                         
-                        <!-- Datepicker Forms -->
-                        <div class="row">   
-                            <section class="col col-6">
-                                <label class="input">
-                                    <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="finish" id="finish" placeholder="End date">
-                                </label>
-                            </section>
-                            <section class="col col-6">
-                                <label class="input">
-                                    <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="start" id="start" placeholder="Start date">
-                                </label>
-                            </section>
-                        </div>                
-                        <!-- End Datepicker Forms -->
-
+                        
                         <!--Start Time Settings -->
-                        <div class="row">
-                            <label class="label col col-4">Set Start Time</label>
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">My desired activity begins no earlier than</label>
+                        </div>                                
+                         <div class="row">
                             <section class="col col-4">
                                 <label class="select">
                                     <select class="minute">
-                                        <option value="1" selected disabled>Minute</option>
+                                        <option value="12" selected disabled>Minute</option>
                                         <option value="1">05</option>
                                         <option value="2">10</option>
                                         <option value="3">15</option>
@@ -197,16 +186,28 @@
                                     <i></i>
                                 </label>
                             </section>
-                        </div>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="start" id="start" placeholder="Date">
+                                </label>
+                            </section>
+                            
+                        </div>                
                         <!-- End Start Time Settings-->
 
+
+                        
+                        
                         <!-- End Time Settings -->
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">My desired activity begins no later than</label>
+                        </div>
                         <div class="row">
-                            <label class="label col col-4">Set End Time</label>
                             <section class="col col-4">
                                 <label class="select">
                                     <select class="minute">
-                                        <option value="1" selected disabled>Minute</option>
+                                        <option value="12" selected disabled>Minute</option>
                                         <option value="1">05</option>
                                         <option value="2">10</option>
                                         <option value="3">15</option>
@@ -255,12 +256,19 @@
                                     <i></i>
                                 </label>
                             </section>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="finish" id="finish" placeholder="Date">
+                                </label>
+                            </section>
+                            
                         </div>
                         <!-- End End Time Settings-->
                     </fieldset>
                     
                     <footer>
-                        <button type="submit" class="btn-u" id="search">Search</button>
+                        <button type="submit" class="btn-u btn-u-default btn-block" id="search">Search</button>
                     </footer>
                 </form>         
                 <!-- End Checkout-Form -->     
