@@ -88,7 +88,7 @@
                         <!-- Misc Pages -->
                         <li>
                             <a href="javascript:void(0);" onclick="window.location.href='profile.html';">
-                            Return to Profile
+                            Profile
                             </a>
                         </li>               
 
@@ -115,6 +115,9 @@
                 <!-- Checkout-Form -->
                 <form action="#" id="sky-form" class="sky-form">
                     <fieldset>
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">The activity I want to host is</label>
+                        </div>
                         <div class="inline-group">
                             <form>
                                 <section class="col col-4"><input type="radio" name="radio-inline" value="boardGame" checked>  Board Game</section>  
@@ -123,44 +126,15 @@
                             </form>
                         </div>
                         
-                        <div class="row">
-                            <section>
-                                <label class="input">
-                                    <input type="text" id="activityTitle" placeholder="Activity title">
-                                </label>
-                            </section>
-                        </div>
-              
-                        <div class="row">
-                            <section>
-                                <label class="input">
-                                    <input type="text" id="activityDesript" placeholder="Short description">
-                                </label>
-                            </section>
-                        </div>
                         
-                        <input id="pac-input" class="controls" type="text" placeholder="Enter venue">
+                        <input id="pac-input" class="controls" type="text" placeholder="Enter venue of your activity">
                         
-                        <!-- Datepicker Forms -->
-                        <div class="row">   
-                            <section class="col col-6">
-                                <label class="input">
-                                    <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="finish" id="finish" placeholder="End date">
-                                </label>
-                            </section>
-                            <section class="col col-6">
-                                <label class="input">
-                                    <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="start" id="start" placeholder="Start date">
-                                </label>
-                            </section>
-                        </div>                
-                        <!-- End Datepicker Forms -->
 
                         <!--Start Time Settings -->
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">My activity begins at</label>
+                        </div>
                         <div class="row">
-                            <label class="label col col-4">Set Start Time</label>
                             <section class="col col-4">
                                 <label class="select">
                                     <select class="minute">
@@ -211,14 +185,22 @@
                                         <option value="24">23</option>
                                     </select>
                                     <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="start" id="start" placeholder="Date">
                                 </label>
                             </section>
                         </div>
                         <!-- End Start Time Settings-->
 
                         <!-- End Time Settings -->
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">The deadline for enrollment is</label>
+                        </div>
                         <div class="row">
-                            <label class="label col col-4">Set End Time</label>
                             <section class="col col-4">
                                 <label class="select">
                                     <select class="minute">
@@ -271,20 +253,42 @@
                                     <i></i>
                                 </label>
                             </section>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="finish" id="finish" placeholder="Date">
+                                </label>
+                            </section>
                         </div>
                         <!-- End End Time Settings-->
                     </fieldset>
+                </form>
 
                     <!-- Google Map API -->
                     <fieldset>
                         <div id="map"></div>
                     </fieldset>
                     <!-- End Google Map -->
+                    
+                    <!-- Description -->
+                <form id="sky-form" class="sky-form">
+                    <fieldset>
+                        <div class="row">   
+                            <label class="label col col-6" id="expl">Something else I want my friends to know</label>
+                        </div>
+                        <div class="row">
+                            <section>
+                                <textarea id="activityDesript" placeholder="If you can't find your place in Google Map, please include here"></textarea>
+                            </section>
+                        </div>
+                    </fieldset>
+                </form>
+                <!-- Description -->
+                
 
                     <footer>
-                        <button type="submit" class="btn-u" id="createNew">Create</button>
-                    </footer>
-                </form>         
+                        <button type="submit" class="btn-u btn-u-default btn-block" id="createNew">Create</button>
+                    </footer>       
                 <!-- End Checkout-Form -->     
             </div>
             <!-- End Content -->
