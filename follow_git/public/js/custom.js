@@ -10,6 +10,15 @@ jQuery(document).ready(function(){
   });
 });
 
+/*validate entries in createNew.html*/
+jQuery(document).ready(function(){
+  $('#createNew').click(function(){
+    var fin = $('#finish').val();
+    var stt = $('#start').val();
+    if (fin==''||stt=='')
+      alert('Please fill in all blanks!');
+  });
+});
 
 /*confirm entries in registration page*/
 jQuery(document).ready(function() {
