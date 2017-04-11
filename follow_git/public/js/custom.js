@@ -56,18 +56,22 @@ jQuery(document).ready(function() {
 
 /*confirm phone number in manageProfile page*/
 jQuery(document).ready(function(){
-	$('.save').click(function(){
+	$('.info-save').click(function(){
 		var mobile = $('#mobile').val();
-		if (mobile == "")
-      return;
-    if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
+    var username = $('#username').val();
+    var selfIntro = $('#selfIntro').val();
+		if (mobile == ""||username==""||selfIntro==""){
+      alert('Please fill in all blanks');
+    } else if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
 			alert('Please enter a valid mobile phone number according to example!');
+    else
+      return;
 	});	
 });
 
 /*confirm passwords in manageProfile page*/
 jQuery(document).ready(function(){
-  $('.save').click(function(){
+  $('.pw-save').click(function(){
       var pass = $('#password').val();
       var pass2 = $('#repassword').val();
       if (pass == '')
@@ -85,15 +89,15 @@ jQuery(document).ready(function(){
 
 /*clear all input in blanks once cancel button is pressed in manageProfile page*/
 jQuery(document).ready(function(){
-  $('#cancelAccountInfo').click(function(){
-    $('#username').val('');
+  $('#cancelPw').click(function(){
     $('#password').val('');
     $('#repassword').val('');
-    $('#mobile').val('');
   });
 
-  $('#cancelSelfIntro').click(function(){
+  $('#cancelAcctIntro').click(function(){
+    $('#username').val('');
     $('#selfIntro').val('');
+    $('#mobile').val('');
   });
 });
 
