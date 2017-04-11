@@ -137,8 +137,8 @@
                         <div class="row">
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="minute">
-                                        <option value="12" selected disabled>Minute</option>
+                                    <select name="start_min" class="minute">
+                                        <option value="NA" selected disabled>Minute</option>
                                         <option value="1">05</option>
                                         <option value="2">10</option>
                                         <option value="3">15</option>
@@ -157,8 +157,8 @@
                             </section>
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="hour">
-                                        <option value="1" selected disabled>Hour</option>
+                                    <select name="start_hour" class="hour">
+                                        <option value="NA" selected disabled>Hour</option>
                                         <option value="1">00</option>
                                         <option value="2">01</option>
                                         <option value="3">02</option>
@@ -190,7 +190,7 @@
                             <section class="col col-4">
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="start" id="start" placeholder="Date">
+                                    <input type="text" name="start_date" id="start" placeholder="Date">
                                 </label>
                             </section>
                         </div>
@@ -203,8 +203,8 @@
                         <div class="row">
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="minute">
-                                        <option value="12" selected disabled>Minute</option>
+                                    <select name="expire_min" class="minute">
+                                        <option value="NA" selected disabled>Minute</option>
                                         <option value="1">05</option>
                                         <option value="2">10</option>
                                         <option value="3">15</option>
@@ -223,7 +223,7 @@
                             </section>
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="hour">
+                                    <select name="expire_hour" class="hour">
                                         <option value="1" selected disabled>Hour</option>
                                         <option value="1">00</option>
                                         <option value="2">01</option>
@@ -256,7 +256,7 @@
                             <section class="col col-4">
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="finish" id="finish" placeholder="Date">
+                                    <input type="text" name="expire_date" id="finish" placeholder="Date">
                                 </label>
                             </section>
                         </div>
