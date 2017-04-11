@@ -150,35 +150,15 @@
                 <div class="profile-body margin-bottom-20">
                     <div class="tab-v1">
                         <ul class="nav nav-justified nav-tabs">
-                            <li><a data-toggle="tab" href="#passwordTab">Edit Account Information</a></li>
-                            <li><a data-toggle="tab" href="#payment">Edit Self-introduction</a></li>
+                            <li><a data-toggle="tab" href="#passwordTab">Change Password</a></li>
+                            <li><a data-toggle="tab" href="#info">Edit Personal Information</a></li>
                         </ul>          
                         <div class="tab-content">
-                            <div id="passwordTab" class="profile-edit tab-pane fade">
-                                <h2 class="heading-md">Edit Your Profile Information</h2>
+                            <div id="passwordTab" class="profile-edit tab-pane fade in active">
+                                <h2 class="heading-md">Change Password</h2>
                                 <br>
                                 <form class="sky-form" id="sky-form4" action="#">
                                     <dl class="dl-horizontal">
-                                        <dt>Username</dt>
-                                        <dd>
-                                            <section>
-                                                <label class="input">
-                                                    <i class="icon-append fa fa-user"></i>
-                                                    <input type="text" placeholder="New Username" id="username">
-                                                    <b class="tooltip tooltip-bottom-right">Please enter your new username</b>
-                                                </label>
-                                            </section>
-                                        </dd>
-                                        <dt>Phone number</dt>
-                                        <dd>
-                                            <section>
-                                                <label class="input">
-                                                    <i class="icon-append fa fa-mobile-phone"></i>
-                                                    <input type="text" placeholder="New Phone Number (e.g. 12345678)" id="mobile">
-                                                    <b class="tooltip tooltip-bottom-right">Please enter your new phone number</b>
-                                                </label>
-                                            </section>
-                                        </dd>
                                         <dt>Enter new password</dt>
                                         <dd>
                                             <section>
@@ -201,23 +181,52 @@
                                         </dd>    
                                     </dl>
                                     <br>
-                                    <button type="button" class="btn-u btn-u-default" id="cancelAccountInfo">Cancel</button>
-                                    <button class="btn-u save" type="submit">Save Changes</button>
+                                    <button type="button" class="btn-u btn-u-default" id="cancelPw">Cancel</button>
+                                    <button class="btn-u pw-save" type="submit">Save Changes</button>
                                 </form>    
                             </div>
 
-                            <div id="payment" class="profile-edit tab-pane fade">
-                                <h2 class="heading-md">Edit your self Introduction</h2>
+                            <div id="info" class="profile-edit tab-pane fade">
+                                <h2 class="heading-md">Edit Personal Information</h2>
+                                <br>
                                 <form class="sky-form" id="sky-form" action="#">
                                     <!--Checkout-Form-->
-                                    <section>
-                                        <label class="input">
-                                            <input type="text" placeholder="New Self-introduction
-                                            " id="selfIntro">
-                                        </label>
-                                    </section>
-                                    <button type="button" class="btn-u btn-u-default" id="cancelSelfIntro">Cancel</button>
-                                    <button class="btn-u save" type="submit">Save Changes</button>
+                                    <dl class="dl-horizontal">
+                                        <dt>Self introduction</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-user"></i>
+                                                    <input type="text" placeholder="New Self-introduction
+                                                    " id="selfIntro">
+                                                    <b class="tooltip tooltip-bottom-right">Please enter your new self-intro</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                        <dt>Username</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-user"></i>
+                                                    <input type="text" placeholder="New Username" id="username">
+                                                    <b class="tooltip tooltip-bottom-right">Please enter your new username</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                        <dt>Phone number</dt>
+                                        <dd>
+                                            <section>
+                                                <label class="input">
+                                                    <i class="icon-append fa fa-mobile-phone"></i>
+                                                    <input type="text" placeholder="New Phone Number (e.g. 12345678)" id="mobile">
+                                                    <b class="tooltip tooltip-bottom-right">Please enter your new phone number</b>
+                                                </label>
+                                            </section>
+                                        </dd>
+                                    </dl>
+                                    <br>
+                                    <button type="button" class="btn-u btn-u-default" id="cancelAcctIntro">Cancel</button>
+                                    <button class="btn-u info-save" type="submit">Save Changes</button>
                                     <!--End Checkout-Form-->
                                 </form>    
                             </div>
