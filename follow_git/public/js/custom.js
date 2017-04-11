@@ -13,10 +13,18 @@ jQuery(document).ready(function(){
 /*validate entries in createNew.html*/
 jQuery(document).ready(function(){
   $('#createNew').click(function(){
+    var sttMin = $("select[name=start_min] option:selected").val();
+    var sttHr = $("select[name=start_hour] option:selected").val();
+    var expMin = $("select[name=expire_min] option:selected").val();
+    var expHr = $("select[nam=expire_hour] option:selected").val();
     var fin = $('#finish').val();
     var stt = $('#start').val();
     if (fin==''||stt=='')
-      alert('Please fill in all blanks!');
+      alert('Please select both start and expiration dates!');
+    else if (sttMin=='NA'||sttHr=='NA'||expMin=='NA'||expHr=='NA') {
+      alert('Please select specific start and expiration time!');
+    } else 
+      alert("You've successfully created a new activity");
   });
 });
 
