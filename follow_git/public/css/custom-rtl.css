@@ -107,3 +107,7 @@ tbody {
     height: 100px;
     width: 100%;
 }
+
+#pastActivity {
+    padding: 0px;
+}
