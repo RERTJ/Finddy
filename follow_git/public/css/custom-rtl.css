@@ -92,3 +92,18 @@ tbody {
     float: right;
     margin-top: 5px;
 }
+
+.footer-v1 {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#createNew {
+    margin-top: 20px;
+}
+
+#activityDesript {
+    height: 100px;
+    width: 100%;
+}
