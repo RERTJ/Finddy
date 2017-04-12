@@ -1,21 +1,40 @@
 /* Write here your custom javascript codes */
 
-/*confirm password in registration page*/
+/*validate entries in search.html*/
+jQuery(document).ready(function(){
+  $('#search').click(function(){
+      var fin = $('#finish').val();
+      var stt = $('#start').val();
+      if (fin==''||stt=='')
+        alert('Please fill in all blanks!');
+  });
+});
+
+
+/*confirm entries in registration page*/
 jQuery(document).ready(function() {
-        $('#register').click(function(){
-            var pass = $('#password').val();
-            var pass2 = $('#repassword').val();
-            if (pass == '')
-                alert('Please enter a password');
-            else if (pass2 == '')
-                alert('Please re-enter the password');
-            else if (pass != pass2)
-                alert('The passwords do not match!');
-            else
-            	window.location.href = "login.html";
+  $('#register').click(function(){
+    var pass = $('#password').val();
+    var pass2 = $('#repassword').val();
+    var username = $('#username').val();
+    var email = $('#email').val();
+    var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+    if (username == "")
+      alert('Please enter a username');
+    else if (email == "")
+      alert('Please enter an email address');
+    else if (!re.test(email))
+      alert('Please enter a valid email');
+    else if (pass == '')
+      alert('Please enter a password');
+    else if (pass2 == '')
+      alert('Please re-enter the password');
+    else if (pass != pass2)
+      alert('The passwords do not match!');
+    else
+      	window.location.href = "login.html";
 
-
-        });
+  });
 });
 
 /*confirm phone number in manageProfile page*/
@@ -26,7 +45,6 @@ jQuery(document).ready(function(){
       return;
     if (isNaN(mobile) || Number(mobile) < 10000000 || Number(mobile) > 99999999)
 			alert('Please enter a valid mobile phone number according to example!');
-
 	});
 });
 
@@ -65,12 +83,11 @@ jQuery(document).ready(function(){
 /*function for google map API*/
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 22.093275, lng: 114.301758},
-    zoom: 10
+    center: {lat: 22.4203, lng: 114.2067},
+    zoom: 13
   });
 
   var input = document.getElementById('pac-input');
-
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo('bounds', map);
 
@@ -82,6 +99,7 @@ function initMap() {
   });
   marker.addListener('click', function() {
     infowindow.open(map, marker);
+
   });
 
   autocomplete.addListener('place_changed', function() {
@@ -104,11 +122,10 @@ function initMap() {
       location: place.geometry.location
     });
     marker.setVisible(true);
-
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-        'Place ID: ' + place.place_id + '<br>' +
-        place.formatted_address);
+    document.getElementById('location').value = place.formatted_address;
+    document.getElementById('locationID').value = place.place_id;
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address);
     infowindow.open(map, marker);
-  });
 
+  });
 }

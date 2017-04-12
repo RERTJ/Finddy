@@ -4,51 +4,26 @@ var router = express.Router();
 var checkLogin = require('../middlewares/check').checkLogin;
 var public = require('../public/js/publicFunction.js').checkLogin;
 var DBconnect = require('../models/DBconnect.js');
-
-
-/* GET users listing. */
-router.get('/',function(req, res, next) {
-  res.render('search');
-});
-
-router.post('/', function(req, res, next) {
-  var type = req.fields.type;
-  var key =req.fields.key;
-  var hour =req.fields.hour;
-  var year =req.fields.year;
-  var month =req.fields.month;
-  var date =req.fields.date;
-  var ehour =req.fields.ehour;
-  var eyear =req.fields.eyear;
-  var emonth =req.fields.emonth;
-  var edate =req.fields.edate;
-  var starttimestamp="'"+year+'-'+month+'-'+date+' '+hour+':00:00';
-  var estarttimestamp="'"+eyear+'-'+emonth+'-'+edate+' '+ehour+':00:00';
-
-  res.render('searchresult');
-});
-router.get('/contact', function(req, res, next) {
-  res.render('activityDetail');
-});
+var Update = require('../models/update.js');
 
 router.get('/create', checkLogin, function(req, res, next) {
   res.render('createNew');
 });
 router.post('/create', checkLogin, function(req, res, next) {
-  console.log("received");
   var uid = req.session.user;
   var type = req.fields.type;
   var description = req.fields.description;
   var location = req.fields.location;
-  var start_time = req.fields.start_time;
-  var expire_time = req.fields.expire_time;
+  var location_id = req.fields.locationID;
   var quota = req.fields.quota;
+  var start_time = timestamp(req.fields.start_date, req.fields.start_hour, req.fields.start_min);
+  var expire_time = timestamp(req.fields.expire_date, req.fields.expire_hour, req.fields.expire_min);
 
-  var sql = 'INSERT INTO ACTIVITIES (TYPE, DESCRIPTION, LOCATION, START_TIME, EXPIRE_TIME, QUOTA, NO_OF_JOINERS, RATING, CREATOR_ID, CREATE_TIME) VALUES ';
-      sql += '(?, ?, ?, STR_TO_DATE(?,"%Y-%m-%d %H:%i:%s"), STR_TO_DATE(?,"%Y-%m-%d %H:%i:%s"), ?, 0, 0, ?, CURRENT_TIMESTAMP())';
-
-  var sqlParam = [type, description, location, start_time, expire_time, quota, uid];
-
+  var sql = 'INSERT INTO ACTIVITIES (TYPE, DESCRIPTION, LOCATION, LOCATION_ID, START_TIME, EXPIRE_TIME, QUOTA, NO_OF_JOINERS, RATING, CREATOR_ID, CREATE_TIME) VALUES ';
+      sql += '(?, ?, ?, ?, ?, ?, ?, 0, 0, ?, CURRENT_TIMESTAMP())';
+  var sql_joiner = 'INSERT INTO JOINERS (ACTIVITY_ID, JOINER_ID, CREATE_TIME) VALUES (?, ?, CURRENT_TIMESTAMP())';
+  var sqlParam = [type, description, location, location_id, start_time, expire_time, quota, uid];
+  var sqlParam_joiner;
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
@@ -58,32 +33,41 @@ router.post('/create', checkLogin, function(req, res, next) {
         console.log(err);
       }
       else {
-        console.log("success");
-        res.send("success");
+        sqlParam_joiner = [result.insertId, uid];
+        console.log(sqlParam_joiner);
+        connection.query(sql_joiner, sqlParam_joiner, function(err, result) {
+          if (err) {console.log(err)} else {
+            console.log('New activity added success, AID = ' + sqlParam_joiner[0]);
+            res.redirect('/activity/' + sqlParam_joiner[0]);
+          }
+        });
       }
     });
   });
 });
 
 router.get('/:id', checkLogin, function(req, res, next) {
-  var sql1 = 'SELECT AID, TYPE, ACTIVITIES.DESCRIPTION, LOCATION, START_TIME, QUOTA, NO_OF_JOINERS, RATING, EXPIRE_TIME, USERNAME, UID ';
-      sql1 += 'FROM ACTIVITIES JOIN USERS ON CREATOR_ID = UID WHERE AID = ?';
-  var sql2 = 'SELECT JOINER_ID, USERNAME FROM JOINERS JOIN USERS ON JOINER_ID = UID WHERE ACTIVITY_ID = ?'
+  var sql_detail = 'SELECT AID, TYPE, ACTIVITIES.DESCRIPTION, LOCATION, LOCATION_ID, START_TIME, QUOTA, NO_OF_JOINERS, RATING, EXPIRE_TIME, USERNAME, UID ';
+      sql_detail += 'FROM ACTIVITIES JOIN USERS ON CREATOR_ID = UID WHERE AID = ?';
+  var sql_joiner = 'SELECT JOINER_ID, USERNAME, PHONE_NO FROM JOINERS JOIN USERS ON JOINER_ID = UID WHERE ACTIVITY_ID = ? ORDER BY CREATE_TIME'
   var detail;
   var actionButton;
+  var activity_id = req.params.id;
+  var admin = req.session.admin;
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
   }
-    connection.query(sql1, req.params.id, function(err, result) {
+    connection.query(sql_detail, activity_id, function(err, result) {
       if (err) {
         console.log(err);
       } else {
-        console.log("success");
+        result[0].START_TIME = toTime(result[0].START_TIME);
+        result[0].EXPIRE_TIME = toTime(result[0].EXPIRE_TIME);
         detail = result[0];
       }
     });
-    connection.query(sql2, req.params.id, function(err, result){
+    connection.query(sql_joiner, activity_id, function(err, result){
       if (err) {
         console.log(err);
       } else {
@@ -100,20 +84,19 @@ router.get('/:id', checkLogin, function(req, res, next) {
         } else {
           actionButton = 'available';
         }
-        console.log(detail.NO_OF_JOINERS);
-        console.log(detail.JOINERS.length);
-        console.log(actionButton);
-        res.redirect('activityDetail',
+        console.log("Get Activity Detail Success, AID = " + req.params.id);
+        res.render('activityDetail',
           {detail: JSON.stringify(detail),
-           actionButton: actionButton} );
+           actionButton: actionButton,
+           admin: admin });
       }
     });
     connection.release();
   });
 });
 
-router.get('/:id/edit', checkLogin, function(req, res, next) {
-  var sql = 'SELECT AID, TYPE, DESCRIPTION, LOCATION, START_TIME, QUOTA, EXPIRE_TIME FROM ACTIVITIES WHERE AID = ?';
+router.get('/:id/edit',checkLogin, function(req, res, next) {
+  var sql = 'SELECT CREATOR_ID, AID, TYPE, DESCRIPTION, LOCATION, LOCATION_ID, START_TIME, QUOTA, EXPIRE_TIME FROM ACTIVITIES WHERE AID = ?';
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
@@ -122,7 +105,17 @@ router.get('/:id/edit', checkLogin, function(req, res, next) {
       if (err) {
         console.log(err);
       } else {
-        res.render('editActivity', {detail: JSON.stringify(result[0])});
+          if (result.length && result[0].CREATOR_ID == req.session.user) {
+              result[0].START_DATE = toTimeDate(result[0].START_TIME);
+              result[0].START_HOUR = toTimeHour(result[0].START_TIME);
+              result[0].START_MIN = toTimeMin(result[0].START_TIME);
+              result[0].EXPIRE_DATE = toTimeDate(result[0].EXPIRE_TIME);
+              result[0].EXPIRE_HOUR = toTimeHour(result[0].EXPIRE_TIME);
+              result[0].EXPIRE_MIN = toTimeMin(result[0].EXPIRE_TIME);
+              result[0].QUOTA = result[0].QUOTA.toString();
+
+            res.render('editActivity', {detail: JSON.stringify(result[0])});
+          }
       }
     });
     connection.release();
@@ -134,9 +127,9 @@ router.get('/api/saveChange', checkLogin, function(req, res, next) {
   var type = req.query.TYPE;
   var description = req.query.DESCRIPTION;
   var location = req.query.LOCATION;
-  var start_time = req.query.START_TIME;
-  var expire_time = req.query.EXPIRE_TIME;
   var quota = req.query.QUOTA;
+  var start_time = timestamp(req.query.START_DATE, req.query.START_HOUR, req.query.START_MIN);
+  var expire_time = timestamp(req.query.EXPIRE_DATE, req.query.EXPIRE_HOUR, req.query.EXPIRE_MIN);
   var sql = 'UPDATE ACTIVITIES SET TYPE = ?, DESCRIPTION = ?, LOCATION = ?, START_TIME = ?, EXPIRE_TIME = ?, QUOTA = ? WHERE AID = ?';
   var sqlParam = [type, description, location, start_time, expire_time, quota, id];
   DBconnect.getConnection(function(err, connection) {
@@ -147,6 +140,7 @@ router.get('/api/saveChange', checkLogin, function(req, res, next) {
       if (err) {
         console.log(err);
       } else {
+        console.log("Change is saved, AID = " + id);
         res.send(true);
       }
     });
@@ -155,31 +149,33 @@ router.get('/api/saveChange', checkLogin, function(req, res, next) {
 });
 
 router.get('/api/join', checkLogin, function(req, res, next) {
-  console.log("received");
   var sql1 = 'INSERT INTO JOINERS (ACTIVITY_ID, JOINER_ID, CREATE_TIME) VALUES (?, ?, CURRENT_TIMESTAMP())';
   var sqlParam = [req.query.activity_id, req.session.user];
   var sql2 = 'UPDATE ACTIVITIES SET NO_OF_JOINERS = NO_OF_JOINERS + 1 WHERE AID = ?';
+  var url = '/activity/' + req.query.activity_id;
+
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
   }
     connection.query(sql1, sqlParam, function(err, result) {
-      if (err) {
-        console.log(err);
-      }
+      if (err) {console.log(err);}
     connection.query(sql2, req.query.activity_id, function(err, result) {
-      if (err) {console.log(err)}
+      if (err) {console.log(err);}
       else {
+        var update = new Update('join', req.session.username, req.query.activity_id);
+        update.storeUpdateMessage();
+        console.log(req.session.username + "joined activity, AID = " + req.query.activity_id);
         res.send(true);
       }
-    })
+    });
     });
     connection.release();
   });
 });
 
 router.get('/api/quit', checkLogin, function(req, res, next) {
-  console.log("received");
+  var username = req.session.username;
   var sql1 = 'DELETE FROM JOINERS WHERE ACTIVITY_ID = ? AND JOINER_ID = ?';
   var sqlParam = [req.query.activity_id, req.session.user];
   var sql2 = 'UPDATE ACTIVITIES SET NO_OF_JOINERS = NO_OF_JOINERS - 1 WHERE AID = ?';
@@ -194,6 +190,9 @@ router.get('/api/quit', checkLogin, function(req, res, next) {
     connection.query(sql2, req.query.activity_id, function(err, result) {
       if (err) {console.log(err)}
       else {
+        var update = new Update('quit', req.session.username, req.query.activity_id);
+        update.storeUpdateMessage();
+        console.log(req.session.username + "quit activity, AID = " + req.query.activity_id);
         res.send(true);
       }
     })
@@ -202,33 +201,77 @@ router.get('/api/quit', checkLogin, function(req, res, next) {
   });
 });
 
-router.get('/api/getComments', checkLogin, function(req, res, next) {
-  var sql = 'SELECT COMMENTS.CONTENT, USERS.USERNAME, JOINERS.RATING, COMMENTS.CREAT_TIME '
-      sql +=' FROM COMMENTS JOIN JOINERS ON COMMENTS.ACTIVITY_ID = JOINERS.ACTIVITY_ID '
-      sql += 'JOIN USERS ON COMMENTS.CREATOR_ID = USERS.UID WHERE COMMENTS.ACTIVITY_ID = ? ORDER BY COMMENTS.CREAT_TIME DESC';
+router.get('/api/delete', checkLogin, function(req, res, next) {
+  var sql = 'UPDATE ACTIVITIES SET STATUS = "C" WHERE AID = ?';
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
-    }
+  }
     connection.query(sql, req.query.activity_id, function(err, result) {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(JSON.stringify(result));
+      if (err) {console.log(err);}
+      else {
+        var update = new Update('cancel', req.session.username, req.query.activity_id);
+        update.storeUpdateMessage();
+        console.log(req.session.username + "delete activity, AID = " + req.query.activity_id);
+        res.send(true);
       }
     });
     connection.release();
   });
 });
 
-router.get('/api/createComment', checkLogin, function(req, res, next) {
-  console.log("received");
+router.get('/api/getComments', checkLogin, function(req, res, next) {
+  var activity_id = req.query.activity_id;
+  var joiner_id = req.session.user;
+  var sql_get = 'SELECT COMMENTS.CONTENT, USERS.USERNAME, JOINERS.RATING, COMMENTS.CREATE_TIME ';
+      sql_get +=' FROM COMMENTS JOIN JOINERS ON COMMENTS.ACTIVITY_ID = JOINERS.ACTIVITY_ID ';
+      sql_get += 'JOIN USERS ON COMMENTS.CREATOR_ID = USERS.UID WHERE COMMENTS.ACTIVITY_ID = ? ORDER BY COMMENTS.CREATE_TIME DESC';
+  var sql_rate = 'SELECT JOINERS.RATING FROM JOINERS JOIN ACTIVITIES ON ACTIVITY_ID = AID WHERE ';
+      sql_rate += 'ACTIVITY_ID = ? AND JOINER_ID = ? AND START_TIME < CURRENT_TIMESTAMP()';
+  var sqlParam_rate = [activity_id, joiner_id];
+  var rateSet = 'false';
+  DBconnect.getConnection(function(err, connection) {
+    if (err) {
+      console.log('Error connecting to Db.');
+    }
+    connection.query(sql_rate, sqlParam_rate, function(err, result) {
+      if (err) {console.log(err);}
+      else {
+        if (result.length && result[0].RATING == null) {
+          rateSet = 'true';
+        }
+    connection.query(sql_get, activity_id, function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        for (var i in result) {
+          result[i].CREATE_TIME = toTime(result[i].CREATE_TIME);
+        }
+        console.log("Get Comments success, AID = " + activity_id);
+        res.send([JSON.stringify(result), rateSet]);
+      }
+    });
+    }
+    });
+    connection.release();
+  });
+});
+
+router.get('/api/createCommentRating', checkLogin, function(req, res, next) {
+  if (req.headers['x-requested-with'] != 'XMLHttpRequest') {
+    res.render('message', { message: 'Invalid access.'});
+  } else {
+  var rating = req.query.rating;
+  var activity_id = req.query.activity_id;
+  var user_id = req.session.user;
+  var username = req.session.username;
+  var content = req.query.content;
   var sql1 = 'UPDATE JOINERS SET RATING = ? WHERE ACTIVITY_ID = ? AND JOINER_ID = ?';
-  var sqlParam1 = [req.query.rating, req.query.activity_id, req.session.user];
-  var sql2 = 'INSERT INTO COMMENTS (ACTIVITY_ID, CONTENT, CREATOR_ID, CREAT_TIME) VALUES (?, ?, ?, CURRENT_TIMESTAMP())';
-  var sqlParam2 = [req.query.activity_id, req.query.content, req.session.user];
+  var sqlParam1 = [rating, activity_id, user_id];
+  var sql2 = 'INSERT INTO COMMENTS (ACTIVITY_ID, CONTENT, CREATOR_ID, CREATE_TIME) VALUES (?, ?, ?, CURRENT_TIMESTAMP())';
+  var sqlParam2 = [activity_id, content, user_id];
   var sum, count, rating;
-  var sql3 = 'SELECT SUM(RATING) AS SUM FROM `joiners` WHERE ACTIVITY_ID = ? AND RATING IS NOT NULL';
+  var sql3 = 'SELECT SUM(RATING) AS SUM FROM `JOINERS` WHERE ACTIVITY_ID = ? AND RATING IS NOT NULL';
   var sql4 = 'SELECT COUNT(RATING) AS COUNT FROM JOINERS WHERE ACTIVITY_ID = 1 AND RATING IS NOT NULL';
   var sql5 = 'UPDATE ACTIVITIES SET RATING = ? WHERE AID = ?'
 
@@ -240,22 +283,21 @@ router.get('/api/createComment', checkLogin, function(req, res, next) {
       if (err) { console.log(err) }
     connection.query(sql2, sqlParam2, function(err, result) {
       if (err) { console.log(err) }
-    connection.query(sql3, req.query.activity_id, function(err, result) {
+    connection.query(sql3, activity_id, function(err, result) {
       if (err) { console.log(err) } else {
         sum = result[0].SUM;
-        console.log("sum = " + sum);
       }
-    connection.query(sql4, req.query.activity_id, function(err, result) {
+    connection.query(sql4, activity_id, function(err, result) {
       if (err) { console.log(err) } else {
         count = result[0].COUNT;
-        console.log("count = " + count);
         rating = sum / count;
-        console.log("rating = " + rating);
-        var sqlParam5 = [rating, req.query.activity_id];
+        var sqlParam5 = [rating, activity_id];
       }
     connection.query(sql5, sqlParam5, function(err, result) {
       if (err) { console.log(err) } else {
-        console.log(" rate success~ ");
+        var update = new Update('comment', username, activity_id);
+        update.storeUpdateMessage();
+        console.log("Comment and Rating posted AID = " + activity_id);
         res.send(true);
       }
     });
@@ -265,6 +307,68 @@ router.get('/api/createComment', checkLogin, function(req, res, next) {
     });
     connection.release();
   });
+}
 });
+
+router.get('/api/createComment', checkLogin, function(req, res, next) {
+  if (req.headers['x-requested-with'] != 'XMLHttpRequest') {
+    res.render('message', { message: 'Invalid access.'});
+  } else {
+  var sql = 'INSERT INTO COMMENTS (ACTIVITY_ID, CONTENT, CREATOR_ID, CREATE_TIME) VALUES (?, ?, ?, CURRENT_TIMESTAMP())';
+  var sqlParam = [req.query.activity_id, req.query.content, req.session.user];
+  DBconnect.getConnection(function(err, connection) {
+    if (err) {
+      console.log('Error connecting to Db.');
+  }
+    connection.query(sql, sqlParam, function(err, result) {
+      if (err) { console.log(err) } else {
+        var update = new Update('comment', req.session.username, req.query.activity_id);
+        update.storeUpdateMessage();
+        console.log("Comment posted for AID = req.query.activity_id");
+        res.send(true);
+      }
+    });
+    connection.release();
+  });
+}
+});
+
+function toTime(time){
+	var objDate = new Date(time);
+	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  	var year = objDate.getFullYear();
+  	var month = months[objDate.getMonth()];
+  	var date = objDate.getDate();
+	var hours = "0" + objDate.getHours();
+	var minutes = "0" + objDate.getMinutes();
+	var seconds = "0" + objDate.getSeconds();
+	var formattedTime = year + "-" + month +"-" + date +" " + hours.substr(-2) + ':' + minutes.substr(-2);
+	return formattedTime;
+}
+
+function timestamp(date, hour, min) {
+  return date.substr(-4) + '-' + date.substr(3,2) + '-' + date.substr(0,2) + ' ' + hour + ':' + min +':00';
+}
+
+function toTimeDate(time) {
+  var objDate = new Date(time);
+  var year = objDate.getFullYear();
+  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+  var month = months[objDate.getMonth()];
+  var date = "0" + objDate.getDate();
+  return date.substr(-2) + '.' + month.substr(-2) + '.' + year;
+}
+
+function toTimeHour(time) {
+  var objDate = new Date(time);
+  var hours = "0" + objDate.getHours();
+  return hours.substr(-2);
+}
+
+function toTimeMin(time) {
+  var objDate = new Date(time);
+  var min = "0" + objDate.getMinutes();
+  return min.substr(-2);
+}
 
 module.exports = router;

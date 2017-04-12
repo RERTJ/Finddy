@@ -1,25 +1,361 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <!--<![endif]-->
+<!--[if !IE]><!--> <html dir="rtl" lang="en"> <!--<![endif]-->
 <head>
     <title>Create Activity | Finddy</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/Finddy.bmp">
+    <!-- Web Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="/css/style-rtl.css">
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="/css/header-default-rtl.css">
+    <link rel="stylesheet" href="/css/footer-v1-rtl.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/line-icons.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/sky-forms-rtl.css">
+    <link rel="stylesheet" href="/css/custom-sky-forms-rtl.css">
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="/css/style-switcher.css">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/css/default.css" id="style_color">
+    <link rel="stylesheet" href="/css/dark.css">
+    <!-- RTL Customization -->
+    <link rel="stylesheet" href="/css/rtl.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/css/custom-rtl.css">
 </head>
 
 <body>
-<div class="container">
-  <form method="post">
-    <input type="radio" name="type" value="D" checked>Dining
-    <input type="radio" name="type" value="M" >Movie
-    <input type="radio" name="type" value="B" >Board Game
-    <br>
-    Description<input type="text" name="description" placeholder="Description"><br>
-    LOCATION<input type="text" name="location" ><br>
-    START_TIME<input type="text" name="start_time"><br>
-    QUOTA<input type="text" name="quota"><br>
-    EXPIRE_TIME<input type="text" name="expire_time"><br>
-    <input type="submit">
-  </form>
-</div>
+<div class="wrapper">
+    <!--=== Header ===-->
+        <div class="header">
+            <div class="container">
+                <!-- Logo -->
+                <a class="logo" href="/profile">
+                    <img src="/img/finddy_logo.JPG">
+                </a>
+                <!-- End Logo -->
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div><!--/end container-->
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                <div class="container">
+                    <ul class="nav navbar-nav">
+                        <li class="mega-menu-fullwidth">
+                            <a href="/signout">Log out</a>
+                        </li>
+                        <li class="mega-menu-fullwidth">
+                            <a href="/activity/create">
+                            Post New Activity
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/profile">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/search"><i class="search fa fa-search search-btn"></i></a>
+                        </li>
+                    </ul>
+                </div><!--/end container-->
+            </div><!--/navbar-collapse-->
+        </div>
+        <!--=== End Header ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+            <!-- Begin Content -->
+            <div class="col-md-9">
+                <!-- Checkout-Form -->
+                <form method="post" action="/activity/create" id="sky-form" class="sky-form">
+                    <fieldset>
+                        <div class="row">
+                            <label class="label col col-6" id="expl">The activity I want to host is</label>
+                        </div>
+                        <div class="inline-group">
+                            <section class="col col-4"><input type="radio" name="type" value="B">  Board Game</section>
+                            <section class="col col-4"><input type="radio" name="type" value="M">  Movie</section>
+                            <section class="col col-4"><input type="radio" name="type" value="D">  Dining</section>
+                        </div>
+
+                        <input id="pac-input" class="controls" type="text" placeholder="Enter venue of your activity">
+
+                        <!--Start Time Settings -->
+                        <div class="row">
+                            <label class="label col col-6" id="expl">My activity begins at</label>
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select name="start_min" class="minute">
+                                        <option value="NA" selected disabled>Minute</option>
+                                        <option value="00">00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select name="start_hour" class="hour">
+                                        <option value="NA" selected disabled>Hour</option>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="start_date" id="finish" placeholder="Date">
+                                </label>
+                            </section>
+                        </div>
+                        <!-- End Start Time Settings-->
+
+                        <!-- End Time Settings -->
+                        <div class="row">
+                            <label class="label col col-6" id="expl">The deadline for enrollment is</label>
+                        </div>
+                        <div class="row">
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select name="expire_min" class="minute">
+                                        <option value="NA" selected disabled>Minute</option>
+                                        <option value="00">00</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select name="expire_hour" class="hour">
+                                        <option value="NA" selected disabled>Hour</option>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                            </section>
+                            <section class="col col-4">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="expire_date" id="start" placeholder="Date">
+                                </label>
+                            </section>
+                        </div>
+                        <div class="row">
+                            <label class="label col col-4" id="expl">I want at most how many people join</label>
+                        </div>
+                        <div class="row">
+                              <section class="col col-4">
+                              </section>
+                              <section class="col col-4">
+                              </section>
+                              <section class="col col-4">
+                                <label class="select">
+                                    <select name="quota" class="hour">
+                                        <option value="NA" selected disabled>Quota</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                    </select>
+                                    <i></i>
+                                </label>
+                              </section>
+                          </div>
+                        <!-- End End Time Settings-->
+                    </fieldset>
+                    <!-- Google Map API -->
+                    <fieldset>
+                        <div id="map"></div>
+                    </fieldset>
+                    <input type="hidden" id="location" name="location" value="" />
+                    <input type="hidden" id="locationID" name="locationID" value="" />
+                    <!-- End Google Map -->
+                    <!-- Description -->
+                    <fieldset>
+                        <div class="row">
+                            <label class="label col col-6" id="expl">Something else I want my friends to know</label>
+                        </div>
+                        <div class="row">
+                            <section>
+                                <textarea name="description" placeholder="You can input your detail plan and other information than you think useful."></textarea>
+                            </section>
+                        </div>
+                    </fieldset>
+
+                <!-- Description -->
+
+
+                    <footer>
+                        <input type="submit" class="btn-u btn-u-default btn-block" value="Create">
+                    </footer>
+                  </form>
+                <!-- End Checkout-Form -->
+            </div>
+            <!-- End Content -->
+        </div>
+    </div><!--/container-->
+    <!--=== End Content Part ===-->
+    <!--=== Footer Version 1 ===-->
+    <div class="footer-v1">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Finddy 2015 &copy; All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--/copyright-->
+    </div>
+    <!--=== End Footer Version 1 ===-->
+</div><!--/End Wrapepr-->
+
+<!-- JS Global Compulsory -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery-migrate.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script src="/js/back-to-top.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/jquery.maskedinput.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/jquery.form.min.js"></script>
+<!-- JS Customization -->
+<script src="/js/custom.js"></script>
+<!-- JS Page Level -->
+<script src="/js/app.js"></script>
+<script src="/js/style-switcher-rtl.js"></script>
+<script src="/js/order.js"></script>
+<script src="/js/review.js"></script>
+<script src="/js/checkout.js"></script>
+<script src="/js/masking.js"></script>
+<script src="/js/datepicker.js"></script>
+<script src="/js/validation.js"></script>
+<script src="/js/style-switcher-rtl.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        Masking.initMasking();
+        Datepicker.initDatepicker();
+        Validation.initValidation();
+        OrderForm.initOrderForm();
+        ReviewForm.initReviewForm();
+        CheckoutForm.initCheckoutForm();
+        StyleSwitcher.initStyleSwitcher();
+    });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7Opq0rd8dz3eXKv-vkCcSwEj7l0NV6E&libraries=places&callback=initMap&language=en-hk"
+      async defer>
+</script>
+<!--[if lt IE 9]>
+    <script src="../assets/plugins/respond.js"></script>
+    <script src="../assets/plugins/html5shiv.js"></script>
+    <script src="../assets/plugins/placeholder-IE-fixes.js"></script>
+    <script src="../assets/plugins/sky-forms-pro/skyforms/js/sky-forms-ie8.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+    <script src="../assets/plugins/sky-forms/version-2.0.1/js/jquery.placeholder.min.js"></script>
+<![endif]-->
+
 </body>
 </html>

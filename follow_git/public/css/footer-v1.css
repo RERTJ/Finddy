@@ -1,7 +1,14 @@
 /*Footer-v1
 ------------------------------------*/
+.footer-v1 {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+
 .footer-v1 .footer {
-	padding: 40px 0;	
+	/*padding: 40px 0;*/
 	background: #272727;
 }
 

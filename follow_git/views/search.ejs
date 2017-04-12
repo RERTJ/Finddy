@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- angularJS -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
 
     <!-- Web Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
@@ -41,16 +43,20 @@
     <link rel="stylesheet" href="css/rtl.css">
 
     <!-- CSS Customization -->
+    <link rel="stylesheet" href="css/page_search_inner.css">
+
     <link rel="stylesheet" href="css/custom-rtl.css">
 </head>
 
-<body>
+<body ng-app="myApp">
+  <div ng-controller="myCtrl">
+
 <div class="wrapper">
     <!--=== Header ===-->
         <div class="header">
             <div class="container">
                 <!-- Logo -->
-                <a class="logo" href="profile.html">
+                <a class="logo" href="profile">
                     <img src="img/finddy_logo.JPG" alt="Logo">
                 </a>
                 <!-- End Logo -->
@@ -58,7 +64,7 @@
                 <!-- Topbar -->
                 <div class="topbar">
                     <ul class="loginbar pull-right">
-                        <li><a href="login.html">Login  |  Sign Up</a></li>
+                        <li><a href="signout">Signout</a></li>
                     </ul>
                 </div>
                 <!-- End Topbar -->
@@ -93,7 +99,7 @@
 
                         <!-- Search Block -->
                         <li>
-                            <a href="search.html">
+                            <a href="search">
                                 <i class="search fa fa-search search-btn"></i>
                             </a>
                         </li>
@@ -112,10 +118,11 @@
             <!-- Begin Content -->
             <div class="col-md-9">
                 <!-- Checkout-Form -->
-                <form id="sky-form" method="post" class="sky-form">
+                <form id="sky-form" method="post" action="/search" class="sky-form">
                     <fieldset>
                         <section>
                             <div class="inline-group">
+                              Select an activity type that you want to find:
                                     <input type="radio" name="type" value="B" checked>  Board Game
                                     <input type="radio" name="type" value="M">  Movie
                                     <input type="radio" name="type" value="D">  Dining
@@ -127,7 +134,7 @@
                             <section class="col col-6">
                                 <label class="input">
                                     <i class="icon-append fa fa-calendar"></i>
-                                    <input type="text" name="finish" id="finish" placeholder="End date">
+                                    <input type="text" name="finish"  id="finish" placeholder="End date">
                                 </label>
                             </section>
                             <section class="col col-6">
@@ -144,7 +151,7 @@
                             <label class="label col col-4">Set Start Time</label>
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="minute" name="sminute">
+                                    <select class="minute" name="sminute" >
                                         <option value="12" selected disabled>Minute</option>
                                         <option value="05">05</option>
                                         <option value="10">10</option>
@@ -164,7 +171,7 @@
                             </section>
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="hour" name="shour">
+                                    <select class="hour" name="shour" >
                                         <option value="1" selected disabled>Hour</option>
                                         <option value="00">00</option>
                                         <option value="01">01</option>
@@ -202,7 +209,7 @@
                             <label class="label col col-4">Set End Time</label>
                             <section class="col col-4">
                                 <label class="select">
-                                    <select class="minute" name="eminute">
+                                    <select class="minute" name="eminute" >
                                       <option value="12" selected disabled>Minute</option>
                                       <option value="05">05</option>
                                       <option value="10">10</option>
@@ -255,15 +262,43 @@
                         </div>
                         <!-- End End Time Settings-->
                     </fieldset>
-
                     <footer>
-                        <button type="submit" class="btn-u" id="search">Search</button>
-                    </footer>
+                    <button type="submit" class="btn-u" id="search">Search</button>
+                  </footer>
+
                 </form>
                 <!-- End Checkout-Form -->
             </div>
             <!-- End Content -->
         </div>
+<!-- searchresult -->
+        <div ng-show="detail.length">
+        <div class='searchMain'>
+    		<div class="container s-results margin-bottom-50">
+    			<h3><span class="results-number">About <span ng-bind="detail.length"></span> results</span></h3>
+    			<!-- Begin Inner Results -->
+    			<div class="inner-results" ng-repeat="i in detail">
+    				<h3><a href="#"></a><span ng-bind="i.DESCRIPTION"></span> @<span ng-bind="i.LOCATION"></span>
+    				</h3>
+    				<p>
+    					User <span ng-bind="i.CREATOR_ID"></span> asks you to join <span ng-bind="i.DESCRIPTION"></span>  at <span ng-bind="i.START_TIME"></span>.
+    					It's such a hit that <span ng-bind="i.NO_OF_JOINERS"></span> out of <span ng-bind="i.QUOTA"></span> quota HAVE BEEN POSSESSED!
+    				</p>
+            <b>rate:</b><h4><span ng-bind="i.RATING"></h4>
+    			</div>
+    			<!-- Begin Inner Results -->
+
+    			<hr>
+
+
+    			<!-- Begin Inner Results -->
+
+    		</div>
+    	</div>
+    </div>
+
+    <!--/container-->
+    		<!--=== End Search Results ===-->
     </div><!--/container-->
     <!--=== End Content Part ===-->
     <!--=== Footer Version 1 ===-->
@@ -273,7 +308,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p>
-                            Finddy 2015 &copy; All Rights Reserved
+                            Finddy 2017 &copy; All Rights Reserved
                         </p>
                     </div>
                 </div>
@@ -282,6 +317,7 @@
     </div>
     <!--=== End Footer Version 1 ===-->
 </div><!--/End Wrapepr-->
+</div>
 
 <!-- JS Global Compulsory -->
 <script src="js/jquery.min.js"></script>
@@ -319,6 +355,23 @@
         StyleSwitcher.initStyleSwitcher();
     });
 </script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http, $window) {
+  //   $scope.searchResult=function(){
+  //     $http({
+  //       url: '/search/result',
+  //       type: 'GET'
+  //     }).then(function(result) {
+  //       $scope.detail = result.data;
+  //       console.log($scope.detail);
+   //
+  //  })
+  //   }
+  $scope.detail=<%- result%>
+  console.log( $scope.detail);
+});
+</script>
 
 <!--[if lt IE 9]>
     <script src="../assets/plugins/respond.js"></script>
@@ -332,4 +385,5 @@
 <![endif]-->
 
 </body>
+
 </html>

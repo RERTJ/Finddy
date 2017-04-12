@@ -1,5 +1,4 @@
 /* Add here all your css styles (customizations) */
-
 /*format hourselector in createNew*/
 .hour, .minute {
 	direction: rtl;
@@ -7,8 +6,8 @@
 
 /*format google map in createNew*/
 #map {
-	height: 657px;
-	width: 707px;
+	height: 300px;
+	width: 100%;
 }
 
 .controls {
@@ -38,7 +37,7 @@
 }
 
 .list-unstyled {
-	padding-right: 40px;
+	padding-right: 20px;
 	padding-left: 0px;
 }
 
@@ -66,4 +65,30 @@ fieldset {
 
 #search {
     margin-top: 20px;
+}
+
+.list-inline {
+    padding-left: 0px;
+}
+
+#demo, #demo3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+th {
+    text-align: center;
+}
+
+tbody {
+    text-align: center;
+}
+
+.media-heading {
+    display: inline-block;
+}
+
+.reply{
+    float: right;
+    margin-top: 5px;
 }

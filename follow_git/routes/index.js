@@ -8,6 +8,6 @@ module.exports = function (app) {
   app.use('/activity', require('./activity'));
   app.use('/profile', require('./profile'));
   app.use('/search', require('./search'));
-  app.use('/searchResult', require('./searchResult'));
+  app.use('/users', require('./users'));
 
 };

@@ -158,25 +158,11 @@
 			<div class="inner-results" ng-repeat="i in detail">
 				<h3><a href="#"></a><span ng-bind="i.DESCRIPTION"></span>
 				</h3>
-				<!-- <ul class="list-inline up-ul">
-					<li class="btn-group">
-						<button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-							More<i class="fa fa-caret-down margin-left-5"></i>
-							<span class="sr-only">Toggle Dropdown</span>
-						</button>
-						<ul role="menu" class="dropdown-menu">
-							<li><a href="#">Share</a></li>
-							<li><a href="#">Similar</a></li>
-							<li><a href="#">Advanced search</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Wrapbootstrap</a></li>
-					<li><a href="#">Dribbble</a></li>
-				</ul> -->
 				<p>
 					User <span ng-bind="i.CREATOR_ID"></span> asks you to join <span ng-bind="i.DESCRIPTION"></span>  at <span ng-bind="i.START_TIME"></span>.
 					It's such a hit that <span ng-bind="i.NO_OF_JOINERS"></span> out of <span ng-bind="i.QUOTA"></span> quota HAVE BEEN POSSESSED!
 				</p>
+
 				<ul class="list-inline down-ul">
 					<li>
 						<ul class="list-inline star-vote">
@@ -247,7 +233,9 @@
 			App.init();
 			StyleSwitcher.initStyleSwitcher();
 		});
-	</script>
+
+
+</script>
 
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/respond.js"></script>

@@ -164,7 +164,6 @@
 	z-index: 1;
 	margin: 20px 0;
 	position: relative;
-
 }
 
 /*Big Logo Style*/
@@ -702,7 +701,7 @@
 }
 
 .header .mega-menu .mega-menu-content {
-  	zoom: 1;
+  	*zoom: 1;
   	padding: 4px 15px;
 }
 

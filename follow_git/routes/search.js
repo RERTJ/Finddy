@@ -7,12 +7,14 @@ var checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 
 router.get('/', checkNotLogin, function(req, res, next) {
-  res.render('search');//Decide which view to load in
+  var empty=[];
+  res.render('search',{
+    result: empty
+  });//Decide which view to load in
 });
 
 router.post('/', checkNotLogin, function(req, res, next) {
   var type = req.fields.type;
-
   var hour =req.fields.shour;
   var min =req.fields.sminute;
   var date =req.fields.start;
@@ -24,8 +26,10 @@ router.post('/', checkNotLogin, function(req, res, next) {
   edate= edate.substring(6,10)+"-"+edate.substring(3,5)+"-"+edate.substring(0,2)
   var starttimestamp= date+' '+hour+":"+min+':00';
   var endtimestamp= edate+' '+ehour+":"+emin+':00';
+  var para=[type,starttimestamp,endtimestamp];
+  var sql = "SELECT * FROM ACTIVITIES WHERE TYPE= ? AND START_TIME>=? AND START_TIME<=? AND STATUS IS NULL";
 
-  var sql = 'SELECT * FROM ACTIVITIES WHERE TYPE='+"'"+type+"' AND START_TIME>='"+starttimestamp+"' AND START_TIME<='"+endtimestamp+"'";
+  // var sqlParam = [type, description, location, start_time, expire_time, quota, uid];
   console.log(sql);
 
   DBconnect.getConnection(function(err, connection) {
@@ -33,7 +37,7 @@ router.post('/', checkNotLogin, function(req, res, next) {
       console.log('Error connecting to Db when search');
       // return;
     }
-    connection.query(sql, function(err, result) {
+    connection.query(sql,para, function(err, result) {
       if (err)
       {
         console.log('Error about query when search');
@@ -54,13 +58,13 @@ router.post('/', checkNotLogin, function(req, res, next) {
         var myjson=JSON.stringify(result);
         console.log(myjson);
         // fs.writeFile('public/data/searchResult.json',myjson,'utf8');
-        res.render('searchResult_pure',
-          {result: myjson
-           } );
-        }
-
-
+        res.render('search',{
+          result: myjson
+        });
+}
   });
+  connection.release();
+
   });
 });
 
