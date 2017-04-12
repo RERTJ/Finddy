@@ -112,12 +112,12 @@ tbody {
     padding: 0px;
 }
 
-.dl-horizontal dd {
+#personalInfo dd {
     display: inline-block;
     margin-right: 0px;
 }
 
-.dl-horizontal dt {
+#personalInfo dt {
     font-weight: normal;
     display: inline-block;
     width: 70%;
