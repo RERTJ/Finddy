@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>SearchResult | Finddy</title>
+	<!-- <script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'></script>
+ <script type="text/javascript" src='ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js'></script> -->
+ <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+ <script type="text/javascript" src='js/angular_app.js'></script>
+ <script type="text/javascript" src="js/searchMain.js"></script>
+ <!-- <script type="text/javascript" src="js/search.js"></script> -->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Web Fonts -->
+	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="css/header-default.css">
+	<link rel="stylesheet" href="css/footer-v1.css">
+
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/line-icons.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+	<!-- CSS Page Style -->
+	<link rel="stylesheet" href="css/page_search_inner.css">
+
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="css/default.css" id="style_color">
+	<link rel="stylesheet" href="css/dark.css">
+
+	<!-- CSS Customization -->
+	<!-- <link rel="stylesheet" href="css/custom.css"> -->
+</head>
+
+<body ng-app='app'>
+	<div ng-controller="searchMain">
+
+	<div class="wrapper">
+		<!--=== Header ===-->
+		<div class="header">
+			<div class="container">
+				<!-- Logo -->
+				<a class="logo" href="profile.html">
+					<img src="img/finddy_logo.JPG" alt="Logo">
+				</a>
+				<!-- End Logo -->
+
+				<!-- Topbar -->
+				<div class="topbar">
+					<ul class="loginbar pull-right">
+
+
+
+						<li class="topbar-devider"></li>
+						<li><a href="login.html">Login/Sign Up</a></li>
+					</ul>
+				</div>
+				<!-- End Topbar -->
+
+				<!-- Toggle get grouped for better mobile display -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="fa fa-bars"></span>
+				</button>
+				<!-- End Toggle -->
+			</div><!--/end container-->
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+				<div class="container">
+					<ul class="nav navbar-nav">
+
+
+
+
+
+<li class="dropdown mega-menu-fullwidth">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='createNew.html';">
+                            Post New Activity
+                        </a>
+                    </li>
+                    <!-- End Shortcodes -->
+
+                    <!-- Misc Pages -->
+                    <li class="dropdown active">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                            Return to Profile
+                        </a>
+
+                    </li>
+
+
+
+						<!-- Search Block -->
+						<li>
+							<i class="search fa fa-search search-btn"></i>
+							<div class="search-open">
+								<div class="input-group animated fadeInDown">
+									<input type="text" class="form-control" placeholder="Search">
+									<span class="input-group-btn">
+										<button class="btn-u" type="button">Go</button>
+									</span>
+								</div>
+							</div>
+						</li>
+						<!-- End Search Block -->
+					</ul>
+				</div><!--/end container-->
+			</div><!--/navbar-collapse-->
+		</div>
+		<!--=== End Header ===-->
+
+		<!--=== Breadcrumbs ===-->
+		<div class="breadcrumbs breadcrumbs-dark">
+			<div class="container">
+				<h1 class="pull-left">Search Results</h1>
+				<ul class="pull-right breadcrumb">
+
+					<li class="active">Search results</li>
+				</ul>
+			</div>
+		</div>
+		<!--=== End Breadcrumbs ===-->
+
+		<!--=== Search Block Version 2 ===-->
+		<div class="search-block-v2">
+			<div class="container">
+				<div class="col-md-6 col-md-offset-3">
+					<a href="search.html">
+						<h2>search again</h2>
+					</a>
+
+				</div>
+			</div>
+		</div><!--/container-->
+		<!--=== End Search Block Version 2 ===-->
+
+		<!--=== Search Results ===-->
+		<div class='searchMain'>
+
+		<div class="container s-results margin-bottom-50">
+			<span class="results-number">About <span ng-bind="activity.length"></span> results</span>
+			<!-- Begin Inner Results -->
+			<div class="inner-results" ng-repeat="detail in activity">
+				<h3><a href="#"></a><span ng-bind="detail.DESCRIPTION"></span>
+				</h3>
+				<!-- <ul class="list-inline up-ul">
+					<li class="btn-group">
+						<button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+							More<i class="fa fa-caret-down margin-left-5"></i>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul role="menu" class="dropdown-menu">
+							<li><a href="#">Share</a></li>
+							<li><a href="#">Similar</a></li>
+							<li><a href="#">Advanced search</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Wrapbootstrap</a></li>
+					<li><a href="#">Dribbble</a></li>
+				</ul> -->
+				<p>
+					User <span ng-bind="detail.CREATOR_ID"></span> asks you to join <span ng-bind="detail.DESCRIPTION"></span>  at <span ng-bind="detail.START_TIME"></span>.
+					It's such a hit that <span ng-bind="detail.NO_OF_JOINERS"></span> out of <span ng-bind="detail.QUOTA"></span> quota HAVE BEEN POSSESSED!
+				</p>
+				<ul class="list-inline down-ul">
+					<li>
+						<ul class="list-inline star-vote">
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star"></i></li>
+							<li><i class="color-green fa fa-star-half-o"></i></li>
+						</ul>
+					</li>
+					<li> </li>
+					<li>234,034 views</li>
+					<li><a href="#">Web designer</a></li>
+				</ul>
+			</div>
+			<!-- Begin Inner Results -->
+
+			<hr>
+
+
+			<!-- Begin Inner Results -->
+
+		</div>
+	</div>
+<!--/container-->
+		<!--=== End Search Results ===-->
+<!--=== Footer Version 1 ===-->
+    <div class="footer-v1">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Finddy 2017 &copy; All Rights Reserved
+                        </p >
+                    </div>
+                </div>
+            </div>
+        </div><!--/copyright-->
+    </div>
+    <!--=== End Footer Version 1 ===-->
+
+	</div><!--/End Wrapepr-->
+
+	<!--=== End Style Switcher ===-->
+
+	<!-- JS Global Compulsory -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="js/back-to-top.js"></script>
+	<script type="text/javascript" src="js/smoothScroll.js"></script>
+	<!-- JS Customization -->
+	<script type="text/javascript" src="js/custom.js"></script>
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/style-switcher.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="assets/plugins/respond.js"></script>
+	<script src="assets/plugins/html5shiv.js"></script>
+	<script src="assets/plugins/placeholder-IE-fixes.js"></script>
+	<![endif]-->
+</div>
+
+</body>
+</html>

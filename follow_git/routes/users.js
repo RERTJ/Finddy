@@ -3,30 +3,38 @@ var router = express.Router();
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
 var checkLogin = require('../middlewares/check').checkLogin;
 var DBconnect = require('../models/DBconnect.js');
+var fs = require('fs');
+var crypto = require('crypto');
 
 /* GET users listing. */
 router.get('/',checkLogin, function(req, res, next) {
-  res.render('profile');
-  //console.log(req.session.id);
-  //console.log(req.session.cookie);
-  console.log(req.session.user);
+  var uid = req.session.user;
+  var sql_select_upcoming_activities = "SELECT LOCATION,DESCRIPTION,AID,START_TIME FROM ACTIVITIES WHERE AID IN(SELECT ACTIVITY_ID FROM JOINERS WHERE JOINER_ID=?) AND START_TIME > CURRENT_TIMESTAMP()";
+  var result;
+  DBconnect.getConnection(function(err,connection){
+      if(err){
+        console.log('Error happens when connect to db');
+        return;
+      }
+      connection.query(sql_select_upcoming_activities,[uid],function(err,result){
+        if(err)
+        {
+          console.log('ERROR-',err.message);
+          return;
+        }
+         res.render('profile',{
+            activities: JSON.stringify(result)
+          });
+        
+      })
+      
+  });
+
 });
 
 router.get('/manageProfile', checkLogin, function(req,res,next){
-  res.render('manageProfile'); 
-});
-
-router.post('/manageProfile', checkLogin, function(req,res,next){
-  var uid = req.session.uid;
-  var new_username = req.fields.username;
-  var new_phone_number = req.fields.phone_number;
-  var new_pwd = req.fields.pwd;
-  var new_pwd_confirm = req.fields.pwd_confirm;
-  var new_self_intro = req.fields.self_intro;
-  var sql_select_user = "SELECT * FROM USERS WHERE UID = ?";
-  var sql_update = "UPDATE USERS SET USERNAME = ?, PHONE_NO = ?, PASSWORD =? WHERE UID = ?";
-  var sql_change_desc = "UPDATE USERS SET DESCRIPTION = ? WHERE UID = ?";
-  var username,phone_number,self_intro;
+  var uid = req.session.user;
+  var sql_select_user = "SELECT USERNAME,PHONE_NO,DESCRIPTION FROM USERS WHERE UID = ?";
   DBconnect.getConnection(function(err,connection){
       if(err){
         console.log('Error happens when connect to db');
@@ -38,88 +46,255 @@ router.post('/manageProfile', checkLogin, function(req,res,next){
           console.log('ERROR-',err.message);
           return;
         }
-        username = result[0].USERNAME;
-        phone_number = result[0].PHONE_NO;
-        self_intro = result[0].DESCRIPTION;
+        console.log(result[0]);
+        res.render('manageProfile',{
+          user: JSON.stringify(result[0])
+        });
       })
   });
 
-  //change password, username, phone number
-  if(new_pwd === new_pwd_confirm){
-    DBconnect.getConnection(function(err,connection){
-      if(err){
-        console.log("DB ERROR!");
-        return;
-      }
-      connection.query(sql_update,[new_username,new_phone_number,new_pwd,uid],function(err,result){
-        if(err){
-          console.log("ERROR WHEN UPDATE BASIC MESSAGE!");
-          return;
-        }
-        console.log("update successful!");
-        res.redirect('/users/manageProfile');
-      })
-    });
-  }
-  else{
-    console.log("please check your password!");
-  }
+});
 
-  //change description
+router.post('/users/password', checkLogin, function(req,res,next){
+  var uid = req.session.user;
+  var new_pwd = req.fields.pwd;
+  var new_pwd_confirm = req.fields.pwd_confirm;
+  var hmac = crypto.createHash('sha256');
+  if(new_pwd){hmac.update(new_pwd);}
+  if(new_pwd_confirm){hmac.update(new_pwd_confirm);}
+  var sql_update = "UPDATE USERS SET PASSWORD = ? WHERE UID = ?";
+
+  if(new_pwd === new_pwd_confirm){
     DBconnect.getConnection(function(err,connection){
       if(err){
         console.log('Error happens when connect to db');
         return;
       }
-      connection.query(sql_change_desc,[new_self_intro,uid],function(err,result){
+      connection.query(sql_update,[new_pwd,uid],function(err,result){
         if(err)
         {
           console.log('ERROR-',err.message);
           return;
         }
-        console.log('description changed');
-        res.redirect('/users/manageProfile');
+        res.send("password");
       })
     });
-  
+  }
+  else{
+    res.send("notMatch");
+  }
 
 });
 
-router.get('/contactlist', checkLogin, function(req,res,next){
-  res.render('contactlist');
-  var email =req.session.user;
-  var username,pwd,description,phone_no,uid;
+router.post('/manage', checkLogin, function(req,res,next){
+  var uid = req.session.user;
+  var new_username = req.fields.USERNAME;
+  var new_phone_number = req.fields.PHONE_NO;
+  var new_self_intro = req.fields.DESCRIPTION;
+  var sql_update = "UPDATE USERS SET USERNAME = ?, PHONE_NO = ?, DESCRIPTION =? WHERE UID = ?";
+  DBconnect.getConnection(function(err,connection){
+      if(err){
+        console.log("DB ERROR!");
+        return;
+      }
+      connection.query(sql_update,[new_username,new_phone_number,new_self_intro,uid],function(err,result){
+        if(err){
+          console.log(err);
+          return;
+        }
+        console.log("update successful!");
+        res.send("manage");
+      })
+    });
+});
+
+router.get('/contactList', checkLogin, function(req,res,next){
+ res.render('contactList');
+});
+
+router.post('/contactList',checkLogin, function(req,res,next){
+  var uid = req.session.user;
+  var username = req.fields.username;
+  var relationship;
+  var target_id;
+  var sql_select_user = "SELECT USERNAME,DESCRIPTION,UID,PHONE_NO,EMAIL FROM USERS WHERE USERNAME = ?";
+  var sql_select_bl = "SELECT RELATIONSHIP FROM USERRELATIONSHIP WHERE HOSTID=? AND USERID=?";
+  var sql_set_bl = "UPDATE USERRELATIONSHIP SET HOSTID=?, USERID=?,RELATIONSHIP=?";
+  console.log(sql_select_user);
+  DBconnect.getConnection(function(err,connection){
+      if(err){
+        console.log('Error happens when connect to db');
+        return;
+      }
+      connection.query(sql_select_user,[username],function(err,result){
+        if(err)
+        {
+          console.log('ERROR-',err.message);
+          return;
+        }
+        if(!result.length){
+          res.send("no_user");
+        }
+        else if(req.session.username == result[0].USERNAME){
+          res.send("same_user");
+        }
+        else{
+          var result1 = result[0];
+          target_id = result[0].UID;
+          console.log("search!");
+          connection.query(sql_select_bl,[uid,result[0].UID],function(err,result){
+            if(err){
+              console.log("Error when select userrelationship!");
+              return;
+            }
+            if(!result.length)
+            {
+              relationship = "";
+              res.send([JSON.stringify(result1),""]);
+              console.log(JSON.stringify(result1));
+            }
+            else{
+              relationship = result[0].RELATIONSHIP;
+              res.send([JSON.stringify(result1),result[0].RELATIONSHIP]);
+            }
+          });
+        }
+      })
+    });
+  
+})
+
+router.get('/black', checkLogin, function(req,res,next){
+  var target_id = req.query.target_id; 
+  var uid = req.session.user;
+  var sql_select_bl = "SELECT RELATIONSHIP FROM USERRELATIONSHIP WHERE HOSTID=? AND USERID=?";
+  var sql_create_bl ="INSERT INTO USERRELATIONSHIP (HOSTID, USERID, RELATIONSHIP) VALUES(?,?,?)";
+  var sql_update_bl ="UPDATE USERRELATIONSHIP SET RELATIONSHIP=? WHERE HOSTID=? AND USERID=?";
+  var relationship;
+  DBconnect.getConnection(function(err,connection){
+    if(err){
+      console.log('Error happens when connect to db');
+      return;
+    }
+    connection.query(sql_select_bl,[uid,target_id],function(err,result){
+      if(err){
+        console.log('Error when select relationship');
+        return;
+      }
+      if(!result.length){
+        relationship = "N";
+      }
+      else{
+        relationship = result[0].RELATIONSHIP;
+      }
+      console.log(relationship + "isbefore");
+      if(relationship === "B"){
+      var new_relation = "";
+      connection.query(sql_update_bl,[new_relation,uid,target_id],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("remove");
+      })
+      }   
+      else if(relationship === "W"){
+          res.send('in_whitelist');
+      }
+      else if(relationship === ""){
+        var new_relation = "B";
+      connection.query(sql_update_bl,[new_relation,uid,target_id],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("add");
+      })
+    }
+      else if(relationship === "N"){
+        var new_relation = "B";
+      connection.query(sql_create_bl,[uid,target_id,new_relation],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("add");
+      })
+      }
+    })
+  });
+});
+
+
+router.get('/white', checkLogin, function(req,res,next){
+  var target_id = req.query.target_id; 
+  var uid = req.session.user;
+  var sql_select_wl = "SELECT RELATIONSHIP FROM USERRELATIONSHIP WHERE HOSTID=? AND USERID=?";
+  var sql_create_wl ="INSERT INTO USERRELATIONSHIP (HOSTID, USERID, RELATIONSHIP) VALUES(?,?,?)";
+  var sql_update_wl ="UPDATE USERRELATIONSHIP SET RELATIONSHIP=? WHERE HOSTID=? AND USERID=?";
+  var relationship;
+  DBconnect.getConnection(function(err,connection){
+    if(err){
+      console.log('Error happens when connect to db');
+      return;
+    }
+    connection.query(sql_select_wl,[uid,target_id],function(err,result){
+      if(err){
+        console.log('Error when select relationship');
+        return;
+      }
+      if(!result.length){
+        relationship = "N";
+      }
+      else{
+        relationship = result[0].RELATIONSHIP;
+      }
+      if(relationship === "W"){
+      var new_relation = "";
+      connection.query(sql_update_wl,[new_relation,uid,target_id],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("remove");
+      })
+      }   
+      else if(relationship === "B"){
+          res.send('in_blacklist');
+      }
+      else if(relationship === ""){
+        var new_relation = "W";
+      connection.query(sql_update_wl,[new_relation,uid,target_id],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("add");
+      })
+    }
+          else if(relationship === "N"){
+        var new_relation = "W";
+      connection.query(sql_create_wl,[uid,target_id,new_relation],function(err,result){
+        if(err){
+          console.log('Error when select relationship');
+          return;
+        }
+        console.log(result);
+        res.send("add");
+      })
+      }
+    })
+  });
 });
 
 router.get('/activityPosted',checkLogin, function(req,res,next)
 {
-  var uid = req.session.uid;
-  var uid;
-  var sql_select_user = "SELECT * FROM USERS WHERE UID = ?";
-  DBconnect.getConnection(function(err,connection){
-      if(err){
-        console.log('Error happens when connect to db' + err);
-        return;
-      }
-      connection.query(sql_select_user,[email],function(err,result){
-        if(err)
-        {
-          console.log('ERROR-',err.message);
-          return;
-        }
-        uid = result[0].UID;
-        console.log("UID is " + uid);
-      })
-  });
-  /*var a_description=[];
-  var a_location=[];
-  var a_type = [];
-  var a_quota = [];
-  var a_rating = [];
-  var a_status=[];
-  var a_expiretime = [];
-  var a_starttime=[];
-  var a_no_of_joiners =[];*/
+  var uid = req.session.user;
   var sql_select_posted_activity = "SELECT * FROM ACTIVITIES WHERE CREATOR_ID=?";
   var result;
   console.log(sql_select_posted_activity);
@@ -135,19 +310,35 @@ router.get('/activityPosted',checkLogin, function(req,res,next)
           return;
         }
         console.log(result[0]);
-        if(result.length)
-        {
-          result = JSON.stringify(result);
-          fs.writeFile('public/activities_json/activities.json',result,'utf8');
-        }
-        else{
-          console.log("You have not create activities!");
-        }
+          res.render('activityPosted',{
+            activities: JSON.stringify(result)
+          });
         
       })
   });
-  res.render('activityPosted');
+  //res.render('activityPosted');
 
+});
+
+router.get('/api/getUpdates', checkLogin, function(req, res, next) {
+  console.log("received update request");
+  var sql = 'SELECT UPDATECONTENT, URL, CREATE_TIME FROM UPDATES WHERE USER_ID = ? ORDER BY CREATE_TIME DESC LIMIT 5';
+  DBconnect.getConnection(function(err, connection) {
+    console.log("get connection");
+    if (err) {
+      console.log('Error connecting to Db.');
+    }
+    connection.query(sql, req.session.user, function(err, result) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log("sent result");
+        res.send(JSON.stringify(result));
+      }
+    });
+    connection.release();
+  });
 });
 
 module.exports = router;

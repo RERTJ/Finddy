@@ -1,6 +1,6 @@
-var app = angular.module("Finddyapp",['ngRoute']);
+var app = angular.module("Finddyapp",[]);
 
-app.config(function ($routeProvider)
+/*app.config(function ($routeProvider)
 {
 	$routeProvider
 	.when('/users/activityPosted',{
@@ -11,4 +11,4 @@ app.config(function ($routeProvider)
 		controller:"upcoming_activities_controller",
 		templateUrl:"users.html"
 	});
-});
+});*/

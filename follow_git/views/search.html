@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html dir="rtl" lang="en"> <!--<![endif]-->  
+<!--[if !IE]><!--> <html dir="rtl" lang="en"> <!--<![endif]-->
 <head>
     <title>Search Activity | Finddy</title>
 
@@ -11,15 +11,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-
     <!-- Web Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="css/bootstrap-rtl.min.css">
-    <link rel="stylesheet" href="css/style-rtl.css">
+<link href="https://cdn.bootcss.com/bootstrap-rtl/3.3.4/css/bootstrap-rtl.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style-rtl.css">
 
     <!-- CSS Header and Footer -->
     <link rel="stylesheet" href="css/header-default-rtl.css">
@@ -61,7 +58,7 @@
                 <!-- Topbar -->
                 <div class="topbar">
                     <ul class="loginbar pull-right">
-                        <li><a href="login.html">Login/Sign Up</a></li>
+                        <li><a href="login.html">Login  |  Sign Up</a></li>
                     </ul>
                 </div>
                 <!-- End Topbar -->
@@ -78,34 +75,27 @@
             <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
                 <div class="container">
                     <ul class="nav navbar-nav">
-                    
+
 
                         <li class="dropdown mega-menu-fullwidth">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='createNew.html';">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='createNew.html';">
                             Post New Activity
-                        </a>
-                    </li>
-                    <!-- End Shortcodes -->
+                            </a>
+                        </li>
+                        <!-- End Shortcodes -->
 
-                    <!-- Misc Pages -->
-                    <li class="dropdown active">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                        <!-- Misc Pages -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
                             Return to Profile
-                        </a>
-        
-                    </li>               
+                            </a>
+                        </li>
 
                         <!-- Search Block -->
                         <li>
-                            <i class="search fa fa-search search-btn"></i>
-                            <div class="search-open">
-                                <div class="input-group animated fadeInDown">
-                                    <input type="text" class="form-control" placeholder="Search">
-                                    <span class="input-group-btn">
-                                        <button class="btn-u" type="button">Go</button>
-                                    </span>
-                                </div>
-                            </div>
+                            <a href="search.html">
+                                <i class="search fa fa-search search-btn"></i>
+                            </a>
                         </li>
                         <!-- End Search Block -->
                     </ul>
@@ -122,152 +112,178 @@
             <!-- Begin Content -->
             <div class="col-md-9">
                 <!-- Checkout-Form -->
-                <form action="#" id="sky-form" class="sky-form">
+                <form id="sky-form" method="post" class="sky-form">
                     <fieldset>
                         <section>
                             <div class="inline-group">
-                                <label class="radio"><input type="radio" name="radio-inline" checked><i class="rounded-x"></i>Board Game</label>
-                                <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>Movie</label>
-                                <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>Dining</label>
+                                    <input type="radio" name="type" value="B" checked>  Board Game
+                                    <input type="radio" name="type" value="M">  Movie
+                                    <input type="radio" name="type" value="D">  Dining
                             </div>
-                        </section>                  
-                        
-                        <section>
-                            <label class="input">
-                                <input type="text" name="name" placeholder="Key word">
-                            </label>
                         </section>
-                        
+
+                        <!-- Datepicker Forms -->
                         <div class="row">
-                            <label class="label col col-4">Start Time</label>
-                            <section class="col col-5">
+                            <section class="col col-6">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="finish" id="finish" placeholder="End date">
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="input">
+                                    <i class="icon-append fa fa-calendar"></i>
+                                    <input type="text" name="start" id="start" placeholder="Start date">
+                                </label>
+                            </section>
+                        </div>
+                        <!-- End Datepicker Forms -->
+
+                        <!--Start Time Settings -->
+                        <div class="row">
+                            <label class="label col col-4">Set Start Time</label>
+                            <section class="col col-4">
                                 <label class="select">
-                                    <select name="month">
-                                        <option value="0" selected disabled>Hour</option>
-                                        <option value="1">00:00</option>
-                                        <option value="2">01:00</option>
-                                        <option value="3">02:00</option>
-                                        <option value="4">03:00</option>
-                                        <option value="5">04:00</option>
-                                        <option value="6">05:00</option>
-                                        <option value="7">06:00</option>
-                                        <option value="8">07:00</option>
-                                        <option value="9">08:00</option>
-                                        <option value="10">09:00</option>
-                                        <option value="11">10:00</option>
-                                        <option value="12">11:00</option>
-                                        <option value="13">12:00</option>
-                                        <option value="14">13:00</option>
-                                        <option value="15">14:00</option>
-                                        <option value="16">15:00</option>
-                                        <option value="17">16:00</option>
-                                        <option value="18">17:00</option>
-                                        <option value="19">18:00</option>
-                                        <option value="20">19:00</option>
-                                        <option value="21">20:00</option>
-                                        <option value="22">21:00</option>
-                                        <option value="23">22:00</option>
-                                        <option value="24">23:00</option>
+                                    <select class="minute" name="sminute">
+                                        <option value="12" selected disabled>Minute</option>
+                                        <option value="05">05</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="30">30</option>
+                                        <option value="35">35</option>
+                                        <option value="40">40</option>
+                                        <option value="45">45</option>
+                                        <option value="50">50</option>
+                                        <option value="55">55</option>
+                                        <option value="00">00</option>
                                     </select>
                                     <i></i>
                                 </label>
                             </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="year" id="year" placeholder="Year e.g. 2017">
-                                </label>
-                            </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="month" id="month" placeholder="Month e.g. 03">
-                                </label>
-                            </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="date" id="date" placeholder="Date e.g. 09">
-                                </label>
-                            </section>
-                        </div>
-                        <div class="row">
-                            <label class="label col col-4">End Time</label>
-                            <section class="col col-5">
+                            <section class="col col-4">
                                 <label class="select">
-                                    <select name="month">
-                                        <option value="0" selected disabled>Hour</option>
-                                        <option value="1">00:00</option>
-                                        <option value="2">01:00</option>
-                                        <option value="3">02:00</option>
-                                        <option value="4">03:00</option>
-                                        <option value="5">04:00</option>
-                                        <option value="6">05:00</option>
-                                        <option value="7">06:00</option>
-                                        <option value="8">07:00</option>
-                                        <option value="9">08:00</option>
-                                        <option value="10">09:00</option>
-                                        <option value="11">10:00</option>
-                                        <option value="12">11:00</option>
-                                        <option value="13">12:00</option>
-                                        <option value="14">13:00</option>
-                                        <option value="15">14:00</option>
-                                        <option value="16">15:00</option>
-                                        <option value="17">16:00</option>
-                                        <option value="18">17:00</option>
-                                        <option value="19">18:00</option>
-                                        <option value="20">19:00</option>
-                                        <option value="21">20:00</option>
-                                        <option value="22">21:00</option>
-                                        <option value="23">22:00</option>
-                                        <option value="24">23:00</option>
+                                    <select class="hour" name="shour">
+                                        <option value="1" selected disabled>Hour</option>
+                                        <option value="00">00</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
                                     </select>
                                     <i></i>
                                 </label>
                             </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="year" id="year" placeholder="Year e.g. 2017">
+                        </div>
+                        <!-- End Start Time Settings-->
+
+                        <!-- End Time Settings -->
+                        <div class="row">
+                            <label class="label col col-4">Set End Time</label>
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select class="minute" name="eminute">
+                                      <option value="12" selected disabled>Minute</option>
+                                      <option value="05">05</option>
+                                      <option value="10">10</option>
+                                      <option value="15">15</option>
+                                      <option value="20">20</option>
+                                      <option value="25">25</option>
+                                      <option value="30">30</option>
+                                      <option value="35">35</option>
+                                      <option value="40">40</option>
+                                      <option value="45">45</option>
+                                      <option value="50">50</option>
+                                      <option value="55">55</option>
+                                      <option value="00">00</option>
+                                    </select>
+                                    <i></i>
                                 </label>
                             </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="month" id="month" placeholder="Month e.g. 03">
-                                </label>
-                            </section>
-                            <section class="col col-3">
-                                <label class="input">
-                                    <input type="text" name="date" id="date" placeholder="Date e.g. 09">
+                            <section class="col col-4">
+                                <label class="select">
+                                    <select class="hour" name="ehour">
+                                        <option value="1" selected disabled>Hour</option>
+                                        <option value="1">00</option>
+                                        <option value="2">01</option>
+                                        <option value="3">02</option>
+                                        <option value="4">03</option>
+                                        <option value="5">04</option>
+                                        <option value="6">05</option>
+                                        <option value="7">06</option>
+                                        <option value="8">07</option>
+                                        <option value="9">08</option>
+                                        <option value="10">09</option>
+                                        <option value="11">10</option>
+                                        <option value="12">11</option>
+                                        <option value="13">12</option>
+                                        <option value="14">13</option>
+                                        <option value="15">14</option>
+                                        <option value="16">15</option>
+                                        <option value="17">16</option>
+                                        <option value="18">17</option>
+                                        <option value="19">18</option>
+                                        <option value="20">19</option>
+                                        <option value="21">20</option>
+                                        <option value="22">21</option>
+                                        <option value="23">22</option>
+                                        <option value="24">23</option>
+                                    </select>
+                                    <i></i>
                                 </label>
                             </section>
                         </div>
+                        <!-- End End Time Settings-->
                     </fieldset>
-                    
+
                     <footer>
-                        <button type="submit" class="btn-u">Search</button>
+                        <button type="submit" class="btn-u" id="search">Search</button>
                     </footer>
-                </form>         
-                <!-- End Checkout-Form -->     
+                </form>
+                <!-- End Checkout-Form -->
             </div>
             <!-- End Content -->
-        </div>          
-    </div><!--/container-->     
+        </div>
+    </div><!--/container-->
     <!--=== End Content Part ===-->
     <!--=== Footer Version 1 ===-->
     <div class="footer-v1">
         <div class="copyright">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">                     
+                    <div class="col-md-6">
                         <p>
                             Finddy 2015 &copy; All Rights Reserved
                         </p>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div><!--/copyright-->
-    </div>     
+    </div>
     <!--=== End Footer Version 1 ===-->
 </div><!--/End Wrapepr-->
 
-<!-- JS Global Compulsory -->          
+<!-- JS Global Compulsory -->
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -277,22 +293,30 @@
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery.maskedinput.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery.form.min.js"></script>
 <!-- JS Customization -->
 <script src="js/custom.js"></script>
-<!-- JS Page Level -->           
+<!-- JS Page Level -->
 <script src="js/app.js"></script>
+<script src="js/style-switcher-rtl.js"></script>
 <script src="js/order.js"></script>
 <script src="js/review.js"></script>
 <script src="js/checkout.js"></script>
+<script src="js/masking.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/validation.js"></script>
 <script src="js/style-switcher-rtl.js"></script>
 <script>
     jQuery(document).ready(function() {
         App.init();
-        OrderForm.initOrderForm();        
-        ReviewForm.initReviewForm();        
-        CheckoutForm.initCheckoutForm();        
-        StyleSwitcher.initStyleSwitcher();      
+        Masking.initMasking();
+        Datepicker.initDatepicker();
+        Validation.initValidation();
+        OrderForm.initOrderForm();
+        ReviewForm.initReviewForm();
+        CheckoutForm.initCheckoutForm();
+        StyleSwitcher.initStyleSwitcher();
     });
 </script>
 <!--[if lt IE 9]>
@@ -304,7 +328,7 @@
 
 <!--[if lt IE 10]>
     <script src="../assets/plugins/sky-forms/version-2.0.1/js/jquery.placeholder.min.js"></script>
-<![endif]-->      
+<![endif]-->
 
 </body>
 </html>

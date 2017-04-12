@@ -1,4 +1,4 @@
-module.exports = Activity;
+/*module.exports = Activity;
 
 function Activity(Id, type, description, location, startTime, creatorId, postTime, expireTime, quota, activityStatus)
 {
@@ -92,4 +92,4 @@ Activity.prototype.getAll = function(){
     // 0315: write classes activity, comment and update. Functions need implementation.
 >>>>>>> 1982542c0fb2433b0c95a43673e6e0404d09b080
 }
-
+*/

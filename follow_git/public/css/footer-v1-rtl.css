@@ -1,7 +1,7 @@
 /*Footer-v1
 ------------------------------------*/
 .footer-v1 .footer {
-	padding: 40px 0;	
+	padding: 40px 0;
 	background: #272727;
 }
 
@@ -44,7 +44,10 @@
 
 .footer-v1 .copyright p {
 	color: #eee;
-	margin-top: 14px;
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+	direction: rtl;
 }
 
 .footer-v1 .copyright a {

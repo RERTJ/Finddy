@@ -1,4 +1,4 @@
-module.exports = Comment;
+/*module.exports = Comment;
 
 function Comment(Id, posterId, content, postTime, notificationStatus){
     this.Id = Id;
@@ -24,4 +24,4 @@ function Comment(Id, posterId, content, postTime, notificationStatus){
 Comment.prototype.getAll = function()
 {
     //output details of this comment
-}
+}*/

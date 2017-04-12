@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html dir="rtl" lang="en"> <!--<![endif]-->  
+<head>
+    <title>Login | Finddy</title>
+         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/Finddy.bmp">
+
+    <!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="css/style-rtl.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/line-icons.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- CSS Page Style -->    
+    <link rel="stylesheet" href="css/page_log_reg_v2.css">    
+
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="css/style-switcher.css">
+
+    <!-- CSS Theme -->    
+    <link rel="stylesheet" href="css/default.css" id="style_color">
+    <link rel="stylesheet" href="css/dark.css">
+
+    <!-- RTL Customization -->
+    <link rel="stylesheet" href="css/rtl.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="css/custom-rtl.css">
+</head> 
+
+<body ng-app="Finddyapp">   
+<!--=== Content Part ===-->    
+<div class="container" ng-controller="login_controller">
+    <!--Reg Block-->
+    <form enctype="multipart/form-data" ng-submit="validation()">
+    <div class="reg-block">
+        <div class="reg-block-header">
+            <h2>Sign In</h2>
+            <p>Don't Have Account? <a class="color-green" href="signup">Sign Up</a></p>            
+        </div>
+
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="Email" ng-model="user.email">
+        </div>
+        <div class="input-group margin-bottom-20">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+        </div>
+        <hr>
+                        
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <a href = "users">
+                    <input type = "submit" value = "Log In" class="btn-u btn-block">
+                </a>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!--End Reg Block-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+
+<!-- JS Global Compulsory -->          
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate.min.js"></script>
+<script src="js/bootstrap.min.js"></script> 
+<!-- JS Implementing Plugins -->           
+<script src="js/back-to-top.js"></script>
+<script src="js/jquery.backstretch.min.js"></script>
+<!-- JS Customization -->
+<script src="js/custom.js"></script>
+<!-- JS Page Level -->           
+<script src="js/app.js"></script>
+<script src="js/style-switcher-rtl.js"></script>
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+        StyleSwitcher.initStyleSwitcher();      
+    });
+</script>
+<script>
+    $.backstretch([
+      "https://upload.wikimedia.org/wikipedia/commons/4/46/A_Game_Of_Thrones_board_game_detail.jpg",
+      "https://static.wixstatic.com/media/9f0f6e_33e61b13f9214a5dbc73094721ed27a5.jpg_srz_892_502_85_22_0.50_1.20_0.00_jpg_srz",
+      ], {
+        fade: 1000,
+        duration: 7000
+    });
+</script>
+<script>
+    var app=angular.module('Finddyapp',[]);
+    app.controller('login_controller',function($scope,$http,$window){
+        $scope.user = {};
+        $scope.validation=function(){
+            $http({
+  	 		url: '/signin',
+            data: $scope.user,
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+  			method: 'POST'
+			}).then(function(result) {
+    		if (result.data == true) {
+					$window.location.href = "/users";
+				}
+            else{
+                alert("wrong password or user does not exist");
+            }
+			});
+
+        }
+    });
+
+</script> 
+<!--[if lt IE 9]>
+    <script src="../assets/plugins/respond.js"></script>
+    <script src="../assets/plugins/html5shiv.js"></script>
+    <script src="../assets/plugins/placeholder-IE-fixes.js"></script>
+<![endif]-->
+
+</body>
+</html> 

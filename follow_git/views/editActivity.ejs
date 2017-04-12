@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <!--<![endif]-->
+<head>
+    <title>Create Activity | Finddy</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body ng-app="myapp">
+	edit
+<div class="container" ng-controller="editActivityCtrl">
+  <form ng-submit="saveChange()">
+		<input type="text" name="aid" ng-model="activity.AID" hidden>
+    <input type="radio" name="type" value="D" ng-model="activity.TYPE">Dining
+    <input type="radio" name="type" value="M" ng-model="activity.TYPE">Movie
+    <input type="radio" name="type" value="B" ng-model="activity.TYPE">Board Game
+    <br>
+    Description<input type="text" name="description" ng-model="activity.DESCRIPTION"><br>
+    LOCATION<input type="text" name="location" ng-model="activity.LOCATION"><br>
+    START_TIME<input type="text" name="start_time" ng-model="activity.START_TIME"><br>
+    QUOTA<input type="text" name="quota" ng-model="activity.QUOTA"><br>
+    EXPIRE_TIME<input type="text" name="expire_time" ng-model="activity.EXPIRE_TIME"><br>
+    <input type="submit">
+  </form>
+</div>
+
+<script>
+var app = angular.module('myapp', []);
+app.controller('editActivityCtrl', function($scope, $http, $window) {
+	 $scope.activity = <%- detail %>;
+	 $scope.saveChange = function () {
+		 console.log(JSON.stringify($scope.activity));
+			  console.log( $scope.activity );
+		 $http({
+  	 		url: '/activity/api/saveChange',
+  			params: $scope.activity,
+  			type: 'GET'
+			}).then(function(result) {
+    		if (result.data == true) {
+					alert('edit success.');
+					$window.location.reload();
+				}
+			});
+	 }
+ });
+</script>
+</body>
+</html>

@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var checkNotLogin = require('../middlewares/check').checkNotLogin;
-//var bodyParser = require('body-parser');
 var DBconnect = require('../models/DBconnect.js');
-
-//router.use(bodyParser.urlencoded({ extended: true }));
-//router.use(bodyParser.json());
+var crypto = require('crypto');
+var bodyParser = require("body-parser");
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // GET /signin
 router.get('/', checkNotLogin, function(req, res, next) {
@@ -16,9 +16,11 @@ router.get('/', checkNotLogin, function(req, res, next) {
 router.post('/', checkNotLogin, function(req, res, next) {
     var email = req.fields.email;
     var password = req.fields.password;
+    var hmac = crypto.createHash('sha256');
+    hmac.update(password);
     var uid;
     console.log(email + ": " + password);
-    var sql = 'SELECT * FROM USERS WHERE EMAIL = ?';
+    var sql = 'SELECT UID,PASSWORD,USERNAME,admin FROM USERS WHERE EMAIL = ?';
     console.log(sql);
     DBconnect.getConnection(function(err,connection){
       if(err){
@@ -31,25 +33,18 @@ router.post('/', checkNotLogin, function(req, res, next) {
           console.log('ERROR-',err,message);
           return;
         }
-        if(result.length)
+        if(result.length && result[0].PASSWORD===password)
         {
-          if(result[0].PASSWORD!=password)
-          {
-            console.log('wrong password!');
-            res.redirect('/signin');
-          }
-          else
-          {
             console.log('sign in success!');
-            req.session.uid=result[0].UID;
-            console.log(result[0]);
-            res.redirect('/users');
-          
-          }
+            req.session.user=result[0].UID;
+            req.session.username=result[0].USERNAME;
+            req.session.admin=result[0].admin;
+            console.log(req.session.user);
+            res.send(true);
         }
         else{
           console.log('this email is invalid!');
-          res.redirect('/signin');
+          res.send(false);
         }
       })
     });
