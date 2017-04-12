@@ -3,10 +3,18 @@
 /*validate entries in search.html*/
 jQuery(document).ready(function(){
   $('#search').click(function(){
+      var sttMin = $("#start_min option:selected").val();
+      var sttHr = $("#start_hour option:selected").val();
+      var expMin = $("#expire_min option:selected").val();
+      var expHr = $("#expire_hour option:selected").val();
       var fin = $('#finish').val();
       var stt = $('#start').val();
       if (fin==''||stt=='')
-        alert('Please fill in all blanks!');
+        alert('Please select both start and expiration dates!');
+      else if (sttMin=='NA'||sttHr=='NA'||expMin=='NA'||expHr=='NA') {
+        alert('Please select specific time range!');
+      } else 
+        return;
   });
 });
 
@@ -16,7 +24,7 @@ jQuery(document).ready(function(){
     var sttMin = $("select[name=start_min] option:selected").val();
     var sttHr = $("select[name=start_hour] option:selected").val();
     var expMin = $("select[name=expire_min] option:selected").val();
-    var expHr = $("select[nam=expire_hour] option:selected").val();
+    var expHr = $("select[name=expire_hour] option:selected").val();
     var fin = $('#finish').val();
     var stt = $('#start').val();
     if (fin==''||stt=='')
