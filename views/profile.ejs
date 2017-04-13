@@ -73,36 +73,30 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
-                <div class="container">
-                    <ul class="nav navbar-nav">
-
-                      <li class="dropdown mega-menu-fullwidth">
-                          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='signout';">
-                            Sign Out</a>
+              <div class="container">
+                  <ul class="nav navbar-nav">
+                    <li class="mega-menu-fullwidth">
+                        <a href="/signout">
+                          Sign Out</a>
+                    </li>
+                      <li class="mega-menu-fullwidth">
+                          <a href="/users">
+                          Profile
+                          </a>
                       </li>
-                        <li class="dropdown mega-menu-fullwidth">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='activity/create';">
-                            Post New Activity
-                            </a>
-                        </li>
-                    <!-- End Shortcodes -->
-
-                    <!-- Misc Pages -->
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='/users';">
-                            Return to Profile
-                            </a>
-                        </li>
-
-                        <!-- Search Block -->
-                        <li>
-                            <a href="search">
-                                <i class="search fa fa-search search-btn"></i>
-                            </a>
-                        </li>
-                        <!-- End Search Block -->
-                    </ul>
-                </div><!--/end container-->
+                      <li class="mega-menu-fullwidth">
+                          <a href="/activity/create">
+                          Post New Activity
+                          </a>
+                      </li>
+                      <li class="mega-menu-fullwidth">
+                          <a href="/search">
+                              <i class="search fa fa-search search-btn">&nbsp;Find activity</i>
+                          </a>
+                      </li>
+                      <!-- End Search Block -->
+                  </ul>
+              </div><!--/end container-->
             </div><!--/navbar-collapse-->
         </div>
         <!--=== End Header ===-->
@@ -133,11 +127,11 @@
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
                     <i class="fa fa-cog pull-right"></i>
                 </div>
-                <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark" ng-repeat="update in updates">
+                <ul class="list-unstyled " data-mcs-theme="minimal-dark" ng-repeat="update in updates">
                     <li class="notification" >
                         <div class="overflow-h">
                             <a ng-href={{update.URL}}>{{update.UPDATECONTENT}}, posted at {{update.CREATE_TIME}}</a>
-                        </div>    
+                        </div>
                     </li>
                 </ul>
                 <hr>
