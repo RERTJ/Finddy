@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>Edit Activity | Finddy</title>
+
+	 <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/Finddy.bmp">
+	<!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="/css/style-rtl.css">
+
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="/css/header-default-rtl.css">
+    <link rel="stylesheet" href="/css/footer-v1-rtl.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/line-icons.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="/css/sky-forms-rtl.css">
+    <link rel="stylesheet" href="/css/custom-sky-forms-rtl.css">
+
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="/css/profile-rtl.css">
+	 <!-- CSS Page Style -->
+    <link rel="stylesheet" href="/css/profile-rtl.css">
+	<style type="text/css">
+#detail-table td {text-align: left; font-weight: bold;}
+#detail-table td.title{width: 30%;}
+table td {font-weight: bold;}
+#pac-input {width:100%;}
+select {width:100px; padding: 1px;}
+#now-input {padding:5px; width: 300px; margin-top:10px; font-size: 13px;}
+</style>
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="/css/style-switcher.css">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/css/default.css" id="style_color">
+    <link rel="stylesheet" href="/css/dark.css">
+   	<!-- RTL Customization -->
+    <link rel="stylesheet" href="/css/rtl.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/css/custom-rtl.css">
+
+<body ng-app="Finddyapp">
+<div class="wrapper" ng-controller="editActivityCtrl">
+		<!--=== Header ===-->
+		<div class="header">
+			<div class="container">
+				<!-- Logo -->
+				<a class="logo" >
+					<img src="/img/finddy_logo.JPG" alt="Logo">
+				</a>
+				<!-- End Logo -->
+				<!-- Toggle get grouped for better mobile display -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="fa fa-bars"></span>
+				</button>
+				<!-- End Toggle -->
+			</div><!--/end container-->
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+				<div class="container">
+					<ul class="nav navbar-nav">
+						<li class="mega-menu-fullwidth">
+                <a href="/signout">Log out</a>
+            </li>
+						<li class="mega-menu-fullwidth">
+                <a href="/activity/create">Post New Activity</a>
+            </li>
+            <li>
+            		<a href="/users">Profile</a>
+						</li>
+						<li>
+								<a href="/search">
+									  <i class="search fa fa-search search-btn"></i>
+                </a>
+            </li>
+					</ul>
+				</div><!--/end container-->
+			</div><!--/navbar-collapse-->
+		</div>
+		<!--=== End Header ===-->
+		<!--=== Breadcrumbs ===-->
+		<div class="breadcrumbs breadcrumbs-dark">
+			<div class="container">
+				<h1 class="pull-left">Edit Activity</h1>
+			</div>
+
+		</div>
+		<!--=== End Breadcrumbs ===-->
+		<!--=== Profile ===-->
+		<div class="container content profile">
+			<!-- Profile Content -->
+			<div>
+				<div class="profile-body">
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+								<h2 class="panel-title heading-sm pull-left">Details</h2>
+								<i class="fa fa-cog pull-right"></i>
+						</div>
+						<form ng-submit="saveChange()">
+						<table class="table" id="detail-table">
+							<tr>
+								<td class="title">Activity Type</td>
+								<td>
+									<section><input type="radio" name="type" value="D" ng-model="activity.TYPE">  Dining</section>
+									<section><input type="radio" name="type" value="M" ng-model="activity.TYPE">  Movie</section>
+									<section><input type="radio" name="type" value="B" ng-model="activity.TYPE">  Board Game</section>
+								</td>
+							<tr>
+								<td class="title">Description</td>
+								<td><textarea style="width:100%;height:100px" ng-model="activity.DESCRIPTION"></textarea></td>
+							</tr>
+							<tr>
+								<td class="title">Start Time</td>
+								<td>
+									<label class="input">
+											<i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="start_date" id="finish" placeholder="Date" ng-model="activity.START_DATE">
+									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<label class="select">
+											<select name="start_hour" class="hour" ng-model="activity.START_HOUR">
+													<option value="NA" disabled>Hour</option>
+													<option value="00">00</option>
+													<option value="01">01</option>
+													<option value="02">02</option>
+													<option value="03">03</option>
+													<option value="04">04</option>
+													<option value="05">05</option>
+													<option value="06">06</option>
+													<option value="07">07</option>
+													<option value="08">08</option>
+													<option value="09">09</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+													<option value="13">13</option>
+													<option value="14">14</option>
+													<option value="15">15</option>
+													<option value="16">16</option>
+													<option value="17">17</option>
+													<option value="18">18</option>
+													<option value="19">19</option>
+													<option value="20">20</option>
+													<option value="21">21</option>
+													<option value="22">22</option>
+													<option value="23">23</option>
+											</select>
+											<i></i>
+									</label>:
+									<label class="select">
+											<select name="start_min" class="minute" ng-model="activity.START_MIN">
+													<option value="NA" disabled>Minute</option>
+													<option value="00">00</option>
+													<option value="05">05</option>
+													<option value="10">10</option>
+													<option value="15">15</option>
+													<option value="20">20</option>
+													<option value="25">25</option>
+													<option value="30">30</option>
+													<option value="35">35</option>
+													<option value="40">40</option>
+													<option value="45">45</option>
+													<option value="50">50</option>
+													<option value="55">55</option>
+											</select>
+											<i></i>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="title">Enroll deadline</td>
+								<td>
+									<label class="input">
+											<i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="expire_date" id="start" placeholder="Date" ng-model="activity.EXPIRE_DATE">
+									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<label class="select">
+											<select name="expire_hour" class="hour" ng-model="activity.EXPIRE_HOUR">
+													<option value="NA" disabled>Hour</option>
+													<option value="00">00</option>
+													<option value="01">01</option>
+													<option value="02">02</option>
+													<option value="03">03</option>
+													<option value="04">04</option>
+													<option value="05">05</option>
+													<option value="06">06</option>
+													<option value="07">07</option>
+													<option value="08">08</option>
+													<option value="09">09</option>
+													<option value="10">10</option>
+													<option value="11">11</option>
+													<option value="12">12</option>
+													<option value="13">13</option>
+													<option value="14">14</option>
+													<option value="15">15</option>
+													<option value="16">16</option>
+													<option value="17">17</option>
+													<option value="18">18</option>
+													<option value="19">19</option>
+													<option value="20">20</option>
+													<option value="21">21</option>
+													<option value="22">22</option>
+													<option value="23">23</option>
+											</select>
+											<i></i>
+									</label>:
+									<label class="select">
+											<select name="exprire_min" class="minute" ng-model="activity.EXPIRE_MIN">
+													<option value="NA" disabled>Minute</option>
+													<option value="00">00</option>
+													<option value="05">05</option>
+													<option value="10">10</option>
+													<option value="15">15</option>
+													<option value="20">20</option>
+													<option value="25">25</option>
+													<option value="30">30</option>
+													<option value="35">35</option>
+													<option value="40">40</option>
+													<option value="45">45</option>
+													<option value="50">50</option>
+													<option value="55">55</option>
+											</select>
+											<i></i>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="title">Quota</td>
+								<td><label class="select">
+										<select name="quota" class="quota" ng-model="activity.QUOTA">
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+												<option value="15">15</option>
+										</select>
+										<i></i>
+								</label></td>
+							</tr>
+							<tr>
+								<td class="title">Location: </td>
+								<td>{{activity.LOCATION}}</td>
+
+							</tr>
+						</table>
+							<input type='hidden' id="pac-input" ng-model="activity.LOCATION_ID">
+							<input type='text' id="now-input"  placeholder="Search Here!"></td>
+							<input type='hidden' id="changedloc" ng-model="activity.LOCATION" value=""></td>
+
+						<fieldset style="margin-top:0px;">
+							<div id="map"></div>
+						</fieldset>
+						<input type="hidden" value={{activity.LOCATION_ID}}></div>
+						<input type="text" name="aid" ng-model="activity.AID" hidden>
+						<input type='submit' value="Submit">
+					</form>
+						</div>
+				</div>
+			</div>
+		</div>
+
+	<!--=== Footer Version 1 ===-->
+    <div class="footer-v1">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Finddy 2017 &copy; All Rights Reserved
+                        </p >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=== End Footer Version 1 ===-->
+
+</div><!--/wrapper-->
+
+
+	<!--=== End Style Switcher ===-->
+
+	<!-- JS Global Compulsory -->
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="/js/back-to-top.js"></script>
+	<script type="text/javascript" src="/js/smoothScroll.js"></script>
+	<script type="text/javascript" src="/js/circles.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<!-- JS Customization -->
+	<!-- <script type="text/javascript" src="/js/custom.js"></script> -->
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/datepicker.js"></script>
+	<script type="text/javascript" src="/js/circles-master.js"></script>
+	<script type="text/javascript" src="/js/style-switcher.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			App.initScrollBar();
+			Datepicker.initDatepicker();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script>
+var app = angular.module('Finddyapp', []);
+app.controller('editActivityCtrl', function($scope, $http, $window) {
+	 $scope.activity = <%- detail %>;
+	 $scope.saveChange = function () {
+		 console.log(JSON.stringify($scope.activity));
+			  console.log( $scope.activity );
+		 $http({
+  	 		url: '/activity/api/saveChange',
+  			params: $scope.activity,
+  			type: 'GET'
+			}).then(function(result) {
+    		if (result.data == true) {
+					alert('edit success.');
+					$window.location.href = '/activity/' + $scope.activity.AID;
+				}
+			});
+	 }
+ });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjMY-APzHXFj7XrzVdTNleLkiVEnBXrCE&libraries=places&callback=initMap&language=en-hk"
+			async defer>
+</script>
+<script>
+			function initMap() {
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: 22.4203, lng: 114.2067},
+        });
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+
+	// 			var placeId = document.getElementById('pac-input').value;
+	// 			console.log(placeId);
+	// 			if (placeId.length){
+  //       geocoder.geocode({'placeId': placeId}, function(results, status) {
+  //         if (status === 'OK') {
+  //           if (results[0]) {
+  //             map.setZoom(15);
+  //             map.setCenter(results[0].geometry.location);
+  //             var marker = new google.maps.Marker({
+  //               map: map,
+  //               position: results[0].geometry.location
+  //             });
+  //             infowindow.setContent(results[0].formatted_address);
+  //             infowindow.open(map, marker);
+  //           } else {
+  //             window.alert('No results found');
+  //           }
+  //         } else {
+  //           window.alert('Geocoder failed due to: ' + status);
+  //         }
+  //     });
+	// 	}
+	// };
+	//
+	//
+	// 	function changeMap(){
+	// 		var map = new google.maps.Map(document.getElementById('map'), {
+	// 	    center: {lat: 22.4203, lng: 114.2067},
+	// 	    zoom: 13
+	// 	  });
+
+		  var input = document.getElementById('now-input');
+		  var autocomplete = new google.maps.places.Autocomplete(input);
+		  autocomplete.bindTo('bounds', map);
+
+		  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+		  var infowindow = new google.maps.InfoWindow();
+		  var marker = new google.maps.Marker({
+		    map: map
+		  });
+		  marker.addListener('click', function() {
+		    infowindow.open(map, marker);
+
+		  });
+
+		  autocomplete.addListener('place_changed', function() {
+		    infowindow.close();
+		    var place = autocomplete.getPlace();
+		    if (!place.geometry) {
+		      return;
+		    }
+
+		    if (place.geometry.viewport) {
+		      map.fitBounds(place.geometry.viewport);
+		    } else {
+		      map.setCenter(place.geometry.location);
+		      map.setZoom(17);
+		    }
+
+		    // Set the position of the marker using the place ID and location.
+		    marker.setPlace({
+		      placeId: place.place_id,
+		      location: place.geometry.location
+		    });
+		    marker.setVisible(true);
+		    document.getElementById('changedloc').value = place.formatted_address;
+		    document.getElementById('pac-input').value = place.place_id;
+		    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + place.formatted_address);
+		    infowindow.open(map, marker);
+
+			});
+		}
+
+    </script>
+</body>
+</html>

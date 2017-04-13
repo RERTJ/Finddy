@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Error | Finddy</title>
+	<meta http-equiv="refresh" content='5;url="/users"' />
+	<!-- Latest compiled and minified CSS -->
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<link rel="shortcut icon" href="/img/Finddy.bmp">
+	<!-- Web Fonts -->
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="/css/bootstrap-rtl.min.css">
+	<link rel="stylesheet" href="/css/style-rtl.css">
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="/css/header-default-rtl.css">
+	<link rel="stylesheet" href="/css/footer-v1-rtl.css">
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/line-icons.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/sky-forms-rtl.css">
+	<link rel="stylesheet" href="/css/custom-sky-forms-rtl.css">
+	<!-- Style Switcher -->
+	<link rel="stylesheet" href="/css/style-switcher.css">
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="/css/default.css" id="style_color">
+	<link rel="stylesheet" href="/css/dark.css">
+	<!-- RTL Customization -->
+	<link rel="stylesheet" href="/css/rtl.css">
+	<!-- CSS Customization -->
+	<link rel="stylesheet" href="/css/custom-rtl.css">
+	<style>
+		body{ text-align: center;}
+		h4{
+			text-align: center;
+		}
+		.message{
+			margin: auto;
+			width: 500px;
+		}
+		input.btn-custom{
+			width:200px;
+		}
+		#message{
+			position: relative;
+			margin-top: 100px;
+			margin-bottom: 40px;
+		}
+	</style>
+
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+	    <!--=== Header ===-->
+	        <div class="header">
+	            <div class="container">
+	                <!-- Logo -->
+	                <a class="logo" href="/profile">
+	                    <img src="/img/finddy_logo.JPG">
+	                </a>
+	                <!-- End Logo -->
+	                <!-- Toggle get grouped for better mobile display -->
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="fa fa-bars"></span>
+	                </button>
+	                <!-- End Toggle -->
+	            </div><!--/end container-->
+
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+								<div class="container">
+										<ul class="nav navbar-nav">
+											<li class="mega-menu-fullwidth">
+													<a href="/signout">
+														Sign Out</a>
+											</li>
+												<li class="mega-menu-fullwidth">
+														<a href="/users">
+														Profile
+														</a>
+												</li>
+												<li class="mega-menu-fullwidth">
+														<a href="/activity/create">
+														Post New Activity
+														</a>
+												</li>
+												<li class="mega-menu-fullwidth">
+														<a href="/search">
+																<i class="search fa fa-search search-btn">&nbsp;Find activity</i>
+														</a>
+												</li>
+												<!-- End Search Block -->
+										</ul>
+								</div><!--/end container-->
+	            </div><!--/navbar-collapse-->
+	        </div>
+
+
+				<div class="well message" id='message'>
+					<label><%=message %></label><br>
+                    <label>You will be redirected to your profile page in <span id="timeCount">5</span> seconds.</label>
+				</div>
+
+			</div>
+
+
+	<div class="footer-v1">
+			<div class="copyright">
+					<div class="container">
+							<div class="row">
+									<div class="col-md-6">
+											<p>Finddy 2017 &copy; All Rights Reserved</p>
+									</div>
+							</div>
+					</div>
+			</div><!--/copyright-->
+	</div>
+	<!-- Latest compiled and minified JavaScript -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>
+var counter = 5;
+var interval = setInterval(function() {
+    counter--;
+    $('#timeCount').html(counter);
+    if (counter == 0) {
+        clearInterval(interval);
+    }
+}, 1000);
+
+</script>
+
+</body>
+</html>
