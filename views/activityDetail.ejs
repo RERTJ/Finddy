@@ -213,14 +213,14 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 										</h4>
 									</div>
 									<form ng-submit="submitCommentAndRating()" ng-if="canRate=='true'">
-										<textarea rows="10" cols="100" name="content" ng-model="commentContent"> </textarea>
+										<textarea rows="10" cols="100" name="content" ng-model="newComment.content"> </textarea>
 									    <div class="starbox">
 											<span class="s_name">overall rating：</span>
 											<div class="rateyo" id="rateyoyo"></div>
-											<input type="hidden" id="RATING_result" name="rating" ng-model="commentRating"/>
+											<input type="hidden" id="RATING_result" name="rating" ng-model="newComment.rating"/>
 
 
-											<span class="s_result fl">Your Rate on This Activity is <span ng-bind='commentRating'></span></span>
+											<span class="s_result fl">Your Rate on This Activity is <span ng-bind='newComment.rating'></span></span>
 										</div><input  class="btn-u btn-u-default btn-block" type="submit" value="Submit">
 									</form>
 									<hr/>
@@ -359,6 +359,7 @@ app.controller('detailCtrl', function($scope, $http, $window) {
  			}).then(function(result) {
      		if (result.data == true) {
  					alert('delete success.');
+					$window.location.href='/activity/create';
  				}
  			});
     }
@@ -379,7 +380,7 @@ app.controller('detailCtrl', function($scope, $http, $window) {
  	$scope.submitCommentAndRating = function () {
  		$http({
  			 url: '/activity/api/createCommentRating',
- 			 params: { activity_id: $scope.detail.AID, content: $scope.commentContent, rating: $scope.commentRating },
+ 			 params: { activity_id: $scope.detail.AID, content: $scope.newComment.content, rating: $scope.commentRating },
  			 type: 'GET'
  		 }).then(function(result) {
  			 if (result.data == true) {
