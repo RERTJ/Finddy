@@ -312,17 +312,16 @@ router.get('/activityPosted',checkLogin, function(req,res,next)
           console.log('ERROR-',err.message);
           return;
         }
-        console.log(result[0]);
         for(var i=0; i<result.length;i++){
           result[i].START_TIME = toTime(result[i].START_TIME);
         }
+        console.log(result[0]);
           res.render('activityPosted',{
             activities: JSON.stringify(result)
           });
 
       })
   });
-  //res.render('activityPosted');
 
 });
 
@@ -339,7 +338,9 @@ router.get('/api/getUpdates', checkLogin, function(req, res, next) {
         console.log(err);
       }
       else {
-        console.log("sent result");
+        for(var i=0; i<result.length;i++){
+          result[i].CREATE_TIME = toTime(result[i].CREATE_TIME);
+        }
         res.send(JSON.stringify(result));
       }
     });
@@ -369,7 +370,7 @@ router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
         else{
           for(var i=0; i<result.length;i++){
           result[i].START_TIME = toTime(result[i].START_TIME);
-          }
+        }
           result1 = result;
         }
         connection.query(sql,[target_id],function(err,result){
@@ -383,7 +384,7 @@ router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
           })
         })
       })
-
+      
     });
 
 });

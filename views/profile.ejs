@@ -10,16 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/Finddy2.ico">
+
     <!-- Web Fonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
     <!-- CSS Global Compulsory -->
     <link rel="stylesheet" href="css/bootstrap-rtl.min.css">
     <link rel="stylesheet" href="css/style-rtl.css">
+
     <!-- CSS Header and Footer -->
     <link rel="stylesheet" href="css/header-default-rtl.css">
     <link rel="stylesheet" href="css/footer-v1-rtl.css">
+
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/line-icons.css">
@@ -27,21 +32,26 @@
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="css/sky-forms-rtl.css">
     <link rel="stylesheet" href="css/custom-sky-forms-rtl.css">
+
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="css/profile-rtl.css">
     <link rel="stylesheet" href="css/shortcode_timeline2-rtl.css">
+
     <!-- Style Switcher -->
     <link rel="stylesheet" href="css/style-switcher.css">
+
     <!-- CSS Theme -->
     <link rel="stylesheet" href="css/default.css" id="style_color">
     <link rel="stylesheet" href="css/dark.css">
+
     <!-- RTL Customization -->
     <link rel="stylesheet" href="css/rtl.css">
+
     <!-- CSS Customization -->
     <link rel="stylesheet" href="css/custom-rtl.css">
 </head>
 <body ng-app="Finddyapp2">
-<div class="wrapper">
+<div class="wrapper" ng-controller="upcoming_activities_controller">
     <!--=== Header ===-->
         <div class="header">
             <div class="container">
@@ -49,28 +59,45 @@
                 <a class="logo">
                     <img src="img/finddy_logo.JPG" alt="Logo">
                 </a>
-            </div>
+                <!-- End Logo -->
+
+
+
+                <!-- Toggle get grouped for better mobile display -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa fa-bars"></span>
+                </button>
+                <!-- End Toggle -->
+            </div><!--/end container-->
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
                 <div class="container">
                     <ul class="nav navbar-nav">
-                      <li class="mega-menu-fullwidth">
-                          <a href="/signout">
+
+                      <li class="dropdown mega-menu-fullwidth">
+                          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='signout';">
                             Sign Out</a>
                       </li>
-                        <li class="mega-menu-fullwidth">
-                            <a href="/users">
-                            Profile
-                            </a>
-                        </li>
-                        <li class="mega-menu-fullwidth">
-                            <a href="/activity/create">
+                        <li class="dropdown mega-menu-fullwidth">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='activity/create';">
                             Post New Activity
                             </a>
                         </li>
-                        <li class="mega-menu-fullwidth">
-                            <a href="/search">
-                                <i class="search fa fa-search search-btn">&nbsp;Find activity</i>
+                    <!-- End Shortcodes -->
+
+                    <!-- Misc Pages -->
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='/users';">
+                            Return to Profile
+                            </a>
+                        </li>
+
+                        <!-- Search Block -->
+                        <li>
+                            <a href="search">
+                                <i class="search fa fa-search search-btn"></i>
                             </a>
                         </li>
                         <!-- End Search Block -->
@@ -102,21 +129,19 @@
                     </li>
                 </ul>
 
-
-                <hr>
-                <!--Notification-->
-                <div class="panel-heading-v2 overflow-h" ng-controller="upcoming_activities_controller">
+                <div class="panel-heading-v2 overflow-h">
                     <h2 class="heading-xs pull-left"><i class="fa fa-bell-o"></i> Notification</h2>
                     <i class="fa fa-cog pull-right"></i>
                 </div>
-                <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark">
-                    <div>
-                      <ui ng-repeat="update in updates">
-                        <li><a ng-href='{{update.URL}}'>{{update.UPDATECONTENT}}, posted at {{update.CREATE_TIME}}</a></li>
-                      </ui>
-                    </div>
+                <ul class="list-unstyled mCustomScrollbar margin-bottom-20" data-mcs-theme="minimal-dark" ng-repeat="update in updates">
+                    <li class="notification" >
+                        <div class="overflow-h">
+                            <a ng-href={{update.URL}}>{{update.UPDATECONTENT}}, posted at {{update.CREATE_TIME}}</a>
+                        </div>    
+                    </li>
                 </ul>
-                <!--End Notification-->
+                <hr>
+
 
                 <div class="margin-bottom-50"></div>
 
@@ -129,7 +154,7 @@
             <!--End Left Sidebar-->
 
             <!-- Profile Content -->
-            <div class="col-md-9" ng-controller="upcoming_activities_controller">
+            <div class="col-md-9" >
                 <div ng-if='!activities.length'>No result!</div>
                 <div class="profile-body" ng-repeat="activity in activities">
                     <!--Timeline-->
@@ -200,11 +225,13 @@
     {
         $scope.activities = <%- activities %>;
         $http({
-                url: '/users/api/getUpdates',
-                type: 'GET'
-            }).then(function(result) {
-                $scope.updates = result.data;
-            });
+            url: '/users/api/getUpdates',
+            type: 'GET'
+          }).then(function(result) {
+            console.log("i am here!");
+            console.log(result);
+            $scope.updates = result.data;
+          });
     });
 </script>
 <!--[if lt IE 9]>
