@@ -22,6 +22,9 @@ router.get('/',checkLogin, function(req, res, next) {
           console.log('ERROR-',err.message);
           return;
         }
+        for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+        }
          res.render('profile',{
             activities: JSON.stringify(result)
           });
@@ -310,6 +313,9 @@ router.get('/activityPosted',checkLogin, function(req,res,next)
           return;
         }
         console.log(result[0]);
+        for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+        }
           res.render('activityPosted',{
             activities: JSON.stringify(result)
           });
@@ -361,6 +367,9 @@ router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
           result1 = "";
         }
         else{
+          for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+          }
           result1 = result;
         }
         connection.query(sql,[target_id],function(err,result){
@@ -374,10 +383,23 @@ router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
           })
         })
       })
-      
+
     });
 
 });
+
+function toTime(time){
+	var objDate = new Date(time);
+	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  	var year = objDate.getFullYear();
+  	var month = months[objDate.getMonth()];
+  	var date = objDate.getDate();
+	var hours = "0" + objDate.getHours();
+	var minutes = "0" + objDate.getMinutes();
+	var seconds = "0" + objDate.getSeconds();
+	var formattedTime = year + "-" + month +"-" + date +" " + hours.substr(-2) + ':' + minutes.substr(-2);
+	return formattedTime;
+}
 
 module.exports = router;
 //profile.html

@@ -39,7 +39,16 @@
 #detail-table td {text-align: left; font-weight: bold;}
 #detail-table td.title{width: 30%;}
 table td {font-weight: bold;}
-
+#now-input {
+	 background-color: #fff;
+	 font-family: Roboto;
+	 font-size: 15px;
+	 font-weight: 300;
+	 margin-left: 12px;
+	 padding: 0 11px 0 13px;
+	 text-overflow: ellipsis;
+	 width: 300px;
+ }
 </style>
     <!-- Style Switcher -->
     <link rel="stylesheet" href="/css/style-switcher.css">
@@ -246,9 +255,9 @@ table td {font-weight: bold;}
 
 							</tr>
 						</table>
-							<input type='hidden' id="pac-input" ng-model="activity.LOCATION_ID">
+							<input type='hidden' id="pac-input" value={{activity.LOCATION_ID}}>
 							<input type='text' id="now-input"  placeholder="Search Here!"></td>
-							<input type='hidden' id="changedloc" ng-model="activity.LOCATION" value=""></td>
+							<input type='hidden' id="changedloc"  value={{activity.LOCATION}}></td>
 
 						<fieldset style="margin-top:0px;">
 							<div id="map"></div>
@@ -314,6 +323,9 @@ var app = angular.module('Finddyapp', []);
 app.controller('editActivityCtrl', function($scope, $http, $window) {
 	 $scope.activity = <%- detail %>;
 	 $scope.saveChange = function () {
+		 $scope.activity.LOCATION=document.getElementById('changedloc').value
+		 $scope.activity.LOCATION_ID=document.getElementById('pac-input').value
+
 		 console.log(JSON.stringify($scope.activity));
 			  console.log( $scope.activity );
 		 $http({

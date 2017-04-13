@@ -127,11 +127,13 @@ router.get('/api/saveChange', checkLogin, function(req, res, next) {
   var type = req.query.TYPE;
   var description = req.query.DESCRIPTION;
   var location = req.query.LOCATION;
+  var locationID = req.query.LOCATION_ID;
+  console.log(location,locationID);
   var quota = req.query.QUOTA;
   var start_time = timestamp(req.query.START_DATE, req.query.START_HOUR, req.query.START_MIN);
   var expire_time = timestamp(req.query.EXPIRE_DATE, req.query.EXPIRE_HOUR, req.query.EXPIRE_MIN);
-  var sql = 'UPDATE ACTIVITIES SET TYPE = ?, DESCRIPTION = ?, LOCATION = ?, START_TIME = ?, EXPIRE_TIME = ?, QUOTA = ? WHERE AID = ?';
-  var sqlParam = [type, description, location, start_time, expire_time, quota, id];
+  var sql = 'UPDATE ACTIVITIES SET TYPE = ?, DESCRIPTION = ?, LOCATION = ?, START_TIME = ?, EXPIRE_TIME = ?, QUOTA = ?,LOCATION_ID = ? WHERE AID = ?';
+  var sqlParam = [type, description, location, start_time, expire_time, quota, locationID,id];
   DBconnect.getConnection(function(err, connection) {
     if (err) {
       console.log('Error connecting to Db.');
@@ -258,9 +260,6 @@ router.get('/api/getComments', checkLogin, function(req, res, next) {
 });
 
 router.get('/api/createCommentRating', checkLogin, function(req, res, next) {
-  if (req.headers['x-requested-with'] != 'XMLHttpRequest') {
-    res.render('message', { message: 'Invalid access.'});
-  } else {
   var rating = req.query.rating;
   var activity_id = req.query.activity_id;
   var user_id = req.session.user;
@@ -307,13 +306,9 @@ router.get('/api/createCommentRating', checkLogin, function(req, res, next) {
     });
     connection.release();
   });
-}
 });
 
 router.get('/api/createComment', checkLogin, function(req, res, next) {
-  if (req.headers['x-requested-with'] != 'XMLHttpRequest') {
-    res.render('message', { message: 'Invalid access.'});
-  } else {
   var sql = 'INSERT INTO COMMENTS (ACTIVITY_ID, CONTENT, CREATOR_ID, CREATE_TIME) VALUES (?, ?, ?, CURRENT_TIMESTAMP())';
   var sqlParam = [req.query.activity_id, req.query.content, req.session.user];
   DBconnect.getConnection(function(err, connection) {
@@ -330,7 +325,6 @@ router.get('/api/createComment', checkLogin, function(req, res, next) {
     });
     connection.release();
   });
-}
 });
 
 function toTime(time){
