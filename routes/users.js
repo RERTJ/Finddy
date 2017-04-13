@@ -9,7 +9,7 @@ var crypto = require('crypto');
 /* GET users listing. */
 router.get('/',checkLogin, function(req, res, next) {
   var uid = req.session.user;
-  var sql_select_upcoming_activities = "SELECT LOCATION,DESCRIPTION,AID,START_TIME FROM ACTIVITIES WHERE AID IN(SELECT ACTIVITY_ID FROM JOINERS WHERE JOINER_ID=?) AND START_TIME > CURRENT_TIMESTAMP()";
+  var sql_select_upcoming_activities = "SELECT LOCATION,DESCRIPTION,AID,START_TIME FROM ACTIVITIES WHERE AID IN(SELECT ACTIVITY_ID FROM JOINERS WHERE JOINER_ID=?) AND START_TIME > CURRENT_TIMESTAMP() AND STATUS IS NULL";
   var result;
   DBconnect.getConnection(function(err,connection){
       if(err){
@@ -384,7 +384,7 @@ router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
           })
         })
       })
-      
+
     });
 
 });
