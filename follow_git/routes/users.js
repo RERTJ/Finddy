@@ -22,6 +22,9 @@ router.get('/',checkLogin, function(req, res, next) {
           console.log('ERROR-',err.message);
           return;
         }
+        for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+        }
          res.render('profile',{
             activities: JSON.stringify(result)
           });
@@ -310,6 +313,9 @@ router.get('/activityPosted',checkLogin, function(req,res,next)
           return;
         }
         console.log(result[0]);
+        for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+        }
           res.render('activityPosted',{
             activities: JSON.stringify(result)
           });
@@ -340,6 +346,60 @@ router.get('/api/getUpdates', checkLogin, function(req, res, next) {
     connection.release();
   });
 });
+
+router.get('/profileForOthers/:id',checkLogin,function(req,res,next){
+    var target_id = req.params.id;
+    var sql_select_activities = "SELECT LOCATION,DESCRIPTION,AID,START_TIME FROM ACTIVITIES WHERE AID IN(SELECT ACTIVITY_ID FROM JOINERS WHERE JOINER_ID=?)";
+    var sql = "SELECT USERNAME,EMAIL,PHONE_NO,DESCRIPTION FROM USERS WHERE UID =?";
+    var result1;
+    DBconnect.getConnection(function(err,connection){
+      if(err){
+        console.log('Error happens when connect to db');
+        return;
+      }
+      connection.query(sql_select_activities,[target_id],function(err,result){
+        if(err)
+        {
+          console.log('ERROR-',err.message);
+          return;
+        }
+        if(!result.length){
+          result1 = "";
+        }
+        else{
+          for(var i=0; i<result.length;i++){
+          result[i].START_TIME = toTime(result[i].START_TIME);
+          }
+          result1 = result;
+        }
+        connection.query(sql,[target_id],function(err,result){
+          if(err){
+            console.log(err);
+            return;
+          }
+          res.render("profileForOthers",{
+            activities : JSON.stringify(result1),
+            user: JSON.stringify(result[0])
+          })
+        })        
+      })
+      
+    });
+
+});
+
+function toTime(time){
+	var objDate = new Date(time);
+	var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  	var year = objDate.getFullYear();
+  	var month = months[objDate.getMonth()];
+  	var date = objDate.getDate();
+	var hours = "0" + objDate.getHours();
+	var minutes = "0" + objDate.getMinutes();
+	var seconds = "0" + objDate.getSeconds();
+	var formattedTime = year + "-" + month +"-" + date +" " + hours.substr(-2) + ':' + minutes.substr(-2);
+	return formattedTime;
+}
 
 module.exports = router;
 //profile.html

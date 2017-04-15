@@ -47,7 +47,7 @@
 		<div class="header">
 			<div class="container">
 				<!-- Logo -->
-				<a class="logo" href="profile.html">
+				<a class="logo" href="../">
 					<img src="../img/finddy_logo.jpg" alt="Logo">
 				</a>
 				<!-- End Logo -->
@@ -57,7 +57,7 @@
 					<ul class="loginbar pull-right">
 						
 						<li class="topbar-devider"></li>
-						<li><a href="login.html">Logout</a></li>
+						<li><a href="../../signin">Logout</a></li>
 					</ul>
 				</div>
 				<!-- End Topbar -->
@@ -134,7 +134,7 @@
 		<div class="container content-sm" >
 			
 			<!-- Begin Table Search v2 -->
-			<div class="table-search-v2 margin-bottom-30">
+			<div class="table-search-v2 margin-bottom-30" ng-if="user.EMAIL">
 				<div class="table-responsive">
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -171,7 +171,7 @@
 									<ul class="list-inline table-buttons">
 										<li><button ng-click="set_blacklist()"><i class="fa fa-trash-o"></i></button></li>
 										<li><button ng-click="set_whitelist()"><i class="fa fa-edit"></i></button></li>
-										
+										<li><button ng-click="find_user()"><i class="fa fa-search"></i></button></li>
 									</ul>
 								</td>
 							</tr>
@@ -276,6 +276,9 @@
 				}
 			});
 		};
+		$scope.find_user = function(){
+			$window.location.href = "/users/profileForOthers/" + $scope.user.UID;
+		}
     });
 
 </script> 
@@ -286,5 +289,3 @@
 	<![endif]-->
 </body>
 </html>
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
