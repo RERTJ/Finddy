@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>Edit Activity | Finddy</title>
+	 <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/Finddy.bmp">
+	<!-- Web Fonts -->
+    <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="/css/style-rtl.css">
+    <!-- CSS Header and Footer -->
+    <link rel="stylesheet" href="/css/header-default-rtl.css">
+    <link rel="stylesheet" href="/css/footer-v1-rtl.css">
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/line-icons.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="/css/sky-forms-rtl.css">
+    <link rel="stylesheet" href="/css/custom-sky-forms-rtl.css">
+    <!-- CSS Page Style -->
+    <link rel="stylesheet" href="/css/profile-rtl.css">
+	 <!-- CSS Page Style -->
+    <link rel="stylesheet" href="/css/profile-rtl.css">
+	<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+#detail-table td {text-align: left; font-weight: bold;}
+#detail-table td.title{width: 30%;}
+table td {font-weight: bold;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* starbox */
+.starbox{width:480px;margin:20px auto;height:30px;}
+.fl{float:left;display:inline;}
+.s_name{float:left;display:block;width:60px;text-align:right;}
+.star_ul{background:url(/IMG/star.png) no-repeat 0 -150px;width:132px;z-index:10;position:relative;height:25px;}
+.star_ul li{float:left;margin-right:1px;width:25px;height:25px;}
+.star_ul li a{display:block;height:25px;position:absolute;left:0;top:0;text-indent:-999em;}
+.star_ul li .active-star{background:url(/IMG/star.png) no-repeat;}
+.star_ul li .one-star{width:25px;background-position:0 -120px;z-index:50;}
+.star_ul li .two-star{width:51px;background-position:0 -90px;z-index:40;}
+.star_ul li .three-star{width:79px;background-position:0 -60px;z-index:30;}
+.star_ul li .four-star{width:105px;background-position:0 -30px;z-index:20;}
+.star_ul li .five-star{width:129px;margin-right:0;background-position:0 0;z-index:10;}
+.s_result{padding:6px 0 0 5px;}
+.square_ul{background:url(/IMG/star.png) no-repeat 0 -222px;width:146px;z-index:10;position:relative;height:20px;}
+.square_ul li{float:left;margin-right:1px;width:29px;height:20px;}
+.square_ul li a{display:block;height:20px;position:absolute;left:0;top:0;text-indent:-999em;}
+.square_ul li .active-square{background:url(/IMG/star.png) no-repeat;}
+.square_ul li .square-1{width:29px;background-position:0 -243px;z-index:50;}
+.square_ul li .square-2{width:58px;background-position:0 -264px;z-index:40;}
+.square_ul li .square-3{width:87px;background-position:0 -285px;z-index:30;}
+.square_ul li .square-4{width:116px;background-position:0 -306px;z-index:20;}
+.square_ul li .square-5{width:145px;margin-right:0;background-position:0 -327px;z-index:10;}
+.s_result_square{padding:4px 0 0 9px;}
+</style>
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="/css/style-switcher.css">
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/css/default.css" id="style_color">
+    <link rel="stylesheet" href="/css/dark.css">
+   	<!-- RTL Customization -->
+    <link rel="stylesheet" href="/css/rtl.css">
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="/css/custom-rtl.css">
+<body ng-app="Finddyapp">
+<div class="wrapper"  ng-controller="detailCtrl">
+		<!--=== Header ===-->
+		<div class="header">
+			<div class="container">
+				<!-- Logo -->
+				<a class="logo" href="users">
+					<img src="/img/finddy_logo.JPG" alt="Logo">
+				</a>
+				<!-- End Logo -->
+				<!-- Toggle get grouped for better mobile display -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="fa fa-bars"></span>
+				</button>
+				<!-- End Toggle -->
+			</div><!--/end container-->
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+				<div class="container">
+					<ul class="nav navbar-nav">
+						<li class="mega-menu-fullwidth">
+                <a href="/signout">Log out</a>
+            </li>
+						<li class="mega-menu-fullwidth">
+                <a href="/activity/create">Post New Activity</a>
+            </li>
+            <li>
+            		<a href="/profile">Profile</a>
+						</li>
+
+						<!-- Search Block -->
+						<li>
+								<a href="/search">
+									  <i class="search fa fa-search search-btn"></i>
+                </a>
+            </li>
+						<!-- End Search Block -->
+					</ul>
+				</div><!--/end container-->
+			</div><!--/navbar-collapse-->
+		</div>
+		<!--=== End Header ===-->
+		<!--=== Breadcrumbs ===-->
+		<div class="breadcrumbs breadcrumbs-dark">
+			<div class="container">
+				<h1 class="pull-left" ng-if="detail.TYPE == 'M'">Movie @ {{detail.START_TIME}}</h1>
+				<h1 class="pull-left" ng-if="detail.TYPE == 'D'">Dining @ {{detail.START_TIME}}</h1>
+				<h1 class="pull-left" ng-if="detail.TYPE == 'B'">Board Game @ {{detail.START_TIME}}</h1>
+			</div>
+
+		</div>
+		<!--=== End Breadcrumbs ===-->
+
+		<!--=== Profile ===-->
+		<div class="container content profile">
+			<!-- Profile Content -->
+			<div>
+				<div class="profile-body">
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+								<h2 class="panel-title heading pull-left">Details</h2>
+								<i class="fa fa-cog pull-right"></i>
+						</div>
+						<div class="panel-body">
+							<table class="table" id="detail-table">
+								<tr>
+									<td class="title">Activity Hoster</td>
+									<td><a href="/users">{{detail.USERNAME}}</a></td>
+								</tr>
+								<tr>
+									<td class="title">Activity Type</td>
+									<td>
+										<span ng-if="detail.TYPE == 'M'">Movie</span>
+										<span ng-if="detail.TYPE == 'B'">Board Game</span>
+										<span ng-if="detail.TYPE == 'D'">Dinning</span>
+									</td>
+								<tr>
+									<td class="title">Description</td>
+									<td>{{detail.DESCRIPTION}}</td>
+								</tr>
+								<tr>
+									<td class="title">Start Time</td>
+									<td>{{detail.START_TIME}}</td>
+								</tr>
+								<tr>
+									<td class="title">Enroll deadline</td>
+									<td>{{detail.EXPIRE_TIME}}</td>
+								</tr>
+								<tr>
+								<td class="title">Max Number of Joiner</td>
+								<td>{{detail.QUOTA}}</td>
+								</tr>
+								<tr ng-if="detail.RATING!=0">
+									<td class="title">Overall Rating</td>
+
+									<td><div id="rateYo"></div><h4>This activity get {{detail.RATING}}/5~</h4></td>
+
+								</tr>
+								<tr>
+									<td class="title">Location</td>
+									<td>{{detail.LOCATION}}</td>
+								</tr>
+
+							</table>
+						</div>
+						<fieldset>
+							<input type="hidden" id="pac-input" value={{detail.LOCATION_ID}}></div>
+							<input type="hidden" id="RATING" value={{detail.RATING}}></div>
+
+							<div id="map"></div>
+						</fieldset>
+					</div>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Joiners</h2>
+							<i class="fa fa-group pull-right"></i>
+						</div>
+						<table class="table" id="joiner-able">
+								<tr>
+									<td></td>
+									<td>Username</td>
+									<td>Contact</td>
+								</tr>
+								<tr ng-repeat="joiner in detail.JOINERS">
+									<td>{{$index + 1}}</td>
+									<td>{{joiner.USERNAME}}</td>
+									<td>{{joiner.PHONE_NO}}</td>
+								</tr>
+						</table>
+					</div>
+					<div class="panel panel-profile">
+						<div ng-if="actionButton=='available'">
+          		<button class="btn-u btn-u-default btn-block" type="button" ng-click="joinActivity()">Join</button>
+						</div>
+						<div ng-if="actionButton=='joined'">
+							<button class="btn-u btn-u-default btn-block" type="button" ng-click="quitActivity()">Quit</button>
+						</div>
+						<div ng-if="admin=='Y' && actionButton!='creator'">
+							<button class="btn-u btn-u-default btn-block" type="button" ng-click="deleteActivity()">Delete</button>
+						</div>
+						<div ng-if="actionButton=='creator'">
+							<button class="btn-u btn-u-default btn-block" type="button" ng-click="deleteActivity()">Cancel</button>
+							<button class="btn-u btn-u-default btn-block" type="button" ng-click="editActivity()">Edit</button>
+						</div>
+					</div>
+					<div class="panel panel-profile">
+						<div class="panel-heading overflow-h">
+							<h2 class="panel-title heading-sm pull-left">Activity Comments and Ratings</h2>
+							<i class="fa fa-comments pull-right"></i>
+						</div>
+						<div class="panel-body">
+							<div id="commentbox" class="media media-v2 margin-bottom-20">
+								<div class="media media-v2" ng-repeat="comment in postedComments">
+									<div class="media-body">
+
+										<h4 class="media-heading">
+											<strong>{{comment.USERNAME}}</strong>
+											&nbsp;&nbsp;&nbsp;&nbsp;posted at {{comment.CREATE_TIME}}
+										</h4>
+										<p>{{comment.CONTENT}}</p><br>
+										<p ng-if="comment.RATING">Rating:{{comment.RATING}}</p>
+									</div>
+								</div>
+
+								<div class="media media-v2">
+									<div class="media-body">
+										<h4 class="media-heading">
+											<strong>Post new Comment</strong>
+										</h4>
+									</div>
+									<form ng-submit="submitCommentAndRating()" ng-if="canRate=='true'">
+										<textarea rows="10" cols="100" name="content" ng-model="commentContent"> </textarea>
+									    <div class="starbox">
+											<span class="s_name">overall rating：</span>
+											<div class="rateyo" id="rateyoyo"></div>
+											<input type="hidden" id="RATING_result" name="rating" ng-model="commentRating"/>
+
+
+											<span class="s_result fl">Your Rate on This Activity is <span ng-bind='commentRating'></span></span>
+										</div><input class="btn-xs reply" type="submit" value="Submit">
+									</form>
+									<hr/>
+
+									<div ng-if="canRate!='true'">
+									<form ng-submit="submitComment()">
+										<textarea rows="10" cols="100" name="content" ng-model="newComment.content"> </textarea>
+										<input class="btn-xs reply" type="submit" value="Submit">
+									</form>
+								</div>
+								</div>
+							</div>
+							<!--/end media media v2-->
+						</div>
+						<!--End panel body-->
+
+					<!-- End Profile Content -->
+			    	</div>
+			    	<!-- End Panel -->
+				</div>
+				<!-- End Profile Body -->
+			</div>
+			<!-- End col-md 9 -->
+		</div>
+		<!--=== End Profile Container ===-->
+	<!--=== Footer Version 1 ===-->
+    <div class="footer-v1">
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Finddy 2017 &copy; All Rights Reserved
+                        </p >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=== End Footer Version 1 ===-->
+
+</div><!--/wrapper-->
+
+
+	<!--=== End Style Switcher ===-->
+
+	<!-- JS Global Compulsory -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="/js/back-to-top.js"></script>
+	<script type="text/javascript" src="/js/smoothScroll.js"></script>
+	<script type="text/javascript" src="/js/circles.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<!-- JS Customization -->
+	<!-- <script type="text/javascript" src="/js/custom.js"></script> -->
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script type="text/javascript" src="/js/datepicker.js"></script>
+	<script type="text/javascript" src="/js/circles-master.js"></script>
+	<script type="text/javascript" src="/js/style-switcher.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			App.initScrollBar();
+			Datepicker.initDatepicker();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+	<!-- rate -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
+
+	<script>
+		$(function(){
+			$("#rateYo").rateYo({
+		    numStars: 5,
+				starWidth: "20px",
+				rating: document.getElementById('RATING').value,
+				readOnly:true
+		  });
+			$("#rateyoyo").rateYo({
+				rating: 2.5,
+				numStars: 5,
+				precision: 2,
+				starWidth: "20px",
+				rtl: true,
+		}).on("rateyo.set", function (e, data) {
+			document.getElementById("RATING_result").value=data.rating;
+			console.log(document.getElementById("RATING_result").value)
+		});
+	});
+	</script>
+
+
+<script>
+var app = angular.module('Finddyapp', []);
+app.controller('detailCtrl', function($scope, $http, $window) {
+	 $scope.detail = <%- detail %>;
+	 $scope.actionButton = '<%- actionButton %>';
+	 $scope.newComment = {};
+	 $http({
+			url: '/activity/api/getComments',
+			params: { activity_id: $scope.detail.AID },
+			type: 'GET'
+		}).then(function(result) {
+			$scope.postedComments = JSON.parse(result.data[0]);
+			$scope.canRate = result.data[1];
+		});
+		$scope.editActivity = function() {
+ 		 $window.location.href = '/activity/' + $scope.detail.AID + '/edit';
+ 	 }
+ 	 $scope.joinActivity = function() {
+ 		 $http({
+   	 		url: '/activity/api/join',
+   			params: { activity_id: $scope.detail.AID },
+   			type: 'GET'
+ 			}).then(function(result) {
+     		if (result.data == true) {
+ 					alert('join success.');
+ 					$window.location.reload();
+ 				}
+ 			});
+ 	 };
+    $scope.deleteActivity = function() {
+      $http({
+   	 		url: '/activity/api/delete',
+   			params: { activity_id: $scope.detail.AID },
+   			type: 'GET'
+ 			}).then(function(result) {
+     		if (result.data == true) {
+ 					alert('delete success.');
+ 				}
+ 			});
+    }
+ 	 $scope.quitActivity = function() {
+ 		 $http({
+   	 		url: '/activity/api/quit',
+   			params: { activity_id: $scope.detail.AID },
+   			type: 'GET'
+ 			}).then(function(result) {
+     		if (result.data == true) {
+ 					alert('quit success.');
+ 					$window.location.reload();
+ 				}
+ 			});
+ 	 }
+ 	$scope.submitCommentAndRating = function () {
+ 		$http({
+ 			 url: '/activity/api/createCommentRating',
+ 			 params: { activity_id: $scope.detail.AID, content: $scope.commentContent, rating: $scope.commentRating },
+ 			 type: 'GET'
+ 		 }).then(function(result) {
+ 			 if (result.data == true) {
+ 				 alert('Comment and rating post successfully.');
+ 				 $window.location.reload();
+ 			 }
+ 		 });
+ 	}
+	$scope.submitComment = function () {
+ 		$http({
+ 			 url: '/activity/api/createComment',
+ 			 params: { activity_id: $scope.detail.AID, content: $scope.newComment.content },
+ 			 type: 'GET'
+ 		 }).then(function(result) {
+			 console.log(result);
+ 			 if (result.data == true) {
+ 				 alert('Comment post successfully.');
+ 				 $window.location.reload();
+ 			 }
+ 		 });
+ 	}
+});
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjMY-APzHXFj7XrzVdTNleLkiVEnBXrCE&libraries=places&callback=initMap&language=en-hk"
+			async defer>
+</script>
+<script>
+			function initMap() {
+				var placeId = document.getElementById('pac-input').value;
+				console.log(placeId.length);
+				if (placeId.length){
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 22.4203, lng: 114.2067},
+        });
+        var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+        // document.getElementById('submit').addEventListener('click', function() {
+        geocoder.geocode({'placeId': placeId}, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+              map.setZoom(15);
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+              infowindow.setContent(results[0].formatted_address);
+              infowindow.open(map, marker);
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+      });
+		}
+		}
+    </script>
+</body>
+</html>

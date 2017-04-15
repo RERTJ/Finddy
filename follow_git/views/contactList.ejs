@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<title>Contact List | Finddy</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Web Fonts -->
+	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+	<!-- CSS Global Compulsory -->
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style-rtl.css">
+
+	<!-- CSS Header and Footer -->
+	<link rel="stylesheet" href="../css/header-default.css">
+	<link rel="stylesheet" href="../css/footer-v1.css">
+
+	<!-- CSS Implementing Plugins -->
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="../css/line-icons.css">
+	<link rel="stylesheet" href="../css/font-awesome.min.css">
+
+	<!-- CSS Page Style -->
+	<link rel="stylesheet" href="../css/page_search_inner_tables.css">
+
+	<!-- CSS Theme -->
+	<link rel="stylesheet" href="../css/default.css" id="style_color">
+	<link rel="stylesheet" href="../css/dark.css">
+
+	<!-- CSS Customization -->
+	<link rel="stylesheet" href="../css/custom.css">
+</head>
+
+<body ng-app="Finddyapp">
+	<div class="wrapper" ng-controller="contactlist_controller">
+		<!--=== Header ===-->
+		<div class="header">
+			<div class="container">
+				<!-- Logo -->
+				<a class="logo" href="../">
+					<img src="../img/finddy_logo.jpg" alt="Logo">
+				</a>
+				<!-- End Logo -->
+
+				<!-- Topbar -->
+				<div class="topbar">
+					<ul class="loginbar pull-right">
+						
+						<li class="topbar-devider"></li>
+						<li><a href="../../signin">Logout</a></li>
+					</ul>
+				</div>
+				<!-- End Topbar -->
+
+				<!-- Toggle get grouped for better mobile display -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="fa fa-bars"></span>
+				</button>
+				<!-- End Toggle -->
+			</div><!--/end container-->
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+				<div class="container">
+					<ul class="nav navbar-nav">
+						<!-- Home -->
+						<li class="dropdown mega-menu-fullwidth">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='createNew.html';">
+                            Post New Activity
+                        </a>
+                    </li>
+                    <!-- End Shortcodes -->
+
+                    <!-- Misc Pages -->
+                    <li class="dropdown active">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" onclick="window.location.href='profile.html';">
+                            Return to Profile
+                        </a>
+        
+                    </li>               
+						<!-- Search Block -->
+						<li>
+							<i class="search fa fa-search search-btn" onclick="window.location.href='search.html';"></i>
+							
+						</li>
+						<!-- End Search Block -->
+					</ul>
+				</div><!--/end container-->
+			</div><!--/navbar-collapse-->
+		</div>
+		<!--=== End Header ===-->
+
+		<!--=== Breadcrumbs ===-->
+		<div class="breadcrumbs breadcrumbs-dark">
+			<div class="container">
+				<h1 class="pull-left">Contact List</h1>
+				<ul class="pull-right breadcrumb">
+					
+					<li class="active">Contact List</li>
+				</ul>
+			</div>
+		</div>
+		<!--=== End Breadcrumbs ===-->
+<!--=== Search Block Version 2 ===-->
+    <div class="search-block-v2" >
+		<form enctype="multipart/form-data" ng-submit="validation()">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>   Search User</h2>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="username" placeholder="Please enter the username of the user you want to search." ng-model="user.username">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit" ><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div> 
+		</form>   
+    </div><!--/container-->     
+    <!--=== End Search Block Version 2 ===-->
+
+
+		<div class="container content-sm" >
+			
+			<!-- Begin Table Search v2 -->
+			<div class="table-search-v2 margin-bottom-30" ng-if="user.EMAIL">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>User Name</th>
+								<th>List</th>
+								<th class="hidden-sm">About</th>
+								
+								<th>Contacts</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									
+									<div class="user-names">
+										<span ng-bind="user.USERNAME"></span>
+										
+									</div>
+								</td>
+								<td>
+									<span ng-bind="relationship"></span>
+								</td>
+								<td>
+									<span ng-bind="user.DESCRIPTION"></span>
+								</td>
+								
+								<td>
+									<span ng-bind="user.EMAIL"></span>
+									<span ng-bind="user.PHONE_NO"></span>
+								</td>
+								<td>
+									<ul class="list-inline table-buttons">
+										<li><button ng-click="set_blacklist()"><i class="fa fa-trash-o"></i></button></li>
+										<li><button ng-click="set_whitelist()"><i class="fa fa-edit"></i></button></li>
+										<li><button ng-click="find_user()"><i class="fa fa-search"></i></button></li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- End Table Search v2 -->
+
+			
+			
+		</div>
+
+		
+	</div><!--/End Wrapepr-->
+
+
+	<!--=== End Style Switcher ===-->
+
+	<!-- JS Global Compulsory -->
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="../js/back-to-top.js"></script>
+	<script type="text/javascript" src="../js/smoothScroll.js"></script>
+	<!-- JS Customization -->
+	<script type="text/javascript" src="../js/custom.js"></script>
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/style-switcher.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+			App.init();
+			StyleSwitcher.initStyleSwitcher();
+		});
+	</script>
+<script>
+    var app=angular.module('Finddyapp',[]);
+    app.controller('contactlist_controller',function($scope,$http,$window){
+        $scope.validation=function(){
+            $http({
+  	 		url: '/users/contactList',
+            data: $scope.user,
+            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+  			method: 'POST'
+			}).then(function(result) {
+    		if (result.data == "no_user") {
+					alert("The username does not exist!");
+				}
+			else if(result.data == "same_user"){
+				alert("Please enter other user's username!");
+			}
+			else{
+				$scope.user = JSON.parse(result.data[0]);
+				$scope.relationship = result.data[1];
+			}
+
+			});
+        };
+		$scope.set_blacklist = function(){
+			console.log("clicking black!");
+			$http({
+				url: '/users/black',
+				type:'GET',
+				params:{target_id: $scope.user.UID}
+			}).then(function(result){
+				if(result.data == "remove"){
+					alert("You have removed the user from your blacklist!");
+					$window.location.reload();
+				}
+				else if(result.data == "in_whitelist"){
+					alert("This user is in your whitelist!");
+					$window.location.reload();
+				}
+				else if(result.data == "add"){
+					alert("You have added this user into your blacklist!");
+					$window.location.reload();
+				}
+			});
+		};
+		$scope.set_whitelist = function(){
+			console.log("clicking white!");
+			$http({
+				url:'/users/white',
+				type:'GET',
+				params:{
+					target_id : $scope.user.UID
+				}
+			}).then(function(result){
+				if(result.data == "remove"){
+					alert("You have removed the user from your whitelist!");
+					$window.location.reload();
+				}
+				else if(result.data == "in_blacklist"){
+					alert("This user is in your blacklist!");
+					$window.location.reload();
+				}
+				else if(result.data == "add"){
+					alert("You have added this user into your whitelist!");
+					$window.location.reload();
+				}
+			});
+		};
+		$scope.find_user = function(){
+			$window.location.href = "/users/profileForOthers/" + $scope.user.UID;
+		}
+    });
+
+</script> 
+	<!--[if lt IE 9]>
+	<script src="assets/plugins/respond.js"></script>
+	<script src="assets/plugins/html5shiv.js"></script>
+	<script src="assets/plugins/placeholder-IE-fixes.js"></script>
+	<![endif]-->
+</body>
+</html>
